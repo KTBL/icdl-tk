@@ -34,5 +34,5 @@ Die Android App nutzt das `ICDL` Format nicht direkt, sondern nutzt JSON als Zwi
 
 ## Lizenz
 
-Siehe [LICENSE](LICENSE.md)
+Siehe [LICENSE](LICENSE)
 
