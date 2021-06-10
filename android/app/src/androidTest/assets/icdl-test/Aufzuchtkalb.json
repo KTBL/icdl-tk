@@ -1,0 +1,900 @@
+{
+  "AnimalCategory": [
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "species": "Rinder",
+      "name": "Kälberaufzucht",
+      "description": "Zu den Aufzuchtkälbern zählen Tränkekälber und abgesetzte Kälber (sowohl weibliche wie auch männliche Kälber) bis zum vollendeten 6. Lebensmonat",
+      "thumbnail": "<image-ID>",
+      "Branch": [
+        {
+          "name": "Gesamtbestand",
+          "description": "",
+          "__key": "Gesamtbestand"
+        }
+      ],
+      "__key": "Aufzuchtkalb"
+    }
+  ],
+  "Indicator": [
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Behandlungsinzidenz Atemwegserkrankungen",
+      "description": "Dieser Indikator gibt Hinweise auf die Häufigkeit von Atemwegserkrankungen.",
+      "animal-category": "Aufzuchtskalb",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Dieser Indikator beschreibt die Häufigkeit der dokumentierten Behandlungen (Behandlungsinzidenz) von Atemwegserkrankungen. Diese gehören neben Durchfällen zu den häufigsten Behandlungsursachen bei Kälbern. Sie schränken das Wohlbefinden ein und können ggf. zum Tod der Kälber führen. Die Behandlungsinzidenz gibt einen Hinweis auf die Häufigkeit von Atemwegserkrankungen. Neben der realen Erkrankungssituation des Bestandes ist die Behandlungsinzidenz zudem von der Tierbeobachtung und der Behandlungsstrategie des Tierhalters abhängig. Risikofaktoren sind mangelhafte Stallhygiene, eine zu späte und/oder geringe Versorgung mit Kolostrum und ein suboptimales Stallklima (zugig, schadgasbelastet, feucht).",
+      "when-and-how-often": "Fortlaufend dokumentieren, mindestens jährlich auswerten.",
+      "which-and-how-many": "Gesamtbestand",
+      "how": "Erfasst wird jede Behandlung einer (klinischen) Atemwegserkrankung; Präventivmaßnahmen, wie z.B. Impfungen, werden nicht miterfasst. Eine erneute Behandlung eines Kalbs nach 7 Tagen Behandlungspause wird als neue Behandlung gezählt.\nDie Auszählung der Behandlungsinzidenz erfolgt auf Basis der Arzneimittel-Abgabe- und Anwendungsbelege (AUA-Belege), z.B. mit einer Strichliste oder einem entsprechenden Herdenmanagementprogramm. Gegebenenfalls können auch digital vorliegende Daten der Tiergesundheitsprogramme der Landeskontrollverbände genutzt werden. ",
+      "branches": [],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Atemwegsbehandlung",
+                  "short-description": "Atemwegsbehandlung",
+                  "long-description": "Atemwegsbehandlung",
+                  "images": [],
+                  "__key": "A"
+                },
+                {
+                  "name": "Alle Tiere",
+                  "short-description": "Gesamtzahl Tiere",
+                  "long-description": "Gesamtzahl Tiere",
+                  "images": [],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Atemwegserkrankungen",
+            "description": "Anzahl an Atemwegsbahndlungen in den zurückliegenden 12 Monaten",
+            "expression": "(A / B) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 10,
+                "visual-upperbound": 30,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Atemwegserkrankungen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Atemwegserkrankungen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    20
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Behandlungsinzidenz Durchfallerkrankungen",
+      "description": "Dieser Indiaktor gibt Hinweise auf die Häufigkeit des Auftretens von Durchfallerkrankungen.",
+      "animal-category": "Aufzuchtskalb",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Dieser Indikator beschreibt die Häufigkeit der dokumentierten Behandlungen (Behandlungsinzidienz) von Durchfallerkrankungen. Diese gehören neben Atemwegserkrankungen zu den häufigsten Behandlungsursachen bei Kälbern. Sie können das Wohlbefinden einschränken, zu langfristigen Problemen und ggf. auch zum Tod der Kälber führen. Die Durchfallbehandlungsinzidenz gibt einen Hinweis auf die Häufigkeit des Auftretens von Durchfallerkrankungen. Neben der realen Erkrankungssituation des Bestandes ist die Behandlungsinzidenz zudem von der Tierbeobachtung und der Behandlungsstrategie des Tierhalters abhängig. Zu den Risikofaktoren zählen mangelhafte Stallhygiene, eine zu späte und/oder geringe Versorgung mit Kolostrum sowie ein insgesamt ungenügendes Tränkemanagement.",
+      "when-and-how-often": "Fortlaufend erheben, mindestens jährlich auswerten",
+      "which-and-how-many": "Gesamtbestand",
+      "how": "Erfasst wird jede Behandlung einer Durchfallerkrankung; Präventivmaßnahmen werden nicht miterfasst. Eine erneute Behandlung eines Kalbs nach 7 Tagen Behandlungspause wird als neue Behandlung gezählt. Die Auszählung der Behandlungsinzidenz erfolgt auf Basis der Arzneimittel-Abgabe- und Anwendungsbelege (AUA-Belege), z. B. mit einer Strichliste oder entsprechenden Herdenmanagementprogramm. Gegebenenfalls können auch digital vorliegende Daten der Tiergesundheitsprogramme der Landeskontrollverbände genutzt werden.",
+      "branches": [],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Durchfallbehandlung",
+                  "short-description": "Durchfallbehandlung",
+                  "long-description": "Durchfallbehandlung",
+                  "images": [],
+                  "__key": "A"
+                },
+                {
+                  "name": "Alle Tiere",
+                  "short-description": "Gesamtzahl Tiere",
+                  "long-description": "Gesamtzahl Tiere",
+                  "images": [],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Durchfallerkrankungen",
+            "description": "Anzahl der Durchfallbehandlungen in den zurückliegenden 12 Monaten",
+            "expression": "(A / B) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 20,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Durchfallerkrankungen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Durchfallerkrankungen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    15
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Tierverluste",
+      "description": "Tierverluste sind Tierschutz und wirtschafltich relevant und häufig vom Management abhängig.",
+      "animal-category": "Aufzuchtskalb",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Tierverluste umfassen alle verendeten sowie notgetöteten und euthanasierten („eingeschläferten“) Tiere. Sie sind – neben ihrer Tierschutzrelevanz – auch aus ökonomischer Sicht von großer Bedeutung und häufig vom betriebsindividuellen Management abhängig. Zu den bekannten Risikofaktoren zählen Komplikationen im Geburtsverlauf, unzureichende Kolostrumversorgung bzw. -aufnahme, mangelhaftes Tränke- bzw. Herdenmanagement und infektiöse Erkrankungen, aber auch Faktoren wie Alter, Geschlecht, Rasse und Bestandsgröße.",
+      "when-and-how-often": "Fortlaufend erheben, mindestens jährlich auswerten",
+      "which-and-how-many": "Gesamtbestand",
+      "how": "Berechnet wird die Mortalitätsrate und zwar für alle Aufzuchtkälber in zwei Altersgruppen:\nKälber bis einschließlich 3. Lebensmonat (Kälber ab HI-Tier-Meldung, d.h. spätestens ab Tag 8 bis 90. Lebenstag) sowie\nKälber > 3. bis 6. Lebensmonat (91. Lebenstag bis 183. Lebenstag), die in den zwölf Monaten eines Kalender-jahres auf dem Betrieb verendet sind bzw. notgetötet oder euthanasiert wurden.\n\nDie Berechnung der Tierverluste kann entweder (1.) mittels der Webseite von HI-Tier oder (2.) mit Hilfe der Onlinean-wendung www.tschindi.org erfolgen.\n\n(1.) Nach der Benutzeranmeldung auf der Webseite https://www.hi-tier.de/HitCom/login.asp gelangt man bei „Rinderdatenbank – Abfragen“ zum Menüpunkt \"Allgemeine Funktionen zur Tiergesundheit\". Dort befinden sich die Aus-wertungen zur \"Rindermortalität\". Den gewünschten Zeitraum/Jahr auswählen und zusätzlich Kalender- und/oder Wirtschaftsjahr sowie die anzuzeigenden Altersklassen/Geschlechter auswählen. Für die Ermittlung der Kälbermorta-lität bei „Gruppen“ -> „alle“ anwählen, um sowohl weibliche als auch männliche Kälber mit einzubeziehen und die beiden Altersklassen „0-3 Mon.“ sowie „3-6 Mon.“ auswählen. Um eine getrennte Auswertung von weiblichen als auch von männlichen Kälbern zu erhalten, müssen zusätzlich „weiblich“ und „männlich“ ausgewählt werden. Unter dem Punkt „Anzeige“ „durchschn. lebende Tiere + tatsächlich & erwartete tote Tiere“ auswählen. Mit einem Klick auf „Anzeigen“ werden die eigenen Betriebsdaten ausgewertet. Die Todesfälle werden in absoluten Zahlen dargestellt („∑ Leb.“, d.h. Summe Lebenstage bzw. dem durchschnittlichen Tierbestand in der jeweiligen Alters-/&Geschlechtsklasse sowie „Tote“, d.h. Anzahl verendeter Tiere im jeweiligen Altersabschnitt).\nDurch Dividieren von „Tote“ durch „∑ Leb.“ und Multiplikation mit 100, erhält man die Mortalitätsrate (bezogen auf 100 Kälber je Altersschicht) und somit einen prozentähnlichen Wert zum überbetrieblichen Vergleich.\n\nDie eigenen (absoluten) Todesfälle werden auf der HI-Tier-Webseite bereits mithilfe von Ampelfarben mit Referenzwerten verglichen, nämlich den \"erwartbaren\" Todesfällen vergleichbarer Betriebe auf Basis langjähriger HIT-Auswertungen. Für den gesamten Tierbestand wird zudem die Mortalitätsrate/Sterblichkeit bereits unter der Spaltenüberschrift „Verhältnisse (ges.)“ angegeben, d.h. das Verhältnis „Tote“ (verendete Tiere) / „∑ Leb.“ (Durch-schnittsbestand) bezogen auf alle Tiere im Betrieb im gewählten Zeitraum.\n(2.) Unter www.tschindi.org „Rinderverluste“ anklicken, unter „1. HIT-Zugang“ die Betriebsnummer und das HI-Tier Passwort eintragen, unter „2. Zeitraum“ den gewünschten Zeitraum auswählen (z.B. ein Kalender- oder Wirtschaftsjahr) und unter „3. Tierbestand“ noch einmal die Betriebsnummer eintragen. Mit einem Klick auf „HIT-Abfrage starten“ werden die Tierverluste berechnet. Unter „weitere Tabellen“ werden der Durchschnittsbestand sowie die Todesfälle (in absoluten Zahlen) dargestellt sowie, in der Spalte „MR, real“, die Mortalitätsraten (Verhältniszahl) für die Altersklassen „0-12 Wochen“ und „3-6 Monate“. Der jeweilige Wert in der Tabelle multipliziert mit 100 ergibt die Mortalitätsrate (bezogen auf 100 Kälber je Altersschicht) und somit einen prozentähnlichen Wert zum überbetrieblichen Vergleich. Als Vergleichswert für die eigene Bestandsgröße kann der Referenzwert in der Spalte links daneben (MR, Ref. wert) ver-wendet werden. In der Klammer werden männliche und weibliche Tiere getrennt voneinander dargestellt. Die errech-nete Mortalitätsrate kann unter „Auswertung pdf“ als PDF heruntergeladen werden. ",
+      "branches": [
+        "branchLabel1",
+        "branchLabel2"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "verendete Kälber bis einschließlich 3. Lebensmonat",
+                  "short-description": "Kälber bis einschließlich 3. Lebensmonat (Kälber ab HI-Tier-Meldung, d.h. spätestens ab Tag 8 bis 90. Lebenstag), die in den zwölf Monaten eines Kalenderjahres auf dem Betrieb verendet sind bzw. notgetötet oder euthanasiert wurden",
+                  "long-description": "Kälber bis einschließlich 3. Lebensmonat (Kälber ab HI-Tier-Meldung, d.h. spätestens ab Tag 8 bis 90. Lebenstag), die in den zwölf Monaten eines Kalenderjahres auf dem Betrieb verendet sind bzw. notgetötet oder euthanasiert wurden",
+                  "images": [],
+                  "__key": "A"
+                },
+                {
+                  "name": "vernendete Kälber > 3. bis 6. Lebensmonat ",
+                  "short-description": "Kälber > 3. bis 6. Lebensmonat (91. Lebenstag bis 183. Lebenstag), die in den zwölf Monaten eines Kalenderjahres auf dem Betrieb verendet sind bzw. notgetötet oder euthanasiert wurden",
+                  "long-description": "Kälber > 3. bis 6. Lebensmonat (91. Lebenstag bis 183. Lebenstag), die in den zwölf Monaten eines Kalenderjahres auf dem Betrieb verendet sind bzw. notgetötet oder euthanasiert wurden",
+                  "images": [],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Tierverluste: Tag 7 bis einschließlich 3. Lebensmonat",
+            "description": "Anteil der Kälber bis einschließlich 3. Lebensmonat in der Gesamtherde, die in den letzten 12 Monaten verendet bzw. notgetötet oder euthanasiert worden sind.",
+            "expression": "(A / herd_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 7,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist verendet."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind verendet, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Tierverluste: >3. bis  einschließlich 6. Lebensmonat",
+            "description": "Anteil der Kälber, >3. bis  einschließlich 6. Lebensmonat, in der Gesamtherde, die in den letzten 12 Monaten verendet bzw. notgetötet oder euthanasiert worden sind.",
+            "expression": "(B / herd_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 7,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist verendet."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    1
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind verendet, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Gegenseitiges Besaugen",
+      "description": "Dieser Indikator gibt Hinweise auf Verhaltensstörungen, die häufig von falschen Haltungsbedigungen und Management hervorgerufen werden.",
+      "animal-category": "Aufzuchtskalb",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Verhaltensabweichungen oder Verhaltensstörungen deuten darauf hin, dass hoch motivierte Verhaltensweisen nicht oder nur unzureichend ausgeführt werden können. Die Ursachen für gegenseitiges Besaugen liegen vor allem in einem unbefriedigten Saugbedürfnis. Zu den wichtigsten Risikofaktoren zählen zu geringe Tränkehäufigkeit und -dauer (zweimal tägliche Eimertränke), geringer Saugwiderstand (große Öffnung des Saugnuckels), Mangel an Bewegungsfläche und Umweltreizen sowie unzureichendes Angebot an Raufutter.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und bewerten",
+      "which-and-how-many": "Gesamtbestand",
+      "how": "Kontinuierliche Beobachtung über einen Zeitraum von mindestens 30 Minuten unmittelbar nach der Milchtränke bzw. in Aktivitätsphasen (bei Tränkeautomaten und bei abgesetzten Kälbern), gleichmäßig auf alle Kälbergruppen verteilt. Zählen der Tiere, die gegenseitiges Besaugen zeigen (Besaugen von Euteranlage, Ohren, Schwanz, Nabel, Vorhaut oder anderen Körperteilen, siehe Abb. und Beispielvideo). Tiere mit Nasenklammer werden als „Besauger“ gezählt.",
+      "branches": [],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Besaugen",
+                  "short-description": "Tiere, die gegenseitiges Besaugen zeigen bzw. Nasenklammern tragen",
+                  "long-description": "Tiere, die gegenseitiges Besaugen zeigen bzw. Nasenklammern tragen",
+                  "images": [
+                    "Besaugen1",
+                    "Besaugen2",
+                    "Besaugen3"
+                  ],
+                  "thumbail": "Besaugen1",
+                  "__key": "A"
+                },
+                {
+                  "name": "Tiere, die kein Besaugen zeigen",
+                  "short-description": "Tiere, die kein Besaugen zeigen",
+                  "long-description": "Tiere, die kein Besaugen zeigen",
+                  "images": [],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Gegenseitiges Besaugen",
+            "description": "Anteil der Aufzuchtskälber, die gegenseitiges Besaugen zeigen bzw. Nasenklammern tragen",
+            "expression": "(A / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier zeigt gegenseitiges Besaugen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    3
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere zeigen gegenseitiges Besaugen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Unterentwickelte Kälber/Kümmerer",
+      "description": "Unterentwickelte Kälber sind anfälliger für Krankheiten und können später auf die Leistungen negative Einflüss haben.",
+      "animal-category": "Aufzuchtskalb",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Kälber bis zum vollendeten 6. Lebensmonat, die eine zu geringe Körperkondition und ein struppiges, stumpfes Fell haben, bezeichnet man als unterentwickelt bzw. als „Kümmerer“. Sie wachsen langsamer als gleichaltrige Kälber, sind empfänglicher für Infektionserkrankungen und in ihrem Wohlbefinden beeinträchtigt. Sie können ein späteres Erstkalbealter und eine geringere Milchleistung in der ersten Laktation zeigen. Risikofaktoren für „Kümmerer“ sind unzureichende Kolostrumaufnahme, eine unzureichende Ernährungssituation in der Aufzuchtphase, typische Kälbererkrankungen wie Durchfall oder Atemwegserkrankungen sowie negative Haltungs- und Klimaeinflüsse.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Gesamtbestand",
+      "how": "Beurteilung des Gesamterscheinungsbilds (in der Aktivitätsphase, wenn die Tiere nicht liegen) anhand von Bemuskelung, Sichtbarkeit der Rippen und Wirbelsäule, sowie des Fellzustands.",
+      "branches": [],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Unterentwickelte Kälber",
+                  "short-description": "Schwache Bemuskelung; Sichtbarkeit der Rippen und der Wirbelsäule; oftmals struppiges, stumpfes, langes Fell",
+                  "long-description": "Schwache Bemuskelung; Sichtbarkeit der Rippen und der Wirbelsäule; oftmals struppiges, stumpfes, langes Fell",
+                  "images": [
+                    "Kuemmerer1",
+                    "Kuemmerer2",
+                    "Kuemmerer3"
+                  ],
+                  "thumbail": "Kuemmerer3",
+                  "__key": "A"
+                },
+                {
+                  "name": "normal entwickelte Kälber",
+                  "short-description": "normal entwickelte Kälber",
+                  "long-description": "normal entwickelte Kälber",
+                  "images": [],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Unterentwickelte Kälber",
+            "description": "Anteil der unterentwickelten Kälbern an allen Aufzuchtkälbern",
+            "expression": "(A / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 7.5,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Kalb ist unterentwickelt."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    1
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Kälber sind unterentwickelt, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Verschmutzung der Tiere",
+      "description": "Verschmutzungen der Tiere können zu gesundheitlichen Problemen führen und können auf Managementprobleme hinweisen.",
+      "animal-category": "Aufzuchtskalb",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Verschmutzungen des Haarkleids können das Allgemeinbefinden stören, Juckreiz hervorrufen, die darunterliegende Haut kann sich entzünden und die Thermoregulation ist beeinträchtigt. Verschmutzungen zeigen Schwachstellen in Haltung und Management auf. Stärkere Verfärbungen, große Flecken und sich auf der Hinterhand aufbauende Schmutzanhaftungen verweisen auf zu wenig oder zu selten erneuerte Einstreu. Ein weiterer Risikofaktor ist zu dünner Kot durch falsche Ernährung und Durchfallerkrankungen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Gesamtbestand",
+      "how": "Beurteilung einer zufällig ausgewählten Körperseite (in der Aktivitätsphase, wenn die Tiere nicht liegen) hinsichtlich der Verschmutzung am Rumpf (ohne Kopf, Hals, Beine und Schwanz, siehe Abb.) aus maximal 2 m Entfernung.",
+      "branches": [],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "nicht verschmutzt",
+                  "long-description": "Verschmutzung (Nässe, Verfärbung oder Kotanhaftung) an weniger als 25 % der Fläche ",
+                  "images": [
+                    "Verschmutzung1",
+                    "Verschmutzung2"
+                  ],
+                  "thumbail": "Verschmutzung2",
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "verschmutzt",
+                  "long-description": "Verschmutzung (Nässe, Verfärbung oder Kotanhaftung) ab 25 % der Fläche",
+                  "images": [
+                    "Verschmutzung3",
+                    "Verschmutzung4"
+                  ],
+                  "thumbail": "Verschmutzung3",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Verschmutzung",
+            "description": "Anteil Verschmutzter Kälber",
+            "expression": "(B / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist verschmutzt."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    3
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind verschmutzt, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Einstreumanagement",
+      "description": "Ausreichend Einstreu und gute Qualtität förden das Tierwohl und wirken sich positiv auf die Gesundheit aus.",
+      "animal-category": "Aufzuchtskalb",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Das Vorhandensein von Einstreu und deren Qualität sind Kriterien zur Beurteilung des Einstreumanagements und können mithilfe des „Nesting-Scores“ bewertet werden. Bei einem guten Einstreumanagement liegen die Kälber „im Stroh“, nicht „auf dem Stroh“. Zu geringes oder zu seltenes Einstreuen führt zu nassen und kompakten Liegematratzen, die negative Auswirkungen auf Stall- und Mikroklima, Tiersauberkeit, Liegekomfort sowie Thermoregulation haben. Fehlende oder nasse Einstreu kann Atemwegserkrankungen und Nabelentzündungen begünstigen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Gesamtbestand ",
+      "how": "Alle liegenden Kälber bis 6 Monate, die ausreichend gut sichtbar sind, werden während der Ruhephase mithilfe eines „Nesting-Scores“ beurteilt. Verdeckt liegende und stehende Kälber werden nicht mitgezählt. Kälber in strohlosen Systemen werden mit Boniturnote 1 bewertet.",
+      "branches": [],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "unzureichend",
+                  "short-description": "Unzureichende Einstreu",
+                  "long-description": "Das Tier liegt auf Stroh, die Beine sind vollständig sichtbar bzw. in dem Bereich, in dem das betroffene Tier liegt, fehlt die Einstreu oder strohlose Systeme. ",
+                  "images": [
+                    "Einstreumanagement1",
+                    "Einstreumanagement2"
+                  ],
+                  "thumbail": "Einstreumanagement1",
+                  "__key": "A"
+                },
+                {
+                  "name": "ausreichend",
+                  "short-description": "Ausreichend Einstreu",
+                  "long-description": "Das Tier liegt im Stroh, die Beine sind teils strohbedeckt, teils sichtbar",
+                  "images": [
+                    "Einstreumanagement3",
+                    "Einstreumanagement4"
+                  ],
+                  "thumbail": "Einstreumanagement4",
+                  "__key": "B"
+                },
+                {
+                  "name": "optimal",
+                  "short-description": "optimale Einstreu",
+                  "long-description": "Das Tier liegt im Stroh bzw. wird von frischer Einstreu umhüllt, die Beine sind von Stroh bedeckt",
+                  "images": [
+                    "Einstreumanagement5",
+                    "Einstreumanagement6"
+                  ],
+                  "thumbail": "Einstreumanagement6",
+                  "__key": "C"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Einstreu",
+            "description": "Kälber mit unzureichender Einstreu",
+            "expression": "(A / (A + B + C)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Alle Tiere liegen im Stroh."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    0
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere liegen nicht im Stroh, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Komplikationen nach Enthornung",
+      "description": "Komplikationen bei der Enthornung sind schmerzhafte Entzündungen im Bereich der Hornanlage bzw. um die Entstehung von Stummel- oder Krüppelhörnern.",
+      "animal-category": "Aufzuchtskalb",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Eingriffe bei Tieren bringen immer das Risiko von Komplikationen mit sich. Im Hinblick auf die Enthornung (Entfernung oder Verödung der Hornanlagen) handelt es sich um schmerzhafte Entzündungen im Bereich der Hornanlage bzw. um die Entstehung von Stummel- oder Krüppelhörnern. Letztere können das Tier selbst beeinträchtigen, wenn das Horn zum Beispiel auf den Schädel drückt. Darüber hinaus können unvollständig enthornte Tiere anderen Tieren in der Gruppe Verletzungen zufügen. Eine eventuell notwendige Amputation des Horns beim erwachsenen Tier verursacht erhebliche Schmerzen. Risikofaktoren sind eine nicht fachgerechte Durchführung der Enthornung, z. B. durch technische Mängel, zu geringe Temperatur, zu kurze oder zu lange Dauer des Ausbrennvorgangs, falschen Ansatz des Brenngeräts, zu späte Durchführung (Hornanlage bereits zu groß), Abwehrbewegungen des Kalbes (fehlende Anästhesie) sowie Verschmutzung des gebrannten Bereichs. Die Enthornung mit Hilfe von Ätzstiften ist verboten. In der Regel erfolgt das Veröden der Hornanlage unter Sedierung, mit lokaler Betäubung und Gabe von Schmerzmitteln.",
+      "when-and-how-often": "Jeweils 2 Wochen nach Enthornung erheben, jährlich auswerten",
+      "which-and-how-many": "Gesamtbestand frisch enthornter Kälber",
+      "how": "Beurteilung der Kälber im Hinblick auf Komplikationen nach der Enthornung (Entzündung).\n\tAls Zusatzinformation ist die Anzahl der im Bezugszeitraum enthornten Kälber erforderlich.",
+      "branches": [],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "keine Komplikation",
+                  "long-description": "keine Komplikation",
+                  "images": [
+                    "Enthornung1"
+                  ],
+                  "thumbail": "Enthornung1",
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "Entzündung",
+                  "long-description": "Rötung und/oder Schwellung der Enthornungsstelle; evtl. starke Sekret- oder Eiterbildung",
+                  "images": [
+                    "Enthornung2",
+                    "Enthornung3"
+                  ],
+                  "thumbail": "Enthornung2",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Komplikationen nach Enthornung",
+            "description": "Anteil an Kälber mit Komplikationen bei der Enthornung",
+            "expression": "(B / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Komplikationen nach Enthornung."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    1
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Komplikationen nach Enthornung, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    3
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    }
+  ]
+}

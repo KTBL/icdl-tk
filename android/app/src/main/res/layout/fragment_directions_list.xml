@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="de.ktbl.eikotiger.view.viewmodel.productiondirection.DirectionListBaseVM" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/android_grey_200"
+        tools:context=".view.fragment.productiondirection.ProductionDirectionsOverviewFragment">
+
+        <xyz.sangcomz.stickytimelineview.TimeLineRecyclerView
+            android:id="@+id/prod_dir_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:clipToPadding="true"
+            app:sectionBackgroundColor="@color/transparent"
+            app:sectionSubTitleTextColor="@color/colorPrimary"
+            app:sectionTitleTextColor="@color/colorPrimaryDark"
+            app:timeLineCircleColor="@color/ktbl_blue_1"
+            app:timeLineCircleStrokeColor="@color/colorAccent"
+            app:timeLineColor="@color/ktbl_blue_1"
+            app:timeLineWidth="@dimen/line_width"
+            tools:listitem="@layout/adapter_prod_direction"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_prod_dir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@drawable/ic_add_white"
+            android:onClick="@{v -> vm.onFABClicked()}"
+            android:visibility="@{vm.isFABVisible ? View.VISIBLE : View.GONE}" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

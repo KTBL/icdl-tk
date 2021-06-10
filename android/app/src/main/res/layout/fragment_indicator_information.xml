@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="indicatorICDL"
+            type="de.ktbl.eikotiger.data.icdl.indicator.Indicator" />
+        <variable
+            name="vm"
+            type="de.ktbl.eikotiger.view.viewmodel.indicator.IndicatorInfoVM" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/fragment_vertical_padding"
+        android:paddingVertical="@dimen/fragment_vertical_padding">
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/title"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="@{indicatorICDL.label}"-->
+        <!--            android:textAppearance="@style/TitleH1" />-->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/header_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/description"
+                        style="@style/EmbeddedCardViewContentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="3"
+                        android:text="@{indicatorICDL.description}" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/what_and_why"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_to_card"
+                    android:text="Was und warum?"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/header_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/what_and_why_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/what_and_why">
+
+                    <TextView
+                        android:id="@+id/what_and_why_text"
+                        style="@style/EmbeddedCardViewContentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="2"
+                        android:text="@{indicatorICDL.whatAndWhy}" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/when_and_how_often"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_to_card"
+                    android:text="Wann und wie oft?"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/what_and_why_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/when_and_how_often_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/when_and_how_often">
+
+                    <TextView
+                        android:id="@+id/when_and_how_often_text"
+                        style="@style/EmbeddedCardViewContentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="2"
+                        android:text="@{indicatorICDL.whenAndHowOften}" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/which_and_why"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_to_card"
+                    android:text="Welche und wieviele?"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/when_and_how_often_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/which_and_why_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/which_and_why">
+
+                    <TextView
+                        android:id="@+id/which_and_why_text"
+                        style="@style/EmbeddedCardViewContentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{indicatorICDL.whichAndHowMany}" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/how"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_to_card"
+                    android:text="Wie?"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/which_and_why_card" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/how_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/how">
+
+                    <TextView
+                        android:id="@+id/how_text"
+                        style="@style/EmbeddedCardViewContentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="2"
+                        android:text="@{indicatorICDL.how}" />
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btn_show_class_options"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_to_card"
+                    android:text="Bonituren anzeigen"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:onClick="@{v -> vm.onShowOptions()}"
+                    app:layout_constraintTop_toBottomOf="@+id/how_card" />
+
+                <TextView
+                    android:id="@+id/further_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_to_card"
+                    android:text="Weitere Informationen"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_show_class_options" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/further_information_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/further_info">
+
+                    <TextView
+                        android:id="@+id/furth_info_text"
+                        style="@style/EmbeddedCardViewContentText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="2"
+                        android:text="@{vm.furtherInformation}" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

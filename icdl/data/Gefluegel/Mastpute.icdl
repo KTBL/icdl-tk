@@ -1,0 +1,1738 @@
+// This is a comment
+
+// Basic example of the IndiCator-Description-Language (short ICDL)
+// This example only contains currently (or to be used) features.
+// Thus Events and Locations are not contained.
+// The comments and the closing curly-braces are optional, but it is  recommended to use them
+// in case the opening is not visible or too far from the closing one.
+
+
+AnimalCategory "Mastpute" { 
+	last-modified = "timestamp der letzten Änderung"
+	species = "Puten"
+	name = "Bezeichnung der Produktionsrichtung" // soll: nicht mehr als 40 Zeichen
+	description = "Beschreibung der Produktionsrichtung" // soll: nicht mehr als 200 zeichen
+	thumbnail = ""
+	//sample-map = { "10": "2", "20": "5", "30": "8", "50": "15", "100": "30" }
+	Branch "Mastpute" {
+		name = "Mastpute"
+		description = "Mastpute"
+	}
+} // End-AnimalCategory productionLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Außmaß und Qualität des Schnabelkürzens"
+	description = "Das Kürzen der Schnabelspitze bei Puten ist grundsätzlich verboten. Abweichend von diesem Verbot kann die zuständige Behörde das Kürzen erlauben, wenn glaubhaft dargelegt wird, dass der Eingriff im Hinblick auf die vorgesehene Nutzung zum Schutz der Tiere unerlässlich ist."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Das Kürzen der Schnabelspitze bei Puten ist grundsätzlich verboten. Abweichend von diesem Verbot kann die zuständige Behörde das Kürzen erlauben, wenn glaubhaft dargelegt wird, dass der Eingriff im Hinblick auf die vorgesehene Nutzung zum Schutz der Tiere unerlässlich ist (§ 6 (3) Nr. 2 TierSchG). Zur Vermeidung schwerwiegender Schäden durch Federpicken und Kannibalismus ist dieser Eingriff unter konventionellen Haltungsbedingungen derzeit noch gängige Praxis. Das beim Eintagsküken in der Brüterei durchgeführte Kürzen der Schnabelspitze stellt einen schmerzhaften Eingriff dar. Trotz automatisierter Durchführung kann es vorkommen, dass die Schnäbel uneinheitlich oder zu stark gekürzt werden. Dadurch kann es später im Haltungsbetrieb unter anderem zu Einschränkungen bei der Futteraufnahme und Gefiederpflege kommen. Da sich das Ergebnis des Kürzens erst nach Abfall der Schnabelspitze (ca. 7. bis 10. Lebenstag) beurteilen lässt, sollte die Qualität des Eingriffs zu diesem Zeitpunkt routinemäßig kontrolliert werden. Bei unsachgemäßer Kürzung sollte eine entsprechende Rückmeldung an die Brüterei erfolgen. Zusätzlich sollte zum Ende der Aufzucht eine Bonitierung des Schnabelzustands durchgeführt werden, um gegebenenfalls den Anteil an Puten mit unzureichendem Schnabelschluss zu ermitteln, um daraus resultierende mögliche Verhaltenseinschränkungen oder Probleme bei der Futteraufnahme zu identifizieren."
+	when-and-how-often = "Falls die Mastputen zugekauft werden: Bei schnabelgekürzten Tieren zum Einstallen erheben und auswerten."
+	which-and-how-many = "50 Tiere je Herde möglichst zufällig aus verschiedenen Stallbereichen (vorne, Mitte, hinten usw.) greifen."
+	how = "Beurteilung des Ausmaßes (Abstand Schnabelspitze zu Nasenloch) und der Qualität (Verhältnis von Ober- zu Unterschnabel) des Schnabelkürzens bei ausreichender Beleuchtung. Am Ende der Aufzucht sollte der Schnabelschluss weitgehend wiederhergestellt sein. Betrachtung des Schnabels von der Seite und vorne. Bei Grenzfällen zwischen zwei Boniturnoten wird die bessere Note gegeben." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "50"
+		default_type = "By_Animal"        
+		type_changeable = false 
+		presentation = "classification"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Boniturnote 0"
+					short-description = "Ungekürzter Schnabel"
+					long-description = "Von der Seite gesehen ragt der Oberschnabel bogenförmig über den Unterschnabel. Von vorn keine Öffnung sichtbar."
+					images = [ ]
+					thumbnail = ""
+				} 
+				Var "B" {
+					name = "Boniturnote 1"
+					short-description = "Mäßig verkürzter Oberschnabel"
+					long-description = "Von der Seite gesehen sind Ober- und Unterschnabel in etwa gleich lang. Von vorn ist nur eine kleine Öffnung sichtbar und der Unterschnabel ist nicht verkürzt."
+					images = [ ]
+					thumbnail = ""
+				}
+				Var "C" {
+					name = "Boniturnote 2"
+					short-description = "Stark verkürzter Oberschnabel"
+					long-description = "Von der Seite gesehen ist Oberschnabel deutlich kürzer als Unterschnabel. Von vorn ist eine deutliche Öffnung sichtbar oder der Unter-schnabel ist verkürzt."
+					images = [ ]
+					thumbnail = ""
+				} 
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Verürzter Oberschnabel"
+			description = "Anteil der Tiere mit stark verkürztem Oberschnabel"
+			expression = "(C / (A + B + C)) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 10
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat einen verkürzten Oberschnabel."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 2 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben verkürzte Oberschnäbel, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 6
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Gefiederschäden"
+	description = "Ein intaktes Gefieder erfüllt eine Schutzfunktion gegenüber Umwelteinflüssen und spielt eine entscheidende Rolle bei der Temperaturregulation."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Ein intaktes Gefieder erfüllt eine Schutzfunktion gegenüber Umwelteinflüssen und spielt eine entscheidende Rolle bei der Temperaturregulation. Die Vollständigkeit des Gefieders gibt Hinweise auf die Unterbringung, Versorgung und Pflege der Tiere. Gefiederschäden und -verluste können durch Federpicken, aber auch durch Abrieb an Haltungseinrichtungen, am Boden oder anderen Tieren entstehen. Das Herausziehen von Federn durch Artgenossen ist schmerzhaft und kann zu Verletzungen und in der Folge zu Kannibalismus führen. Gefiederschäden weisen darauf hin, dass die Tiere mit den Haltungs- und Fütterungsbedingungen nicht zurechtkommen. Bei gehäuft auftretenden Gefiederschäden sollten Managementmaßnahmen zur Verhinderung von Federpicken und Kannibalismus durchgeführt werden. Von Federpicken vornehmlich betroffene Körperregionen bei Puten sind der Hals sowie Rücken mit Flügeln und Schwanzansatz."
+	when-and-how-often = "Zum Einstallen sowie in der 12. und 16. Lebenswoche erheben und auswerten."
+	which-and-how-many = "50 Tiere je Herde möglichst zufällig aus verschiedenen Stallbereichen (vorne, Mitte, hinten usw.) greifen."
+	how = "Beurteilung der Vollständigkeit des Gefieders unter Zurückstreichen der Federn an Rücken mit Hals und Schwanzansatz sowie Flügeln. Dokumentiert wird dabei die Boniturnote der am schlechtesten bewerteten Körperregion. Bei Grenzfällen zwischen zwei Boniturnoten wird die bessere Note gegeben." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "50"
+		default_type = "By_Animal"        
+		type_changeable = false 
+		presentation = "classification"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Boniturnote 0"
+					short-description = "Keine Gefiederschäden"
+					long-description = "Maximal 2 fehlende Federn an derselben Stelle"
+					images = [ ]
+					thumbnail = ""
+				} 
+				Var "B" {
+					name = "Boniturnote 1"
+					short-description = "Leichte Gefiederschäden"
+					long-description = "Mindestens 1 kleine federlose Stelle (ab 3 fehlenden Federn) bis federlose Stelle < 5 cm längster Durchmesser"
+					images = [ ]
+					thumbnail = ""
+				} 
+				Var "C" {
+					name = "Boniturnote 2"
+					short-description = "Schwere Gefiederschäden"
+					long-description = "Mindestens 1 großflächige federlose Stelle ≥ 5 cm längster Durchmesser"
+					images = [ ]
+					thumbnail = ""
+				} //End-Var labelClass1
+			} // End-Group Bonituren Gruppe 1
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Gefiederschäden"
+			description = "Anteil der Tiere mit Gefiederschäden"
+			expression = "((B + C) / (A + B + C)) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 10
+				visual-upperbound = 50
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat Gefiederschäden."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 6 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben Gefiederschäden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 30
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Schwere Gefiederschäden"
+			description = "Anteil der Tiere mit schweren Gefiederschäden"
+			expression = "(C / (A + B + C)) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 15
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat schwere Gefiederschäden."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 2 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben schwere Gefiederschäden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 10
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Hautverletzungen - verendete, gemerzte oder separierte Tiere"
+	description = "Hautverletzungen treten vorwiegend als Pick- oder Kratzverletzungen auf und stellen einen Schaden am Tier dar, der je nach Ausmaß und Tiefe mit mehr oder weniger starken Schmerzen einhergeht und Infektionen begünstigen kann."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Hautverletzungen treten vorwiegend als Pick- oder Kratzverletzungen auf und stellen einen Schaden am Tier dar, der je nach Ausmaß und Tiefe mit mehr oder weniger starken Schmerzen einhergeht und Infektionen begünstigen kann. Die Verletzungen sind häufig an den Flügeln, am Rücken und Schwanz sowie an gering bis nicht befiederten Hautpartien wie Kopf und Kopfanhängen, Hals und der Kloake zu sehen. Hautverletzungen an den Kopfanhängen entstehen häufig mit einsetzender Geschlechtsreife durch kämpferische Auseinandersetzungen, insbesondere bei den Hähnen. Beschädigendes Picken kann aber auch in Form von Kannibalismus auftreten, indem diese Verletzungen, oder z. B. häufig Kratzverletzungen am Rücken, nachfolgend von Artgenossen bepickt werden, was zu großflächigen Hautverletzungen führen kann. Kratzverletzungen treten oft im Zusammenhang mit gesteigerter Unruhe innerhalb einer Herde auf. Kratzverletzungen können auch bei Fluchtreaktionen, beim Treiben zum Verladen und beim Transport entstehen. Kannibalismus kann durch Stressoren, wie z. B. schlechtes Stallklima, zu hohe Besatzdichte oder Nährstoffmangel begünstigt werden. Eine weitere Rolle spielt die reizarme Umgebung in den meisten Ställen, wodurch die Tiere zu wenig beschäftigt sind. Insgesamt weisen gehäuft auftretende Hautverletzungen auf unzureichende Haltungs- und Managementbedingungen hin. Tiere mit frischen Verletzungen müssen unverzüglich separiert und erforderlichenfalls versorgt werden, weil sie das Risiko für weiteres verletzendes Picken in der Herde erhöhen und die Heilungschancen des betroffenen Tieres sonst gering sind. Bei schwerwiegenden Verletzungen ohne Aussicht auf Heilung sind die betreffenden Tiere zu merzen. Die Dokumentation der täglich aufgrund von Hautverletzungen verendeten, gemerzten und separierten Puten ermöglicht einen Überblick bezüglich des Auftretens von verletzendem Picken in der Herde. Um auch kleine Verletzungen erkennen zu können, sollte zusätzlich das Ausmaß von Hautverletzungen an einer Stichprobe von Tieren im Stall erhoben werden."
+	when-and-how-often = "Wöchentliches Auswerten der täglichen Aufzeichnungen."
+	which-and-how-many = "Gesamtherde"
+	how = "Wöchentliche Summierung der täglichen Anzahl der wegen Hautverletzung verendeten, gemerzten oder separierten Tiere geteilt durch die Zahl eingestallter Tiere." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Hautverletzung"
+					short-description = "Wegen Hautverletzung verendeten, gemerzten oder separiertes Tier"
+					long-description = "Wegen Hautverletzung verendeten, gemerzten oder separiertes Tier"
+					images = [ ]
+				} 
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Hautverletzung"
+			description = "Anteil der wegen Hautverletzung verendeten, gemerzten oder separierten Tiere"
+			expression = "(A / herd_size) * 100"	
+				}
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Hautverletzungen - Erfassung im Stall"
+	description = "Hautverletzungen treten vorwiegend als Pick- oder Kratzverletzungen auf und stellen einen Schaden am Tier dar, der je nach Ausmaß und Tiefe mit mehr oder weniger starken Schmerzen einhergeht und Infektionen begünstigen kann."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Hautverletzungen treten vorwiegend als Pick- oder Kratzverletzungen auf und stellen einen Schaden am Tier dar, der je nach Ausmaß und Tiefe mit mehr oder weniger starken Schmerzen einhergeht und Infektionen begünstigen kann. Die Verletzungen sind häufig an den Flügeln, am Rücken und Schwanz sowie an gering bis nicht befiederten Hautpartien wie Kopf und Kopfanhängen, Hals und der Kloake zu sehen. Hautverletzungen an den Kopfanhängen entstehen häufig mit einsetzender Geschlechtsreife durch kämpferische Auseinandersetzungen, insbesondere bei den Hähnen. Beschädigendes Picken kann aber auch in Form von Kannibalismus auftreten, indem diese Verletzungen, oder z. B. häufig Kratzverletzungen am Rücken, nachfolgend von Artgenossen bepickt werden, was zu großflächigen Hautverletzungen führen kann. Kratzverletzungen treten oft im Zusammenhang mit gesteigerter Unruhe innerhalb einer Herde auf. Kratzverletzungen können auch bei Fluchtreaktionen, beim Treiben zum Verladen und beim Transport entstehen. Kannibalismus kann durch Stressoren, wie z. B. schlechtes Stallklima, zu hohe Besatzdichte oder Nährstoffmangel begünstigt werden. Eine weitere Rolle spielt die reizarme Umgebung in den meisten Ställen, wodurch die Tiere zu wenig beschäftigt sind. Insgesamt weisen gehäuft auftretende Hautverletzungen auf unzureichende Haltungs- und Managementbedingungen hin. Tiere mit frischen Verletzungen müssen unverzüglich separiert und erforderlichenfalls versorgt werden, weil sie das Risiko für weiteres verletzendes Picken in der Herde erhöhen und die Heilungschancen des betroffenen Tieres sonst gering sind. Bei schwerwiegenden Verletzungen ohne Aussicht auf Heilung sind die betreffenden Tiere zu merzen. Die Dokumentation der täglich aufgrund von Hautverletzungen verendeten, gemerzten und separierten Puten ermöglicht einen Überblick bezüglich des Auftretens von verletzendem Picken in der Herde. Um auch kleine Verletzungen erkennen zu können, sollte zusätzlich das Ausmaß von Hautverletzungen an einer Stichprobe von Tieren im Stall erhoben werden."
+	when-and-how-often = "Zum Einstallen sowie in der 12. und 16. Lebenswoche erheben und auswerten."
+	which-and-how-many = "50 Tiere je Herde aus verschiedenen Stallbereichen (vorne, Mitte, hinten usw.) zufällig greifen."
+	how = "Beurteilung der Hautverletzungen, d. h. Pick- und Kratzverletzungen an Kopf, Rücken mit Hals und Schwanzansatz sowie Flügeln, gegebenenfalls unter Zurückstreichen des Gefieders. Dokumentiert wird die Boniturnote der am schlechtesten bewerteten Körperregion. Bei Grenzfällen zwischen zwei Boniturnoten wird die bessere Note gegeben." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "50"
+		default_type = "By_Animal"        
+		type_changeable = false 
+		presentation = "classification"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Boniturnote 0"
+					short-description = "Keine Hautverletzungen"
+					long-description = "Keine Hautverletzungen"
+					images = [ ]
+					thumbnail = ""
+				} 
+				Var "B" {
+					name = "Boniturnote 1"
+					short-description = "Leichte Hautverletzungen"
+					long-description = "An Kopf inklusive Stirnzapfen oder Kehllappen < 1 cm längster Durchmesser; in der Rückenregion < 2 cm längster Durchmesser (frisch oder verkrustet) oderoberflächliche und schmale Kratzer, die nicht bis in die Muskulatur reichen (Breite < 0,3 cm)."
+					images = [ ]
+					thumbnail = ""
+				} 
+				Var "C" {
+					name = "Boniturnote 2"
+					short-description = "Schwere Hautverletzungen"
+					long-description = "An Kopf inklusive Stirnzapfen oder Kehllappen ≥ 1 cm längster Durch-messer; in der Rückenregion ≥ 2 cm längster Durchmesser (frisch oder verkrustet) oder tiefe und breite Kratzer, die bis in die Muskulatur reichen (Breite ≥ 0,3 cm)."
+					images = [ ]
+					thumbnail = ""
+				} 
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Hautverletzungen"
+			description = "Anteil der Tiere mit Hautverletzungen"
+			expression = "((B + C) / (A + B + C)) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 50
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat Hautverletzungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 6 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben Hautverletzungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 30
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Schwere Hautverletzungen"
+			description = "Anteil der Tiere mit schweren Hautverletzungen"
+			expression = "(C / (A + B + C)) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 15
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat schwere Hautverletzungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 2 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben schwere Hautverletzungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 6
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+				}
+			} // End-Ranges
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Fussballenveränderungen - Schlachhofrückmeldung"
+	description = "Hauptrisikofaktor für die Entstehung von Fußballenveränderungen ist eine feuchte Einstreu. Ammoniak wird hier vermehrt freigesetzt und führt aufgrund seiner ätzenden Wirkung an der aufgeweichten Sohlenhaut zu mehr oder weniger starken Veränderungen."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Hauptrisikofaktor für die Entstehung von Fußballenveränderungen ist eine feuchte Einstreu. Ammoniak wird hier vermehrt freigesetzt und führt aufgrund seiner ätzenden Wirkung an der aufgeweichten Sohlenhaut zu mehr oder weniger starken Veränderungen. Eine anhaltende Beanspruchung und Reizung der Fußballenhaut kann zunächst zu einer starken Verhornung der Fuß- und Zehenballen führen. Zusätzlich können oberflächliche und schließlich tiefe Schäden bzw. Läsionen auftreten, die durch dunkle Farbveränderungen gekennzeichnet sind. Bakterien können derartige Hautschäden als Eintrittspforte nutzen und Entzündungen bis zu Geschwüren mit deutlichen Schwellungen hervorrufen. Aufgrund der Schmerzhaftigkeit, besonders im fortgeschrittenen Stadium, bewegen sich die betroffenen Tiere weniger; sie sitzen oder liegen vermehrt auf der Brust. Die Einstreufeuchte wird unter anderem durch die Einstreuart, Besatzdichte, Fütterung und Stallklimaführung beeinflusst. Auf Seiten der Tiere werden zudem Genetik, Geschlecht und Alter beeinflussende Effekte zugesprochen. Die Fußballenveränderungen werden von manchen Schlachthöfen nicht oder nur als gewichteter Fußballen-Score zurückgemeldet, daher sollte dieser Indikator vor der Ausstallung im Stall erhoben werden. Die Auswertungen können zum innerbetrieblichen Vergleich über mehrere Durchgänge herangezogen werden. Zusätzlich sollte der Fußballen-Score aus dem QS-Benchmark betrachtet werden, um sich mit anderen Betrieben vergleichen zu können."
+	when-and-how-often = "Nach Ende des Durchgangs die vom Schlachthof erhaltenen Daten auswerten, - gegebenenfalls auf Nachfrage - auch die Prozentwerte je Kategorie. Falls keine Fußballenveränderungen zurückgemeldet werden, sollte eine Bonitur im Stall durchgeführt werden."
+	which-and-how-many = "Gesamtherde"
+	how = "Auswertung der Schlachthofrückmeldungen hinsichtlich des Anteils Tiere mit Fußballenveränderungen insgesamt sowie nur mit schweren Fußballenveränderungen (auch als „Fußballenläsionen“, „foot pad dermatitis (FPD)“ oder „Kontaktdermatitis Fußballen“ aufgeführt)." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Boniturnote 1"
+					short-description = "leichte Fussballenveränderungen"
+					long-description = "leichte Fussballenveränderungen"
+					images = [ ]
+				} 
+				Var "B" {
+					name = "Boniturnote 2"
+					short-description = "schwere Fussballenveränderungen"
+					long-description = "schwere Fussballenveränderungen"
+					images = [ ]
+				} //End-Var labelClass1
+			} // End-Group Bonituren Gruppe 1
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Fussballenveränderungen"
+			description = "Anteil der Tiere mit Fussballenveränderungen"
+			expression = "((A + B) / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 20
+				visual-upperbound = 80
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat Fussballenveränderungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 30 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben Fussballenveränderungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 60
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Schwere Fussballenveränderungen"
+			description = "Anteil der Tiere mit schweren Fussballenveränderungen"
+			expression = "(B / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 10
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat schwere Fussballenveränderungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 2
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben schwere Fussballenveränderungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 6
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+				}
+			} // End-Ranges
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Fussballenveränderungen - Erfassung im Stall"
+	description = "Hauptrisikofaktor für die Entstehung von Fußballenveränderungen ist eine feuchte Einstreu. Ammoniak wird hier vermehrt freigesetzt und führt aufgrund seiner ätzenden Wirkung an der aufgeweichten Sohlenhaut zu mehr oder weniger starken Veränderungen."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Hauptrisikofaktor für die Entstehung von Fußballenveränderungen ist eine feuchte Einstreu. Ammoniak wird hier vermehrt freigesetzt und führt aufgrund seiner ätzenden Wirkung an der aufgeweichten Sohlenhaut zu mehr oder weniger starken Veränderungen. Eine anhaltende Beanspruchung und Reizung der Fußballenhaut kann zunächst zu einer starken Verhornung der Fuß- und Zehenballen führen. Zusätzlich können oberflächliche und schließlich tiefe Schäden bzw. Läsionen auftreten, die durch dunkle Farbveränderungen gekennzeichnet sind. Bakterien können derartige Hautschäden als Eintrittspforte nutzen und Entzündungen bis zu Geschwüren mit deutlichen Schwellungen hervorrufen. Aufgrund der Schmerzhaftigkeit, besonders im fortgeschrittenen Stadium, bewegen sich die betroffenen Tiere weniger; sie sitzen oder liegen vermehrt auf der Brust. Die Einstreufeuchte wird unter anderem durch die Einstreuart, Besatzdichte, Fütterung und Stallklimaführung beeinflusst. Auf Seiten der Tiere werden zudem Genetik, Geschlecht und Alter beeinflussende Effekte zugesprochen. Die Fußballenveränderungen werden von manchen Schlachthöfen nicht oder nur als gewichteter Fußballen-Score zurückgemeldet, daher sollte dieser Indikator vor der Ausstallung im Stall erhoben werden. Die Auswertungen können zum innerbetrieblichen Vergleich über mehrere Durchgänge herangezogen werden. Zusätzlich sollte der Fußballen-Score aus dem QS-Benchmark betrachtet werden, um sich mit anderen Betrieben vergleichen zu können."
+	when-and-how-often = "Zum Einstallen sowie in der 12. und 16. Lebenswoche erheben und auswerten."
+	which-and-how-many = "50 Tiere je Herde möglichst zufällig aus verschiedenen Stallbereichen (vorne, Mitte, hinten usw.) greifen."
+	how = "Beurteilung von beiden Füßen nach Entfernung von anhaftendem Kot sowie Einstreu (z. B. mit Fingernagel oder Bürste) und bei guter Beleuchtung hinsichtlich Veränderung der Sohlen- und Zehenballen. Dokumentiert wird die Boniturnote des am schlechtesten bewerteten Fußes. Bei Grenzfällen zwischen zwei Boniturnoten wird die bessere Note gegeben. Die Boniturnoten (0, 1, 2) entsprechen dabei den Bezeichnungen des Gesundheitskontrollprogramms (A, B, C)." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "50"
+		default_type = "By_Animal"        
+		type_changeable = false 
+		presentation = "classification"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Boniturnote 0"
+					short-description = "Keine Fußballenveränderungen"
+					long-description = "Maximal stecknadelkopfgroße (< 0,3 cm), dunkle Verfärbung oder Zerstörung der oberen Hautschicht (Läsionen) am Sohlen- bzw. Zehenballen."
+					images = [ ]
+					thumbnail = ""
+				} 
+				Var "B" {
+					name = "Boniturnote 1"
+					short-description = "Leichte Fußballenveränderungen"
+					long-description = "Dunkle Areale oder Läsionen, die bis zur Hälfte (50 %) des Sohlenballens betreffen oder bei unverändertem Sohlenballen dunkle Areale oder Läsionen bis zur Hälfte (50 %) der Fläche(n) eines oder mehrerer Zehenballen."
+					images = [ ] 
+					thumbnail = ""
+				} 
+				Var "C" {
+					name = "Boniturnote 2"
+					short-description = "Schwere Fußballenveränderungen"
+					long-description = "Dunkle Areale oder Läsionen, die mindestens die Hälfte (50 %) des Sohlenballens betreffen oder bei unverändertem Sohlenballen dunkle Areale oder Läsionen, die mindestens die Hälfte (50 %) der Fläche(n) eines oder mehrerer Zehenballen betreffen oder Fußballen aufgrund starker, anhaftender Verschmutzung nicht beurteilbar."
+					images = [ ]
+					thumbnail = ""
+				} 
+			} // End-Group Bonituren Gruppe 1
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Fussballenveränderungen"
+			description = "Anteil der Tiere mit Fussballenveränderungen"
+			expression = "((B + C) / (A + B + C)) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 20
+				visual-upperbound = 80
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat Fussballenveränderungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 30 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben Fussballenveränderungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 60
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Schwere Fussballenveränderungen"
+			description = "Anteil der Tiere mit schweren Fussballenveränderungen"
+			expression = "(C / (A + B + C)) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 10
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat schwere Fussballenveränderungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 2 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben schwere Fussballenveränderungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 6
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+				}
+			} // End-Ranges
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Lahmheit - gemerzte uns separierte Tiere"
+	description = "Eine Lahmheit bis hin zur vollständigen Unbeweglichkeit eines Tieres kann unter anderem auf Verletzungen oder verschiedene Erkrankungen des Bewegungsapparates hinweisen."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Eine Lahmheit bis hin zur vollständigen Unbeweglichkeit (Immobilität) eines Tieres kann unter anderem auf Verletzungen oder verschiedene Erkrankungen des Bewegungsapparates (z. B. Entzündungen oder Entwicklungsstörungen im Gelenksbereich) hinweisen. Auch eine sehr breite Brustmuskulatur zieht eine Beeinträchtigung der Gehfähigkeit nach sich. Schäden am Bewegungsapparat können mit Schmerzen verbunden sein und in jedem Fall die Bewegungsaktivität betroffener Tiere stark beeinträchtigen. Dies kann Probleme, wie mangelnde Futter- und Wasseraufnahme, nach sich ziehen. Bedingt durch vermehrtes Liegen können auch weitere Schäden am Tier, z. B. an der Brusthaut oder an den Fersenhöckern, auftreten. Das Risiko für das Auftreten von Lahmheiten kann unter anderem züchterisch beeinflusst werden, aber auch durch Faktoren der Haltungsumwelt, Pflege und Ernährung. Bei Einflüssen durch die Haltungsumwelt stehen die Einstreuqualität und mangelnde Bewegung aufgrund hoher Besatzdichten im Vordergrund. Die Luft- und Futterqualität sowie Futterzusammensetzung sind in diesem Zusammenhang ebenfalls zu berücksichtigen. Es wird dringend empfohlen, sowohl die Anzahl der aufgrund Lahmheit gemerzten und separierten Tiere zu erfassen als auch das Ausmaß von Lahmheiten an einer Stichprobe von Tieren im Stall zu erheben."
+	when-and-how-often = "Wöchentliches Auswerten der täglichen Aufzeichnungen"
+	which-and-how-many = "Gesamtherde"
+	how = "Wöchentliche Summierung der täglichen Anzahl der wegen Lahmheit gemerzten oder separierten Tiere geteilt durch die Zahl eingestallter Tiere." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "lahm"
+					short-description = "täglichen Anzahl der wegen Lahmheit gemerzten oder separierten Tiere "
+					long-description = "täglichen Anzahl der wegen Lahmheit gemerzten oder separierten Tiere "
+					images = [ ]
+				} 
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Lahmheit"
+			description = "Wöchentliche Rate der aufgrund von Lahmheit gemerzten oder separierten Tiere"
+			expression = "(A / herd_size) * 100"	
+				}
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Lahmheit - Erfassung im Stall"
+	description = "Eine Lahmheit bis hin zur vollständigen Unbeweglichkeit eines Tieres kann unter anderem auf Verletzungen oder verschiedene Erkrankungen des Bewegungsapparates hinweisen."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Eine Lahmheit bis hin zur vollständigen Unbeweglichkeit (Immobilität) eines Tieres kann unter anderem auf Verletzungen oder verschiedene Erkrankungen des Bewegungsapparates (z. B. Entzündungen oder Entwicklungsstörungen im Gelenksbereich) hinweisen. Auch eine sehr breite Brustmuskulatur zieht eine Beeinträchtigung der Gehfähigkeit nach sich. Schäden am Bewegungsapparat können mit Schmerzen verbunden sein und in jedem Fall die Bewegungsaktivität betroffener Tiere stark beeinträchtigen. Dies kann Probleme, wie mangelnde Futter- und Wasseraufnahme, nach sich ziehen. Bedingt durch vermehrtes Liegen können auch weitere Schäden am Tier, z. B. an der Brusthaut oder an den Fersenhöckern, auftreten. Das Risiko für das Auftreten von Lahmheiten kann unter anderem züchterisch beeinflusst werden, aber auch durch Faktoren der Haltungsumwelt, Pflege und Ernährung. Bei Einflüssen durch die Haltungsumwelt stehen die Einstreuqualität und mangelnde Bewegung aufgrund hoher Besatzdichten im Vordergrund. Die Luft- und Futterqualität sowie Futterzusammensetzung sind in diesem Zusammenhang ebenfalls zu berücksichtigen. Es wird dringend empfohlen, sowohl die Anzahl der aufgrund Lahmheit gemerzten und separierten Tiere zu erfassen als auch das Ausmaß von Lahmheiten an einer Stichprobe von Tieren im Stall zu erheben."
+	when-and-how-often = "Zum Einstallen sowie in der 12. und 16. Lebenswoche erheben und auswerten."
+	which-and-how-many = "50 Tiere je Herde aus verschiedenen Stallbereichen (vorne, Mitte, hinten usw.) möglichst zufällig greifen."
+	how = "Die Gehfähigkeit kann sowohl in Kombination mit den anderen Stichprobenindikatoren (Gefiederschäden, Hautverletzungen, Fußballenveränderungen) als auch im Rahmen einer gesonderten Lahmheitsbeurteilung nach der Transect-Methode erhoben werden. Bei der kombinierten Erhebung wird die Lahmheit vor dem Fangen der Tiere beurteilt, um eine Beeinflussung durch das Handling der Puten zu verhindern. Bei der Transect-Methode wird der Stall viermal entlang der Futtereinrichtungen durchschritten und die Gehfähigkeit von 50 zufällig ausgewählten Tieren beurteilt. Sitzende Puten werden durch vorsichtiges Auftreiben zum Laufen animiert, wobei die Tiere nicht aufgeschreckt werden sollten. Die Gehfähigkeit jeden Tieres wird einige Sekunden beobachtet. Die Beurteilung muss bei ausreichendem Licht durchgeführt werden. Bei Grenzfällen zwischen den beiden Boniturnoten wird die bessere Note gegeben." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "50"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Boniturnote 0"
+					short-description = "normal"
+					long-description = "Tier läuft normal oder nur geringgradig beeinträchtigt (maximal kleiner Defekt, z. B. übertrieben große Schritte oder unrunder Gang)"
+					images = [ ]
+				} 
+				Var "B" {
+					name = "Boniturnote 1"
+					short-description = "deutlich lahm"
+					long-description = <<EOF Mindestens eines der folgenden Kriterien trifft zu:
+starkes Hinken
+ruckartiges Fallen auf ein Bein
+Bein ist beim Laufen heftig abgespreizt
+mehrmalig setzt sich das Tier nach wenigen Schritten hin
+Manövrierfähigkeit ist stark beeinträchtigt
+Tier ist außerstande zu laufen, es bleibt sitzen (immobil)
+EOF
+					images = [ ]
+				} 
+			} 
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Lahmheit"
+			description = "Anteil der Tiere, die deutlich Lahm sind"
+			expression = "(B / (A + B)) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 8
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kein Tier ist deutlich lahm."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 0 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind deutlich lahm, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 4
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Tierverluste"
+	description = "Tierverluste setzen sich aus im Stall verendeten und gemerzten Tieren zusammen, sind ein wichtiger Tierschutzindikator und ökonomisch von großer Bedeutung."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Tierverluste setzen sich aus im Stall verendeten und gemerzten Tieren zusammen. Sie sollten mit vermuteter Todesursache bzw. Merzungsgrund bei den täglichen Routinekontrollen in den vorhandenen Stallkarten notiert werden. Da den Tierverlusten in der Regel starke Beeinträchtigungen des Wohlergehens vorausgehen, ist die Höhe der Tierverluste ein wichtiger Tierschutzindikator. Neben ihrer Tierschutzrelevanz sind sie auch ökonomisch von großer Bedeutung. Ausgewertet werden sollten nicht nur die Höhe der Verluste, sondern auch deren vermutete Ursachen. So lassen sich gegebenenfalls Problemfelder im Betrieb erkennen und Verbesserungsmaßnahmen einleiten. Zusätzlich sollte die Mortalitätsrate je Durchgang (Aufzucht- bzw. Mastphase) zum innerbetrieblichen Vergleich über mehrere Durchgänge herangezogen werden."
+	when-and-how-often = "Wöchentliches Auswerten der täglichen Aufzeichnungen und am Ende des Durchgangs"
+	which-and-how-many = "Gesamtherde"
+	how = "Berechnung von A) der kumulativen Mortalitätsrate je Lebenswoche, B) nach Ursachen getrennt (z. B. abgemagerte, erkrankte Tiere, Kannibalismus, Unfälle, gegebenenfalls Beutegreiferverluste und Sonstiges (inklusive Ursache nicht erkennbar)) sowie C) der kumulativen Mortalitätsrate" 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "tote Tiere mit Ursache: abgemagert"
+					short-description = "Aufgrund spezifischer Ursache verendete und gemerzte Tiere"
+					long-description = "Spezifische Ursache: abgemagert"
+					images = [ ]
+				}
+				Var "B" {
+					name = "tote Tiere mit Ursache: erkrankt"
+					short-description = "Aufgrund spezifischer Ursache verendete und gemerzte Tiere"
+					long-description = "Spezifische Ursache: erkrankt"
+					images = [ ]
+				}
+				Var "C" {
+					name = "tote Tiere mit Ursache: lahm"
+					short-description = "Aufgrund spezifischer Ursache verendete und gemerzte Tiere"
+					long-description = "Spezifische Ursache: lahme Tiere"
+					images = [ ]
+				}
+				Var "D" {
+					name = "tote Tiere mit Ursache: Kannibalismus"
+					short-description = "Aufgrund spezifischer Ursache verendete und gemerzte Tiere"
+					long-description = "Spezifische Ursache: Kannibalismus bzw. ausgefressene Tiere"
+					images = [ ]
+				}
+				Var "E" {
+					name = "tote Tiere mit Ursache: Unfall"
+					short-description = "Aufgrund spezifischer Ursache verendete und gemerzte Tiere"
+					long-description = "Spezifische Ursache: Unfälle"
+					images = [ ]
+				}
+				Var "F" {
+					name = "tote Tiere mit Ursache: Beutegreiferverluste"
+					short-description = "Aufgrund spezifischer Ursache verendete und gemerzte Tiere"
+					long-description = "Spezifische Ursache: Beutegreiferverluste"
+					images = [ ]
+				}
+				Var "G" {
+					name = "tote Tiere mit Ursache: Hautverletzungen"
+					short-description = "Aufgrund spezifischer Ursache verendete und gemerzte Tiere"
+					long-description = "Spezifische Ursache: Hautverletzungen"
+					images = [ ]	
+				}
+				Var "H" {
+					name = "tote Tiere mit Ursache: sonstiges"
+					short-description = "Aufgrund spezifischer Ursache verendete und gemerzte Tiere"
+					long-description = "Spezifische Ursache: Sonstiges (inklusive Ursache nicht erkennbar) "
+					images = [ ]	
+				}
+			} // End-Group Bonituren Gruppe 1
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "A) Wöchentliche Mortalitätsrate"
+			description = "Anteil der verendeten und gemerzten Tiere"
+			expression = "((A + B + C + D + E + F + G + H) / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Wöchentlich Mortalitätsrate aufgrund von Abmagerung"
+			description = "Anteil der verendeten und gemerzten Tiere aufgrund Abmagerung."
+			expression = "(A / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist aufgrund von Abmagerung verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind aufgrund von Abmagerung verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Wöchentlich Mortalitätsrate aufgrund von Erkrankung"
+			description = "Anteil der verendeten und gemerzten Tiere aufgrund von Erkrankung."
+			expression = "(B / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist aufgrund von Erkrankung verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind aufgrund von Erkrankung verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Wöchentlich Mortalitätsrate aufgrund von Lahmheit"
+			description = "Anteil der verendeten und gemerzten Tiere aufgrund von Lahmheit."
+			expression = "(C / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist aufgrund von Lahmheit verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind aufgrund von Lahmheit verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Wöchentlich Mortalitätsrate aufgrund Kannibalismus"
+			description = "Anteil der verendeten und gemerzten Tiere aufgrund Kannibalismus."
+			expression = "(D / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist aufgrund Kannibalismus verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind aufgrund Kannibalismus verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Wöchentlich Mortalitätsrate aufgrund Unfall"
+			description = "Anteil der verendeten und gemerzten Tiere aufgrund Unfall."
+			expression = "(E / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist aufgrund Unfall verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind aufgrund Unfall verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Wöchentlich Mortalitätsrate aufgrund Beutegreiferverluste"
+			description = "Anteil der verendeten und gemerzten Tiere aufgrund Beutegreiferverluste."
+			expression = "(F / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist aufgrund Beutegreiferverluste verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind aufgrund Beutegreiferverluste verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Wöchentlich Mortalitätsrate aufgrund Hautverletzungen"
+			description = "Anteil der verendeten und gemerzten Tiere aufgrund Hautverletzungen."
+			expression = "(G / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist aufgrund Hautverletzungen verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind aufgrund Hautverletzungen verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Wöchentlich Mortalitätsrate aufgrund Sonstiges"
+			description = "Anteil der verendeten und gemerzten Tiere aufgrund Sonstiges."
+			expression = "(H / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier ist aufgrund Sonstiges verendet oder gemerzt worden."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere sind aufgrund Sonstiges verendet oder gemerzt worden, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "C) Gesamtmortalitätsrate je Durchgang"
+			description = "Beschreibung der Formel"
+			expression = ""
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat xy."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Futter- und Wasserverbrauch"
+	description = "Eine unzureichende Futter- und Wasserversorgung und oder mangelhafte Qualität beeinflussen die Immunabwehr und das Wohlbefinden. Dies kann unter anderem Leistungseinbußen zur Folge haben und fördert Erkrankungen."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Bei den täglichen Routinekontrollen wird die Futter- und Wasserversorgung überprüft und dokumentiert. Eine unzureichende Futter- und Wasserversorgung und oder mangelhafte Qualität beeinflussen die Immunabwehr und das Wohlbefinden. Dies kann unter anderem Leistungseinbußen zur Folge haben und fördert Erkrankungen. Darüber hinaus führen tropfende Tränken und feuchter Kot zu schlechter Einstreuqualität mit entsprechend negativen Auswirkungen auf die Gesundheit und die Nutzbarkeit der Einstreu für verschiedene Verhaltensweisen. Die täglich verbrauchte Futter- und Wassermenge über die Versorgungslinien gibt näherungsweise die aufgenommene Futter- und Wassermenge durch die Tiere wieder. Das Futter-Wasser-Verhältnis stellt unter anderem in Abhängigkeit von der Stalltemperatur einen wichtigen Anhaltspunkt zur Beurteilung der ausreichenden Wasseraufnahme durch die Tiere dar. Bei in der täglichen Routinekontrolle festgestellten deutlichen Veränderungen des Futter- oder Wasserverbrauchs oder des Futter-Wasser-Verhältnisses von Tag zu Tag muss sofort die Ursache gesucht und behoben werden (z. B. hohe/niedrige Stalltemperatur, Futtermischfehler, Wasserqualität, tropfende Tränken, Futterkette defekt). Beide Werte sollten nach Möglichkeit über ein im Stallcomputer integriertes Alarmsystem überwacht werden. Im Rahmen der Eigenkontrolle werden die Futter- und Wassermengen pro Lebenswoche gezielt ausgewertet, um die Entwicklung des jeweiligen Verbrauchs über die Zeit beurteilen zu können. Dies erlaubt einen innerbetrieblichen Ver-gleich zwischen verschiedenen Durchgängen. Hierbei muss jedoch berücksichtigt werden, dass äußere Faktoren den Verbrauch beeinflussen können (z. B. Temperatur und Luftfeuchte, Spülen der Tränkelinien)."
+	when-and-how-often = "Wöchentliches Auswerten der täglichen Aufzeichnungen."
+	which-and-how-many = "Gesamtherde."
+	how = "Für die betriebliche Eigenkontrolle wird der Durchschnitt A) des Futterverbrauchs, B) des Wasserverbrauchs und C) des Futter-Wasser-Verhältnisses pro Woche berechnet und ausgewertet. Der Futter- und Wasserverbrauch wird bei vielen Betrieben im Stallcomputer täglich erfasst und dokumentiert. Alternativ kann der Verbrauch über Wasseruhren bzw. die Silofüllung abgelesen werden. " 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Futter"
+					short-description = "Futterverbrauch"
+					long-description = "Futterverbrauch in einer Woche in kg/ Tier"
+					images = [ ]
+				} 
+			} // End-Group Bonituren Gruppe 1
+			Group {
+				name = "Bonituren Gruppe 2"
+				Var "B" {
+					name = "Wasser"
+					short-description = "Wasserverbauch"
+					long-description = "Wasserverbauch in einer Woche in l/Tier"
+					images = [ ]
+				}	
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Futterverbrauch"
+			description = "Wochendurchschnitt des täglichen Futterverbrauchs"
+			expression = "A / 7"	
+				}
+		} // End-Formula
+		Formula {
+			name = "Wasserverbrauch"
+			description = "Wochendurchschnitt des täglichen Wasserverbrauchs"
+			expression = "B / 7"
+				}
+		} // End-Formula
+		Formula {
+			name = "Futter-Wasser-Verhältnis"
+			description = "Wöchentliches Futter-Wasserverhältnis"
+			expression = "((A / 7) / (B / 7))"
+			    } 
+		} // End-Formula
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Uniformität - Automatische Wiegung"
+	description = "Die Gewichtsentwicklung sowie die Uniformität stehen in engem Zusammenhang mit der Tiergesundheit und Ernährung der Mastputen."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Die Gewichtsentwicklung sowie die Uniformität stehen in engem Zusammenhang mit der Tiergesundheit und Ernährung der Mastputen. Eine unzureichende Gewichtsentwicklung der Herde, aber auch untergewichtige Einzeltiere, können Hinweise auf verschiedene Probleme in Haltung, Versorgung und im Management liefern. Zu niedrige Körpergewichte oder auch eine unzureichende Uniformität können auf eine eingeschränkte Bewegungsfähigkeit, Fehler in der Fütterung oder ein (unterschwelliges) Krankheitsgeschehen hindeuten. Eine sehr schnelle Gewichtszunahme kann andererseits gesundheitliche Störungen im Bereich des Skelettsystems und des Herz-Kreislauf-Systems mit sich bringen. Es empfiehlt sich daher, die Gewichtsentwicklung der Herde regelmäßig zu kontrollieren und zu dokumentieren. So lassen sich verschiedene Durchgänge über die Zeit vergleichen. Bei der Beurteilung dieser Werte sind auch Einflussfaktoren wie z. B. hohe Umgebungstemperaturen oder Futterumstellungen zu berücksichtigen. Die „Uniformität“ wird berechnet, um ein potenzielles Auseinanderwachsen der Herde zu erfassen. Aus Tierschutzsicht ist dies hinsichtlich der Höheneinstellung der Fütterungs- und Tränkeeinrichtungen besonders wichtig, da die Einrichtungen auch für kleine Tiere leicht erreichbar sein müssen. Die zu spezifischen Zeitpunkten (Bonitierungen, Futterwechsel usw.) berechnete Uniformität kann au-ßerdem zum innerbetrieblichen Vergleich über mehrere Durchgänge herangezogen werden."
+	when-and-how-often = "Wöchentliches Auswerten der fortlaufend erhobenen Daten."
+	which-and-how-many = "Gesamtherde"
+	how = "Ermittlung der Gewichtsentwicklung und Uniformität durch automatisches Wiegen mit im Stall installierten Wiegeeinheiten oder manuelles Wiegen. Soweit gemischtgeschlechtliche Herden gehalten werden, sollten Einzeltiergewichte von männlichen und weiblichen Tieren zu etwa gleichen Anteilen erfasst werden. Zusätzlich zur automatischen Wiegung ist es empfehlenswert, manuelle Wiegungen im Rahmen der Tierbonitierung durchzuführen, bei denen mindestens 50 Tiere je Herde (bei gemischtgeschlechtlichen Herden 25 Tiere je Geschlecht) möglichst zufällig aus verschiedenen Stallbereichen gegriffen werden. Bei automatischer und manueller Gewichtserfassung sollte in regelmäßigen Abständen eine Kontrollwiegung durchgeführt werden, z. B. durch das Wiegen eines bekannten Gewichts." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = ""
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "labelClass0" {
+					name = "Name der ersten Option"
+					short-description = "..."
+					long-description = "Beschreibung der ersten Option"
+					images = [ ]
+				} 
+				Var "labelClass1" {
+					name = "Name der zweiten Option"
+					short-description = "Beschreibung der zweiten Option"
+					long-description = <<EOF
+	Ziemlich lange Beschreibung
+	Auch über mehrere Zeilen Hinweg
+	EOF
+					images = [ ]
+				} //End-Var labelClass1
+			} // End-Group Bonituren Gruppe 1
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Name der Formel"
+			description = "Beschreibung der Formel"
+			expression = ""
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat xy."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Uniformität - Manuelle Wiegung"
+	description = "Die Gewichtsentwicklung sowie die Uniformität stehen in engem Zusammenhang mit der Tiergesundheit und Ernährung der Mastputen."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Die Gewichtsentwicklung sowie die Uniformität stehen in engem Zusammenhang mit der Tiergesundheit und Ernährung der Mastputen. Eine unzureichende Gewichtsentwicklung der Herde, aber auch untergewichtige Einzeltiere, können Hinweise auf verschiedene Probleme in Haltung, Versorgung und im Management liefern. Zu niedrige Körpergewichte oder auch eine unzureichende Uniformität können auf eine eingeschränkte Bewegungsfähigkeit, Fehler in der Fütterung oder ein (unterschwelliges) Krankheitsgeschehen hindeuten. Eine sehr schnelle Gewichtszunahme kann andererseits gesundheitliche Störungen im Bereich des Skelettsystems und des Herz-Kreislauf-Systems mit sich bringen. Es empfiehlt sich daher, die Gewichtsentwicklung der Herde regelmäßig zu kontrollieren und zu dokumentieren. So lassen sich verschiedene Durchgänge über die Zeit vergleichen. Bei der Beurteilung dieser Werte sind auch Einflussfaktoren wie z. B. hohe Umgebungstemperaturen oder Futterumstellungen zu berücksichtigen. Die „Uniformität“ wird berechnet, um ein potenzielles Auseinanderwachsen der Herde zu erfassen. Aus Tierschutzsicht ist dies hinsichtlich der Höheneinstellung der Fütterungs- und Tränkeeinrichtungen besonders wichtig, da die Einrichtungen auch für kleine Tiere leicht erreichbar sein müssen. Die zu spezifischen Zeitpunkten (Bonitierungen, Futterwechsel usw.) berechnete Uniformität kann au-ßerdem zum innerbetrieblichen Vergleich über mehrere Durchgänge herangezogen werden."
+	when-and-how-often = "Bei jeder Tierbonitierung händisch wiegen und auswerten."
+	which-and-how-many = "50 Tiere je Herde zufällig aus verschiedenen Stallbereichen (vorne, Mitte, hinten usw.) greifen."
+	how = "Ermittlung der Gewichtsentwicklung und Uniformität durch automatisches Wiegen mit im Stall installierten Wiege-einheiten oder manuelles Wiegen. Soweit gemischtgeschlechtliche Herden gehalten werden, sollten Einzeltiergewichte von männlichen und weiblichen Tieren zu etwa gleichen Anteilen erfasst werden. Zusätzlich zur automatischen Wiegung ist es empfehlenswert, manuelle Wiegungen im Rahmen der Tierbonitierung durchzuführen, bei denen mindestens 50 Tiere je Herde (bei gemischtgeschlechtlichen Herden 25 Tiere je Geschlecht) möglichst zufällig aus verschiedenen Stallbereichen gegriffen werden. Bei automatischer und manueller Gewichtserfassung sollte in regelmäßigen Abständen eine Kontrollwiegung durchgeführt werden, z. B. durch das Wiegen eines bekannten Gewichts." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Animal"        
+		type_changeable = false 
+		presentation = "classification"        
+		presentation_changeable = true | false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "labelClass0" {
+					name = "Name der ersten Option"
+					short-description = "..."
+					long-description = "Beschreibung der ersten Option"
+					images = [ ]
+				} 
+				Var "labelClass1" {
+					name = "Name der zweiten Option"
+					short-description = "Beschreibung der zweiten Option"
+					// A multiline string always starts with <<EOF but, and that's important, directly after "F" a new line has to come.
+					// No space is allowed! The multiline string ends with EOF (without the "<<").
+					long-description = <<EOF
+	Ziemlich lange Beschreibung
+	Auch über mehrere Zeilen Hinweg
+	EOF
+					images = [ ]
+				} //End-Var labelClass1
+			} // End-Group Bonituren Gruppe 1
+			Group {
+				name = "Bonituren Gruppe 2"
+				Var "labelclass2" {
+					name = "Name der dritten Option"
+					short-description = "..."
+					long-description = "..."
+					images = [ ]
+				}
+				Var "labelclass3" {
+					name = "Name der vierten Option"
+					short-description = "..."
+					long-description = "..."
+					images = [ ]
+				}
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Name der Formel"
+			description = "Beschreibung der Formel"
+			expression = ""
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat xy."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Antibiotikaeinsatz"
+	description = "Zur Behandlung von Infektionskrankheiten ist die Verabreichung von Antibiotika im Bedarfsfall aus Tierschutzsicht geboten. Ein hoher Antibiotikaeinsatz weist auf eine hohe Erkrankungsrate und damit möglicherweise auf Probleme in Haltung oder Management hin."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Zur Behandlung von Infektionskrankheiten ist die Verabreichung von Antibiotika im Bedarfsfall aus Tierschutzsicht geboten. Ein hoher Antibiotikaeinsatz weist auf eine hohe Erkrankungsrate und damit möglicherweise auf Probleme in Haltung oder Management hin. Relevant sind die Behandlungsdauer, die Anzahl der eingesetzten Wirkstoffe und die Anzahl der behandelten Tiere. Der betriebseigene Antibiotikaverbrauch kann z. B. mithilfe des Antibiotikamonitorings der Qualität und Sicherheit GmbH (QS) bewertet und eingeordnet werden. Die halbjährliche Auswertung der be-triebsbezogenen Daten bietet hier Tierhaltern die Möglichkeit, den betriebseigenen Antibiotikaeinsatz mit dem anderer Betriebe zu vergleichen (Benchmarking). Zusätzlich empfiehlt es sich den Antibiotikaverbrauch pro Durchgang (Therapieindex je Herde) auszuwerten, da der Bezug auf die Herde eine zielgenauere Information für die betriebliche Eigenkontrolle liefert. Der Antibiotikaeinsatz muss stets im Zusammenhang mit anderen Indikatoren, wie z. B. den Tierverlusten, bewertet werden. Die berechneten Therapieindizes können zum innerbetrieblichen Vergleich über mehrere Durchgänge herangezogen werden."
+	when-and-how-often = "Auswerten des Antibiotikaeinsatzes nach Ende jedes Durchgangs sowie z. B. anhand des halbjährlichen QS-Antibiotikamonitorings."
+	which-and-how-many = "Gesamtherde."
+	how = "Zur Vereinfachung der verschiedenen Dokumentationsaufgaben wird hier die gleiche Vorgehensweise wie im Rahmen des QS-Antibiotikamonitorings vorgeschlagen. Sie unterscheidet sich von der Formel nach § 58c Arzneimittelgesetz (AMG 2005) dadurch, dass der Arzneimitteleinsatz pro Herde berechnet wird und nicht für den durchschnittlichen Tierbestand im Kalenderhalbjahr. Der Therapieindex je Herde drückt aus, wie viele Behandlungseinheiten pro eingestalltem Tier in der jeweiligen Herde verabreicht wurden (siehe Formel A). Für das QS-Antibiotikamonitoring wird die Summe aller Therapieindizes je Herde für das letzte Halbjahr berechnet und durch die jeweilige Herdenanzahl in diesem Zeitraum geteilt (siehe Formel B). Auswertung der Dokumentation des Antibiotikaeinsatzes je Herde A) bzw. je Halbjahr B)." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "Antibiotika"
+					short-description = "Behandlungseinheiten mit Antibiotika"
+					long-description = "Anwendungsdauer inklusive Wirktage ∙ Anzahl Wirkstoffe ∙ Anzahl behandelter Tiere = Behandlungseinheit"
+					images = [ ]
+				} 
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Therapieindex je Herde"
+			description = "Anteil der Tiere mit Behandlungseinheiten von Antibiotika"
+			expression = "A / herd_size"
+			Ranges {
+				unit = ""
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat xy."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Therapieindex je Halbjahr"
+			description = "Summe der Therapieindizes je Halbjahr durch die Herdenanzahl je Halbjahr"
+			expression = ""
+			Ranges {
+				unit = "%|m²|kg|..."
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat xy."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Verletzt oder tot angelieferte Tiere"
+	description = "Die Zahl der verletzt oder tot angelieferten Tiere wird beeinflusst durch Erkrankungen und Vorschädigungen im Bestand, unsachgemäße Behandlung der Tiere beim Fangen und Verbringen in die Transportbehältnisse sowie beim Entladen, zu hohe oder zu niedrige Besatzdichten in den Behältnissen, Stress durch hohe Temperaturen und Luftfeuchte während des Verladens und Transports, die Fahrweise beim Transport und zu lange Wartezeiten am Schlachthof."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Verletzt oder tot am Schlachthof angelieferte Tiere haben in der Regel starke Beeinträchtigungen des Wohlergehens durch die Verletzungen oder bis zum Eintritt des Todes erfahren. Die Zahl der verletzt oder tot angelieferten Tiere wird beeinflusst durch Erkrankungen und Vorschädigungen im Bestand, unsachgemäße Behandlung der Tiere beim Fangen und Verbringen in die Transportbehältnisse sowie beim Entladen, zu hohe oder zu niedrige Besatzdichten in den Behältnissen, Stress durch hohe Temperaturen und Luftfeuchte während des Verladens und Transports (hier auch zu niedrige Temperaturen), die Fahrweise beim Transport und zu lange Wartezeiten am Schlachthof. Bei auffällig vielen tot angelieferten Tieren sollte die Höhe der Mortalität in der Mast mit betrachtet werden. Ein mögliches Krankheits-/Seuchengeschehen muss als potenzielle Ursache berücksichtigt werden. Frische Brüche von Schenkeln oder Flügeln sowie Hämatome, frische Verletzungen und Kratzer sind in der Regel durch Fangen, Verladen und/oder Transport verursacht, während ältere Verletzungen schon während der Haltungsperiode entstanden sind. Viele Schlachthöfe melden die durch Fangen, Verladen und Transport verletzten Tiere nicht separat zurück, daher kann dieser Teilindikator unter Umständen nicht ausgewertet werden."
+	when-and-how-often = "Nach Ende des Durchgangs Schlachthofrückmeldungen auswerten."
+	which-and-how-many = "Gesamtherde."
+	how = "Auswertung der Schlachthofrückmeldung bezüglich A) Anteil durch Fangen, Verladen und Transport verletzt angelieferter Tiere (z. B. Brüche von Schenkel und Flügel, Hämatome, teils auch unter Bezeichnung „Fangfehler“ oder „Fangschäden“ aufgelistet) und B) Anteil tot angelieferter Tiere („Transporttote“, „tot angeliefert“, „dead on arrival (DOA)“, „Federtote“)." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "verletzt"
+					short-description = "Durch Fangen, Verladen und Transport verletzte am Schlachthof angelieferte Tiere"
+					long-description = "Durch Fangen, Verladen und Transport verletzte am Schlachthof angelieferte Tiere: z.B. Brüche von Schenkel und Flügel, Hämatome, teils auch unter Bezeichnung „Fangfehler“ oder „Fangschäden“ "
+					images = [ ]
+				} 
+				Var "B" {
+					name = "tot"
+					short-description = "Tot am Schlachthof angelieferte Tiere"
+					long-description = "Tot am Schlachthof angelieferte Tiere"
+					images = [ ]
+				} //End-Var labelClass1
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "A) Verletzte Tiere"
+			description = "Anteil der durch Fangen, Verladen und Transport verletzte am Schlachthof angelieferte Tiere"
+			expression = "(A / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 2
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier kam verletzt am Schlachhof an."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 0,1
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere kamen verletzt am Schlachthof an, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0,5
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "B) Tote Tiere"
+			description = "Anteil der tot am Schlachthof angelieferte Tiere"
+			expression = "(B / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 2
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier kam tot am Schlachthof an."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 0,05
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere kamen tot am Schlachthof an, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0,3
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Verwürfe und Ursachen"
+	description = "„Verworfene ganze Tierkörper“ sowie gegebenenfalls „verworfene Teilstücke“ geben Hinweise auf Schäden am Tier und seinen Gesundheitszustand."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "„Verworfene ganze Tierkörper“ sowie „verworfene Teilstücke“ geben Hinweise auf Schäden am Tier und seinen Gesundheitszustand. Mögliche Ursachen für den Verwurf sind unter anderem unzureichende Ausblutung, Hämatome, Verletzungen (z. B. tiefe Dermatitis), Bauchwassersucht, Abmagerung und Allgemeinerkrankungen. Es ist sinnvoll, die Verwurfsursachen differenziert auszuwerten, um mögliche Problemfelder zu erkennen und im nächsten Durchgang Gegenmaßnahmen ergreifen zu können. Zum Beispiel können vermehrt abgemagerte Tiere auf Probleme mit der Futterversorgung hinweisen. Die Jahreszeit, das Mastendgewicht und die damit verbundene Mastdauer sowie die Besatzdichte können unter anderem einen Einfluss auf die Höhe der Verwürfe am Schlachthof haben. Die Daten werden vom Schlachthof entsprechend der behördlichen Vorgaben erhoben und dem Tierhalter (gegebenenfalls auf Anfrage) zur Verfügung gestellt. Die Schlachthöfe melden die Verwurfsursachen unterschiedlich differenziert oder teilweise gar nicht zurück."
+	when-and-how-often = "Nach Ende des Durchgangs die vom Schlachthof - gegebenenfalls auf Nachfrage - erhaltenen Daten auswerten."
+	which-and-how-many = "Gesamtherde."
+	how = "Auswertung der Schlachthofrückmeldung hinsichtlich A) des Anteils verworfener Tiere insgesamt und B) Menge verworfener Teilstücke. Falls Verwurfsursachen angegebenen sind, entsprechend differenziert auswerten C) und D)." 
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "verworfene Tiere"
+					short-description = "verworfene Tiere"
+					long-description = "verworfene Tiere"
+					images = [ ]
+				} 
+				Var "B" {
+					name = "verworfene Tiere mit spezifische Verwurfsursache"
+					short-description = "Tiere mit spezifischer Verwurfsursache"
+					long-description = "Tiere mit spezifischer Verwurfsursache"
+					images = [ ]
+				} //End-Var labelClass1
+			Group {
+				name = "Bonituren Gruppe 2"
+				Var "C" {
+					name = "verworfen Teilstücke"
+					short-description = "verworfene Tiere"
+					long-description = "verworfene Tiere"
+					images = [ ]
+				} 
+				Var "D" {
+					name = "verworfene Teilstücke mit spezifische Verwurfsursache"
+					short-description = "Teilstücke mit spezifischer Verwurfsursache"
+					long-description = "Teilstücke mit spezifischer Verwurfsursache"
+					images = [ ]	
+				} 
+				Var "E" {
+					name = "Schalchtgewicht"
+					short-description = "Schlachtgewicht je Tier"
+					long-description = "Schlachtgewicht je Tier"
+					images = [ ]
+				} //End-Var labelClass1	
+			}
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Verworfene Tiere"
+			description = "Anteil der verworfenen Tiere"
+			expression = "(A / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 4
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier wurde verworfen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 0,5 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere wurden verworfen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 2
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Verworfene Tiere mit spezifischer Verwurfsursache"
+			description = "Anteil der verworfenen Tiere mit spezifischer Verwurfsursache"
+			expression = "(B / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier mit spezifischer Verwurfsursache wurde verworfen."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere mit spezifischer Verwurfsursachen wurden verworfen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Verworfene Teilstücke"
+			description = "Anteil verworfener Teilstücke am Gesamtschlachtgewicht"
+			expression = "(C / Summe E) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 5
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Teilstück wurde verworfen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 0,5 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Teilstücke wurden verworfen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 3
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Verworfene Teilstücke mit spezifischer Verwurfsursache"
+			description = "Anteil der verworfenen Teilstücke mit spezifischer Verwurfsursache am Gesamtschlachtgewicht."
+			expression = "(D / Summe E) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 15.5
+				visual-upperbound = 75.0
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Teilstück mit spezifischer Verwurfsursache wurde verworfen."
+					lowerbound = 60 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 100 
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Teilstücke mit spezifischer Verwurfsursachen wurden verworfen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0
+					upperbound = 30
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Brusthautveränderungen - Hähne"
+	description = "Brusthautveränderungen inklusive Brustblasen stellen einen Schaden am Tier dar und sind tierschutzrechtlich und wirtschaftlich relevant."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Brusthautveränderungen inklusive Brustblasen stellen einen Schaden am Tier dar. Bei der Entstehung der Brusthautveränderung können sich anfänglich erste Druckstellen ausbilden, die sich verfestigen und entzünden. Eine Ursache ist das Ruhen der Tiere über einen längeren Zeitraum in Brustlage. Hierbei wirken sich eine harte und verschmutzte sowie nasse Einstreu und der dort entstehende Ammoniak negativ aus. Zudem können Erkrankungen des Bewegungsapparates die Liegezeiten erhöhen. Zu verminderter Bewegung kann aber auch eine höhere Umgebungstemperatur, wie sie insbesondere in den Sommermonaten auftritt, führen. Bei Hähnen kann die mögliche langsamere Befiederung Veränderungen im Brustbereich befördern. Auch wird eine erhöhte Gefährdung bei schnellwüchsigen Tieren und schweren Genetiken bzw. hohen Körpergewichten angenommen. Die Veränderungen an der Brusthaut umfassen Brustblasen, Brustknöpfe und Druckstellen. Hähne sind in der Regel häufiger und schwerer betroffen als Hennen. Neben der Tierschutzrelevanz ergibt sich auch ein wirtschaftlicher Schaden durch die Minderbewertung des Schlachttierkörpers. Einige Schlachthöfe melden die Brusthautveränderungen nicht separat zurück, daher kann dieser Indikator unter Umständen nicht ausgewertet werden."
+	when-and-how-often = "Nach Ende des Durchgangs die vom Schlachthof – gegebenenfalls auf Nachfrage – erhaltenen Daten auswerten."
+	which-and-how-many = "Gesamtherde"
+	how = <<EOF Auswertung der Schlachthofrückmeldungen hinsichtlich des Anteils Tiere mit
+1) Brusthautveränderungen insgesamt (Kategorie „B“, Umfangsvermehrungen bis einschließlich 5 cm im Durchmesser, teils auch als „Knöpfe“ bezeichnet und Kategorie „C“, Umfangsvermehrungen über 5 cm im Durchmesser) sowie
+2) des Anteils Tiere nur mit hochgradigen Brusthautveränderungen (Kategorie „C“, Umfangsvermehrungen über 5 cm im Durchmesser).
+EOF
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "B"
+					short-description = "Brusthautveränderung Kategorie B"
+					long-description = "Umfangsvermehrungen bis einschließlich 5 cm im Durchmesser, teils auch als „Knöpfe“ bezeichnet"
+					images = [ ]
+				} 
+				Var "B" {
+					name = "C"
+					short-description = "Brusthautveränderung Kategorie C"
+					long-description = "Umfangsvermehrungen über 5 cm im Durchmesser"
+					images = [ ]
+				} //End-Var labelClass1
+			} // End-Group Bonituren Gruppe 1
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Brusthautveränderungen insgesamt"
+			description = "Anteil der Tiere mit Brusthautveränderungen der Kategorie B und C"
+			expression = "((A + B) / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 40
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat Brusthautveränderungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 2,5
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben Brusthautveränderungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 30
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Hochgradige Brusthautveränderungen"
+			description = "Anteil der Tiere mit Brusthautveränderungen der C"
+			expression = "(B / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 2
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat hochgradige Brusthautveränderungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 0,6
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben hochgradige Brusthautveränderungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 1
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+	last-modified = "timestamp der letzten Änderung"
+	name = "Brusthautveränderungen - Hennen"
+	description = "Brusthautveränderungen inklusive Brustblasen stellen einen Schaden am Tier dar und sind tierschutzrechtlich und wirtschaftlich relevant."
+	animal-category = "Mastpute"
+	video-ref = {"title1" = "link to video"}
+	what-and-why = "Brusthautveränderungen inklusive Brustblasen stellen einen Schaden am Tier dar. Bei der Entstehung der Brusthautveränderung können sich anfänglich erste Druckstellen ausbilden, die sich verfestigen und entzünden. Eine Ursache ist das Ruhen der Tiere über einen längeren Zeitraum in Brustlage. Hierbei wirken sich eine harte und verschmutzte sowie nasse Einstreu und der dort entstehende Ammoniak negativ aus. Zudem können Erkrankungen des Bewegungsapparates die Liegezeiten erhöhen. Zu verminderter Bewegung kann aber auch eine höhere Umgebungstemperatur, wie sie insbesondere in den Sommermonaten auftritt, führen. Bei Hähnen kann die mögliche langsamere Befiederung Veränderungen im Brustbereich befördern. Auch wird eine erhöhte Gefährdung bei schnellwüchsigen Tieren und schweren Genetiken bzw. hohen Körpergewichten angenommen. Die Veränderungen an der Brusthaut umfassen Brustblasen, Brustknöpfe und Druckstellen. Hähne sind in der Regel häufiger und schwerer betroffen als Hennen. Neben der Tierschutzrelevanz ergibt sich auch ein wirtschaftlicher Schaden durch die Minderbewertung des Schlachttierkörpers. Einige Schlachthöfe melden die Brusthautveränderungen nicht separat zurück, daher kann dieser Indikator unter Umständen nicht ausgewertet werden."
+	when-and-how-often = "Nach Ende des Durchgangs die vom Schlachthof – gegebenenfalls auf Nachfrage – erhaltenen Daten auswerten."
+	which-and-how-many = "Gesamtherde"
+	how = <<EOF Auswertung der Schlachthofrückmeldungen hinsichtlich des Anteils Tiere mit
+1) Brusthautveränderungen insgesamt (Kategorie „B“, Umfangsvermehrungen bis einschließlich 5 cm im Durchmesser, teils auch als „Knöpfe“ bezeichnet und Kategorie „C“, Umfangsvermehrungen über 5 cm im Durchmesser) sowie
+2) des Anteils Tiere nur mit hochgradigen Brusthautveränderungen (Kategorie „C“, Umfangsvermehrungen über 5 cm im Durchmesser).
+EOF
+	branches = ["Mastpute"]
+	sorting = 10
+	Assessment {
+		sample = "herd_size"
+		default_type = "By_Indicator"        
+		type_changeable = false 
+		presentation = "counter"        
+		presentation_changeable = false 
+		Options { // Options is only used if the type is "classification"
+			Group {
+				name = "Bonituren Gruppe 1"
+				Var "A" {
+					name = "B"
+					short-description = "Brusthautveränderung Kategorie B"
+					long-description = "Umfangsvermehrungen bis einschließlich 5 cm im Durchmesser, teils auch als „Knöpfe“ bezeichnet"
+					images = [ ]
+				} 
+				Var "B" {
+					name = "C"
+					short-description = "Brusthautveränderung Kategorie C"
+					long-description = "Umfangsvermehrungen über 5 cm im Durchmesser"
+					images = [ ]
+				} //End-Var labelClass1
+			} // End-Group Bonituren Gruppe 1
+		} //End-Options
+	} //End-Assessment
+	Evaluation {
+		Formula {
+			name = "Brusthautveränderungen insgesamt"
+			description = "Anteil der Tiere mit Brusthautveränderungen der Kategorie B und C"
+			expression = "((A + B) / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 6
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kaum ein Tier hat Brusthautveränderungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 1
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben Brusthautveränderungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 3
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+		Formula {
+			name = "Hochgradige Brusthautveränderungen"
+			description = "Anteil der Tiere mit Brusthautveränderungen der C"
+			expression = "(B / herd_size) * 100"
+			Ranges {
+				unit = "%"
+				visual-lowerbound = 0
+				visual-upperbound = 2
+				Targetrange {
+					tag = "Zielbereich" 
+					description = "Kein Tier hat hochgradige Brusthautveränderungen."
+					lowerbound = 0 //Dezimalzahlen wären hier genauso möglich
+					upperbound = 0
+				}
+				Alertrange {
+					tag = "Alarmbereich"
+					description = "Zu viele Tiere haben hochgradige Brusthautveränderungen, sofortiger Handlungsbedarf ist nötig!"
+					lowerbound = 0,5
+					upperbound = 100
+				}
+				Warningrange {
+					tag = "Frühwarnbereich"
+					description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"	
+				}
+			} // End-Ranges
+		} // End-Formula
+	} // End-Evaluation	
+} // End-Indicator indicatorLabel
+

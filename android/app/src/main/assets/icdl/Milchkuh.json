@@ -1,0 +1,2846 @@
+{
+  "AnimalCategory": [
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "species": "Rinder",
+      "name": "Milchproduktion",
+      "description": "Produktion von Milch",
+      "thumbnail": "",
+      "Branch": [
+        {
+          "name": "Kühe zur Milchprduktion",
+          "description": "Kühe zur Milchprduktion",
+          "__key": "Milchviehhaltung"
+        }
+      ],
+      "__key": "Milchkuh"
+    }
+  ],
+  "Indicator": [
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Gehalt somatischer Zellen in der Milch",
+      "description": "Informationen über Anteil von euterkranker und eutergesunder Milchkühe im Bestand.",
+      "animal-category": "Milchkuh",
+      "what-and-why": "Dieser Indikator informiert über den Anteil euterkranker und eutergesunder Milchkühe im Bestand. Der Gehalt an somatischen Zellen in der Milch ist ein bewährter Indikator für den Eutergesundheitsstatus einer Kuh. Erhöhte Zellzahlen geben Aufschluss über Entzündungsprozesse in der Milchdrüse. Klinische Mastitiden können zu Schmerzen beim Tier führen, chronisch-subklinische Mastitiden zu einer Daueraktivität des Immunsystems sowie zu Schädigungen des milchgebenden Gewebes und infolgedessen zu Milchleistungseinbußen. Die Betrachtung der Zellzahlklassen ist Voraussetzung für ein erfolgreiches Eutergesundheitsmanagement. Neben klinischen Mastitiden können damit auch subklinische Mastitiden erkannt werden, die in vielen Herden häufiger auftreten als klinische. Bekannte Risikofaktoren sind einerseits Neuinfektionen, z. B. durch Mängel in der Melk- oder Stallhygiene sowie in der Melktechnik, und andererseits die Schwächung der körpereigenen Abwehrlage der Kühe durch Stoffwechselstörungen, chronischen Stress, z. B. durch begrenzt verfügbare Ressourcen (unter anderem Futter- oder Liegeplätze), oder groben Umgang mit den Tieren.",
+      "when-and-how-often": "Den jeweils aktuellen Bericht der Milchleistungsprüfung (MLP) monatlich auswerten, mindestens aber einmal jährlich die Ergebnisse der 11 MLP-Berichte eines Jahres auswerten. Betriebe, die keine einzeltierbezogenen Zellzahlendaten zur Verfügung haben, sollten zur Beurteilung der Eutergesundheit auf den Indikator „Mastitisbehandlungsinzidenz“ zurückgreifen.",
+      "which-and-how-many": "Alle laktierenden, milchleistungsgeprüften Kühe",
+      "how": "Die Errechnung erfolgt auf Basis der Ergebnisse der 11 monatlichen MLP-Berichte eines Jahres. Betrachtet werden die einzeltierbezogenen Zellzahlen. Erfasst werden alle laktierenden Kühe mit einem\nA)Zellgehalt ≤100.000/ml Milch (= eutergesunde Kühe),\nB)Zellgehalt > 400.000/ml Milch (= euterkranke Kühe, die die Lieferfähigkeit der Milch gefährden)\nC)Erstlaktierende mit Zellgehalt > 100.000/ml Milch in der ersten Milchkontrolle nach der Kalbung (= euterkranke Erstlaktierende).\nDiese Kennzahlen zur Beurteilung der Eutergesundheit werden automatisch im Rahmen der monatlichen MLP von den Landeskontrollverbänden ohne Mehraufwand für die Betriebe \nberechnet und sind im Eutergesundheitsbericht der MLP als errechnete Zahl zu finden. ",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "Report",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Zellgehalt",
+              "Var": [
+                {
+                  "name": "Eutergesunde Kühe",
+                  "short-description": "Zellgehalt ≤ 100.000/ml Milch ",
+                  "long-description": "Zellgehalt ≤ 100.000/ml Milch ",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "Euterkranke Kühe",
+                  "short-description": "Zellgehalt > 400.000/ml Milch ",
+                  "long-description": "Zellgehalt > 400.000/ml Milch, euterkranke Kühe, die die Lieferfähigkeit der Milch gefährden",
+                  "images": [ ],
+                  "__key": "B"
+                }
+              ]
+            },
+            {
+              "name": "Erstlaktierende",
+              "Var": [
+                {
+                  "name": "Euterkranke Erstlaktierende",
+                  "short-description": "Erstlaktierende mit Zellgehalt > 100.000/ml Milch in der ersten Milchkontrolle nach der Kalbung ",
+                  "long-description": "Erstlaktierende mit Zellgehalt > 100.000/ml Milch in der ersten Milchkontrolle nach der Kalbung",
+                  "images": [ ],
+                  "__key": "C"
+                },
+                {
+                  "name": "Eutergesunde Erstlaktierende",
+                  "short-description": "Erstlaktierende mit Zellgehalt ≤ 100.000/ml Milch in der ersten Milchkontrolle nach der Kalbung ",
+                  "long-description": "Erstlaktierende mit Zellgehalt ≤ 100.000/ml Milch in der ersten Milchkontrolle nach der Kalbung ",
+                  "images": [ ],
+                  "__key": "D"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Eutergesunde Kühe",
+            "description": "Erfassung der Kühe mit einem Zellgehalt ≤ 100.000/ml Milch ",
+            "expression": "(A / recorded_samples) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 40,
+                "visual-upperbound": 80,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Die meisten Kühe sind Eutergesund.."
+                  ],
+                  "lowerbound": [
+                    75
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Kühe sind nicht Eutergesund, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    50
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Euterkranke Kühe",
+            "description": "Erfassung der Kühe mit einem Zellgehalt > 400.000/ml Milch (= euterkranke Kühe, die die Lieferfähigkeit der Milch gefährden)",
+            "expression": "(B / recorded_samples) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 10,
+                "visual-upperbound": 20,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist Euterkrank."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind Euterkrank, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    15
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Euterkranke Erstlaktierende",
+            "description": "Erfassung Erstlaktierende mit Zellgehalt > 100.000/ml Milch in der ersten Milchkontrolle nach der Kalbung",
+            "expression": "(C / C + D) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 10,
+                "visual-upperbound": 40,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum eine Erstlaktierende ist Euterkrank."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    15
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Erstlaktierende sind Euterkrank, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    30
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Gehalt somatischer Zellen in der Milch"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Mastitisbehandlungsinzidenz",
+      "description": "Gibt Informationen zur Eutergesundheit",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Die Häufigkeit der dokumentierten Mastitisbehandlungen (Behandlungsinzidenz) kann alternativ oder ergänzend zum Gehalt somatischer Zellen als Eutergesundheitsindikator verwendet werden, falls keine einzeltierbezogenen MLP-Daten vorliegen. Sie gibt einen Hinweis auf die Häufigkeit klinischer Mastitiden und, je nach Behandlungsstrategie, auch chronisch-subklinischer Mastitiden. Klinische Mastitiden können zu Schmerzen beim Tier führen, chronisch-subklinische Mastitiden zu einer Daueraktivität des Immunsystems sowie zu Schädigungen des milchgebenden Gewebes und infolgedessen Milchleistungseinbußen. Bekannte Risikofaktoren sind einerseits Neuinfektionen, z. B. durch Mängel in der Melk- oder Stallhygiene sowie in der Melktechnik, und andererseits in der Schwächung der körpereigenen Abwehrlage der Kühe durch chronischen Stress, z. B. Hitze, durch begrenzt verfügbare Ressourcen (unter anderem Futter- oder Liegeplätze) oder groben Umgang mit den Tieren. Zusätzlich ist die Behandlungsinzidenz von der Behandlungsstrategie des Tierhalters abhängig.",
+      "when-and-how-often": "Fortlaufend erheben, jährlich bzw. für die zurückliegenden 12 Monate auswerten",
+      "which-and-how-many": "Gesamtherde",
+      "how": "Jede Euterbehandlung innerhalb des Jahres wird gezählt. Erneute Behandlungen nach 7 Tagen Behandlungspause zählen als neue Behandlungen, auch wenn sie dasselbe Viertel betreffen. Es werden auch antibiotische Trockenstellpräparate erfasst, jedoch getrennt von den Behandlungen in der Laktation. Die Auszählung der Behandlungsinzidenz erfolgt auf Basis der Arzneimittel-Anwendungs- und Abgabebelege (AUA-Belege), z. B. mit einer Strichliste oder entsprechendem Herdenmanagementprogramm. Gegebenenfalls können auch digital vorliegende Daten der Tiergesundheitsprogramme der Landeskontrollverbände genutzt werden.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Euterbehandlung",
+                  "short-description": "Euterbehandlung",
+                  "long-description": "Euterbehandlung",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "laktierende Kühe",
+                  "short-description": "Gesamtzahl laktierende Kühe",
+                  "long-description": "Gesamtzahl laktierende Kühe",
+                  "images": [ ],
+                  "__key": "B"
+                }
+              ]
+            },
+            {
+              "name": "Bonituren Gruppe 2",
+              "Var": [
+                {
+                  "name": "Trockenstellpräparate",
+                  "short-description": "Mit antibiotischen Trockenstellpräparaten behandelte Kühe",
+                  "long-description": "Mit antibiotischen Trockenstellpräparaten behandelte Kühe",
+                  "images": [ ],
+                  "__key": "C"
+                },
+                {
+                  "name": "Trockensteher",
+                  "short-description": "Gesamtzahl Trockensteher",
+                  "long-description": "Gesamtzahl Trockensteher",
+                  "images": [ ],
+                  "__key": "D"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Euterbehandlungen",
+            "description": "Anteil der Euterbehandlungen in der Laktation pro 100 Tiere und Jahr",
+            "expression": "(A / B) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 5,
+                "visual-upperbound": 30,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hatte Euterbehandlungen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    10
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere hatten Euterbehandlungen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    25
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Antibiotische Trockenstellpräparate",
+            "description": "Anteil mit antibiotischen Trockenstellpräparaten behandelter Kühe pro 100 Tiere und Jahr",
+            "expression": "(C / D) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 5,
+                "visual-upperbound": 30,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier wurde mit antibiotischen Trockenstellpräparaten behandelt."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    10
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere hatten Behandlungen mit antibiotischen Trockenstellpräparaten, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    25
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Mastitisbehandlungsinzidenz"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Fett-Eiweiß-Quotient der Milch",
+      "description": "Gibt Hinweise auf Stoffwechselstörungen",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Stoffwechselstörungen beeinträchtigen das Wohlbefinden und stellen – gerade auch in ihrer häufig auftretenden subklinischen Form, aufgrund der mit ihnen verbundenen reduzierten Körperabwehr Risikofaktoren für das Auftreten weiterer Krankheiten dar. Die routinemäßig in der Milch gemessenen Inhaltsstoffe Fett und Eiweiß sowie deren Quotient werden als Indikatoren für Abweichungen in der Energie- bzw. Rohfaserversorgung von Milchkühen genutzt. Dabei ist ein Fett-Eiweiß-Quotient ≥ 1,5 als Indikator für den Verdacht auf Energiemangel („subklinische Ketose“) sowie ein Fett-Eiweiß-Quotient < 1,0 als Hinweis auf Abweichungen in der Rohfaserversorgung („subklinische Azidose“) anzu-sehen. Aufgrund des Verdünnungseffektes sollten sie nur mit Bezug auf die Milchleistung interpretiert werden. Zentrale Risikofaktoren sind eine zu geringe Futteraufnahme, eine unzureichende Energie- und Nährstoffkonzentration sowie eine mangelnde Rohfaserversorgung. In Betrieben mit kuhgebundener Kälberaufzucht oder Rassen mit hohen Milchinhaltsstoffen (z.B. Jersey oder Angler) können unabhängig von der Stoffwechselsituation Abweichungen im Fett-Eiweiß-Verhältnis auftreten.",
+      "when-and-how-often": "Den jeweils aktuellen MLP-Bericht monatlich auswerten, mindestens aber einmal jährlich die Ergebnisse der 11 MLP-Berichte eines Jahres auswerten",
+      "which-and-how-many": "Alle laktierenden, milchleistungsgeprüften Kühe eines Betriebes in den ersten 100 Laktationstagen (Frühlaktation)",
+      "how": "Die Berechnung erfolgt auf Basis der Ergebnisse der monatlichen MLP-Berichte. Betrachtet werden die einzeltierbezogenen Milchinhaltsstoffe (Fett- und Eiweißgehalt). Gezählt werden alle Milchkühe in den ersten 100 Laktationstagen mit einem Fett-Eiweiß-Quotient (FEQ) in der Milch von\nA)≥ 1,5 (Verdacht auf Energiemangel, „subklinische Ketose“)\nB) < 1,0 (Verdacht auf Abweichungen in der Rohfaserversorgung, „subklinische Azidose“) \nFür das Jahresergebnis wird der Mittelwert aus den elf monatlichen MLP-Berichten eines Jahres errechnet.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "Report",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Fett-Eiweiß-Quotient",
+              "Var": [
+                {
+                  "name": "≥ 1,5 ",
+                  "short-description": "Verdacht auf Energiemangel, „subklinische Ketose“ ",
+                  "long-description": "Verdacht auf Energiemangel, „subklinische Ketose“ ",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": " < 1,0 ",
+                  "short-description": "Verdacht auf Abweichungen in der Rohfaserversorgung, „subklinische Azidose“ ",
+                  "long-description": "Verdacht auf Abweichungen in der Rohfaserversorgung, „subklinische Azidose“",
+                  "images": [ ],
+                  "__key": "B"
+                },
+                {
+                  "name": "1,5 > x  ≥ 1,0 ",
+                  "short-description": "ohne Verdacht",
+                  "long-description": "ohne Verdacht",
+                  "images": [ ],
+                  "__key": "C"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Verdacht auf Energiemangel",
+            "description": "Kühe in den ersten 100 Laktationstagen mit einem Fett-Eiweiß-Quotient in der Milch ≥ 1,5",
+            "expression": "(A / (A + B + C)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 5,
+                "visual-upperbound": 25,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat einen Fett-Eiweiß-Quotient in der Milch ≥ 1,5."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    10
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben einen Fett-Eiweiß-Quotienten in der Milch ≥ 1,5, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    20
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Verdacht auf Abweichungen in der Rohfaserversorgung",
+            "description": "Kühe in den ersten 100 Laktationstagen mit einem Fett-Eiweiß-Quotient in der Milch < 1,0 ",
+            "expression": "(B / (A + B+ C)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 5,
+                "visual-upperbound": 25,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat einen Fett-Eiweiß-Quotient in der Milch < 1,0."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    10
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben einen Fett-Eiweiß-Quotienten in der Milch < 1,0, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    20
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Fett-Eiweiß-Quotient der Milch"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Schwergeburtenrate",
+      "description": "Schwergeburten bergen viele Risiken, sowohl für die Kuh als auch für das Kalb",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Schwergeburten sind für die Tiere mit erheblichen, lang andauernden Schmerzen verbunden. Daneben bedeuten Schwergeburten ein erhöhtes Risiko für Nachgeburtsverhaltung und Gebärmutterentzündung, Mastitis und Mortalität. Milchleistung und Fruchtbarkeit sind reduziert und das Abgangsrisiko steigt. Schwergeburten haben auch negative Auswirkungen auf das Kalb (höhere Stresshormonspiegel, schlechtere passive Immunisierung, höheres Sterblichkeitsrisiko). Schwergeburten treten häufig bei Färsenkalbungen, Zwillingsgeburten und Zweinutzungsrassen auf. Zudem können hohe Kälbergewichte (z. B. männliche Kälber) und Einkreuzung mit extrem fleischbetonten Rassen Probleme bei der Kalbung verursachen. Weitere Risikofaktoren sind eine unzureichende körperliche Entwicklung von Färsen, Fehler bei der Bullenauswahl (insbesondere bei Färsen), Bewegungsmangel sowie Verfettung während der Trächtigkeit.",
+      "when-and-how-often": "Fortlaufend erheben, jährlich auswerten",
+      "which-and-how-many": "Gesamtherde",
+      "how": "Gezählt wird die Anzahl an Schwergeburten, definiert als Kaiserschnitt, andere tierärztliche Assistenz, mehr als leichter Einsatz eines mechanischen Geburtshelfers oder Zughilfe durch mehr als eine Person (HI-Tier-Schlüssel). \nDie betriebliche Dokumentation des Kalbeverlaufs bzw. die Eingabe in HI-Tier bzw. die Meldung an den LKV werden empfohlen (aktuell ist der Eintrag bei HI-Tier bzw. die Meldung an den LKV nicht verpflichtend).",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Schwergeburten",
+              "Var": [
+                {
+                  "name": "Schwergeburt",
+                  "short-description": "Schwergeburt",
+                  "long-description": "Kaiserschnitt, andere tierärztliche Assistenz, mehr als leichter Einsatz eines mechanischen Geburtshelfers oder Zughilfe durch mehr als eine Person (HI-Tier-Schlüssel). Die betriebliche Dokumentation des Kalbeverlaufs bzw. die Eingabe in HI-Tier bzw. die Meldung an den LKV werden empfohlen (aktuell ist der Eintrag bei HI-Tier bzw. die Meldung an den LKV nicht verpflichtend).",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "keine Schwergeburt",
+                  "short-description": "keine Schwergeburt",
+                  "long-description": "keine Schwergeburt",
+                  "images": [ ],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Schwergeburtenrate",
+            "description": "Anteil der Schwergeburten an den Normalgeburten",
+            "expression": "(A / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hatte eine Schwergeburt in den letzten 12 Monaten."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    3
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere hatten eine Schwergeburt in den letzten 12 Monaten, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Schwergeburtenrate"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Nutzungsdauer",
+      "description": "Die Nutzungsdauer gibt Aufschluss über den Gesundheitsstatus und das damit verbundene Tierwohl und ist für die Wirtschaftlichkeit relevant.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Eine lange Nutzungsdauer ist ein indirekter Indikator für Tiergesundheit, solange andere Indikatoren wie z. B. der Lahmheits- oder Eutergesundheitsstatus der Herde in Ordnung sind. Kühe erreichen circa in der 5. Laktation ihr maximales Milchleistungsniveau, das dann oft einige Laktationen stabil anhält, ehe es wieder langsam abfällt. Eine lange Nutzungsdauer ist somit bedingt durch niedrige Remontierungskosten auch wirtschaftlich interessant. Die Nutzungsdauer kann neben dem Gesundheitsstatus der Herde auch durch strategische Managemententscheidungen des Tierhalters bedingt sein, z. B. bei Verkauf junger Kühe als Zuchttiere oder der Fleischnutzung junger Kühe von Zweinutzungsrassen. Als alleiniger Indikator für Tierwohl ist die Nutzungsdauer deshalb nicht geeignet.",
+      "when-and-how-often": "Fortlaufend erheben, jährlich auswerten",
+      "which-and-how-many": "Gesamtherde",
+      "how": "Es wird die durchschnittliche Nutzungsdauer der gemerzten Kühe (also ohne Abgänge zur Zucht) für die letzten 12 Monate erfasst. \nDie Nutzungsdauer kann aus den Kalbe- und Abgangsdaten in den MLP-Daten bzw. den Abgangsdaten der Tierverkehrsdatenbank HI-Tier (HIT) berechnet werden (siehe Formel unten).\nAlternativ finden MLP-Betriebe die bereits berechnete Nutzungsdauer der Herde im Jahresbericht/Herdenvergleich oder im monatlichen Bericht des LKV. ",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Alter bei 1. Kalbung",
+              "Var": [
+                {
+                  "name": "Erstkalbende",
+                  "short-description": "Alter bei 1. Kalbung in Monaten",
+                  "long-description": "Alter bei 1. Kalbung in Monaten",
+                  "images": [ ],
+                  "__key": "A"
+                }
+              ]
+            },
+            {
+              "name": "Alter bei Abgang",
+              "Var": [
+                {
+                  "name": "Abgangskühe",
+                  "short-description": "Alter bei Abgang in Monaten",
+                  "long-description": "Alter bei Abgang in Monaten",
+                  "images": [ ],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Nutzungsdauer",
+            "description": "Nutzungsdauer in Monaten",
+            "expression": "(B - A)",
+            "Ranges": [
+              {
+                "unit": "Jahr",
+                "visual-lowerbound": 2.5,
+                "visual-upperbound": 5,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Die Nutzungsdauer der meisten Tiere betrug 4,5 Jahre und länger."
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    4.5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere hatten eine Nutzungsadauer von 3 Jahren und weniger, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    3
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Nutzungsdauer"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Tierverluste",
+      "description": "Bestimmung der Mortalitätsrate",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Tierverluste umfassen alle verendeten sowie notgetöteten und euthanasierten („eingeschläferten“) Tiere. Sie sind vom betriebsindividuellen Management abhängig und – neben ihrer Tierschutzrelevanz – auch aus ökonomischer Sicht von großer Bedeutung. Zu den Ursachen zählen Unfälle, Produktionskrankheiten (z. B. Eutergesundheits- und Stoffwechselstörungen), Lahmheiten sowie infektiöse Erkrankungen.",
+      "when-and-how-often": "Fortlaufend erheben, jährlich auswerten",
+      "which-and-how-many": "Gesamtherde",
+      "how": "Berechnet wird die Mortalitätsrate. Erfasst werden alle Tiere des Gesamtbestandes, die in den zwölf Monaten eines Kalenderjahres auf dem Betrieb verendet sind bzw. notgetötet oder euthanasiert wurden.\nDie Berechnung der Tierverluste kann entweder (1.) mittels der Website von HI-Tier oder (2.) mithilfe der Onlinean-wendung www.tschindi.org erfolgen.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "verendete Tiere",
+                  "short-description": "Innerhalb der letzten 12 Monate verendet, notgetötet oder euthanasiert",
+                  "long-description": "Innerhalb der letzten 12 Monate verendet, notgetötet oder euthanasiert",
+                  "images": [ ],
+                  "__key": "A"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Mortalitätsrate",
+            "description": "Anteil der Tiere in der Gesamtherde, die in den letzten 12 Monaten verendet bzw. notgetötet oder euthanasiert worden sind.",
+            "expression": "(A / herd_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 7.5,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist verendet, notgetötet oder wurde euthanasiert."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind verendet, notgetötet oder wurden euthanasiert, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Tierverluste"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Körperkondition",
+      "description": "Durch die Beurteilung der Körperkondition kann vestgestellt werden, wie viele Kühe in der Herde über- bzw. unterkonditioniert sind.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Die Erfassung und Bestimmung der Körperkondition ist ein wichtiges Instrument, um die Anteile über- („zu fetter“) und unterkonditionierter („zu magerer“) Tiere in der Herde ermitteln zu können. Sie gibt Auskunft darüber, ob die Fütterung und Nährstoffversorgung der Tiere bedarfsgerecht ist. Überkonditionierte („zu fette“) Kühe sind anfälliger für Geburtsschwierigkeiten (Schwergeburten), Stoffwechselstörungen (Ketose, Azidose und Milchfieber) und Fruchtbarkeitsstörungen. Unterkonditionierte („zu magere“) Kühe können krank sein, haben zu Laktationsbeginn übermäßig Körpersubstanz abgebaut oder konnten über längere Zeiträume nicht ausreichend Futter aufnehmen. Sie befinden sich in einer Energiemangelsituation, die in der Regel die Immunabwehr schwächt und sich oftmals auch auf das Fruchtbarkeitsgeschehen auswirkt.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Stichprobe, die alle Gruppen laktierender Kühe sowie die trockenstehenden Kühe einer Herde anteilig berücksichtigt",
+      "how": "Bewertung der subkutanen Fettauflage an 4 Körperregionen auf der rechten Körperseite der Kuh, von schräg hinten mit einem vereinfachten Body Condition Score. Je Körperregion wird bewertet, ob das Tier „normal“ (Boniturnote 0), „zu mager“ (Boniturnote 1) oder „zu fett“ (Boniturnote 2) ist.\nDie Beurteilung sollte von der rechten Körperseite erfolgen, um nicht vom Pansenfüllstand beeinflusst zu werden.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Schwanzgrube",
+              "Var": [
+                {
+                  "name": "zu mager",
+                  "short-description": "Tiefe Grube unter dem Schwanzansatz",
+                  "long-description": "Tiefe Grube unter dem Schwanzansatz",
+                  "images": [ ],
+                  "thumbail": [
+                    "Koerperkondition1"
+                  ],
+                  "__key": "A"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "Schwanzgrube noch vorhanden, Schwanzansatz hebt sich als leichte Kuppe ab",
+                  "long-description": "Schwanzgrube noch vorhanden, Schwanzansatz hebt sich als leichte Kuppe ab",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                },
+                {
+                  "name": "zu fett",
+                  "short-description": "Schwanzgrube ausgefüllt, Faltenbildung",
+                  "long-description": "Schwanzgrube ausgefüllt, Faltenbildung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "C"
+                }
+              ]
+            },
+            {
+              "name": "Lendenbereich",
+              "Var": [
+                {
+                  "name": "zu mager",
+                  "short-description": "Tiefe Einbuchtung zwischen Wirbelsäule und Hüfthöcker",
+                  "long-description": "Tiefe Einbuchtung zwischen Wirbelsäule und Hüfthöcker",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "D"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "Leichte Einbuchtung (Milchrasse) bzw. gerade Linie (Zweinutzungsrasse) zwischen Wirbelsäule und Hüfthöcker",
+                  "long-description": "Leichte Einbuchtung (Milchrasse) bzw. gerade Linie (Zweinutzungsrasse) zwischen Wirbelsäule und Hüfthöcker",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "E"
+                },
+                {
+                  "name": "zu fett",
+                  "short-description": "Keine Einbuchtung (Milchrasse) bzw. Aufwölbung der Linie zwischen Wirbelsäule und Hüfthöcker",
+                  "long-description": "Keine Einbuchtung (Milchrasse) bzw. Aufwölbung der Linie zwischen Wirbelsäule und Hüfthöcker",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "F"
+                }
+              ]
+            },
+            {
+              "name": "Querfortsätze",
+              "Var": [
+                {
+                  "name": "zu mager",
+                  "short-description": "Scharfe Enden der Querfortsätze",
+                  "long-description": "Scharfe Enden der Querfortsätze",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "G"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "Querfortsätze sind gut abgedeckt, aber noch zu erkennen",
+                  "long-description": "Querfortsätze sind gut abge-deckt, aber noch zu erkennen",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "H"
+                },
+                {
+                  "name": "zu fett",
+                  "short-description": "Enden der Querfortsätze nicht zu erkennen",
+                  "long-description": "Enden der Querfortsätze nicht zu erkennen",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "I"
+                }
+              ]
+            },
+            {
+              "name": "Sitz- und Hüftbeinhöcker, Rippen, Dornfortsätze",
+              "Var": [
+                {
+                  "name": "zu mager",
+                  "short-description": "Sitz- und Hüftbeinhöcker, Rippen, Dornfortsätze hervorstehend",
+                  "long-description": "Sitz- und Hüftbeinhöcker, Rippen, Dornfortsätze hervorstehend",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "J"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "Insgesamt gute Abdeckung, aber Strukturen noch zu erkennen",
+                  "long-description": "Insgesamt gute Abdeckung, aber Strukturen noch zu erkennen",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "K"
+                },
+                {
+                  "name": "zu fett",
+                  "short-description": "Starke Abdeckung, darunterliegende Strukturen kaum/nicht mehr zu erkennen ",
+                  "long-description": "Starke Abdeckung, darunterliegende Strukturen kaum/nicht mehr zu erkennen ",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "L"
+                }
+              ]
+            }
+          ],
+          "ComposedVar": [
+            {
+              "ZuMager": {
+                "expression": [
+                  "(A + D + G + J) / 3"
+                ]
+              }
+            },
+            {
+              "ZuFett": {
+                "expression": [
+                  "(C + F + I + L) / 3"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Tiere zu mager",
+            "description": "mindestens 3 Körperregionen \\\"zu mager\\\" bei Bewertung der subkutane Fettauflage an 4 Körperregionen mit vereinfachtem Body Condition Score",
+            "expression": "(ZuMager / (sample_size)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist zu mager."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind zu mager, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Tiere zu fett",
+            "description": "mindestens 3 Körperregionen \\\"zu fett\\\" bei Bewertung der subkutane Fettauflage an 4 Körperregionen mit vereinfachtem Body Condition Score",
+            "expression": "(ZuFett / (sample_size)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist zu fett."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind zu fett, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    12
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Körperkondition"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Verschmutzung der Tiere",
+      "description": "Verschmutzungen der Tiere können zu gesundheitlichen Problemen führen und können auf Managementprobleme hinweisen.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Verschmutzungen des Haarkleids können Juckreiz hervorrufen, die darunterliegende Haut kann sich entzünden und die Thermoregulation ist beeinträchtigt. Verschmutzungen zeigen Schwachstellen in Haltung und Management auf. Kotverschmutzungen der Unterbeine sowie des Euters und des Brust-/Bauchbereichs weisen auf nicht oder nur schlecht geräumte Laufflächen hin, deren Schmutz durch die Klauen auf die Liegeflächen getragen wird. Stärkere Verfärbungen, große Flecken und sich auf der Hinterhand aufbauende Kotanhaftungen spiegeln ein unzureichendes Management der Liegeflächen oder aber auch falsch eingesetzte bzw. fehlende Einstreu wider. Weitere Risikofaktoren sind zu dünner Kot durch mangelhafte Rationsgestaltung oder kotverschmutzte Triebwege, Weide- und Auslaufflächen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Stichprobe, die alle Gruppen laktierender Kühe sowie die trockenstehenden Kühe einer Herde anteilig berücksichtigt",
+      "how": "Es wird je Tier eine Körperseite zufällig ausgewählt. Aus maximal 2 m Entfernung werden die Körperregionen „Unteres Hinterbein“ (vom Kronsaum bis inkl. des Sprunggelenks; Außen- und Innenseite; dazu kann auch die Innenseite des gegenüberliegenden Beines betrachtet werden.), „Oberes Hinterbein“ (oberhalb des Sprunggelenks, inkl. Schwanz, ohne Schwanzquaste, ohne Euter) und „Euter“ (inkl. des halben Euterspiegels der zu beurteilenden Seite von hinten) getrennt beurteilt.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Unteres Hinterbein",
+              "Var": [
+                {
+                  "name": "sauber",
+                  "short-description": "sauber",
+                  "long-description": "Keine Verschmutzung bzw. nur nasses Fell oder Verfärbung ohne Kotauflagerung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "verschmutzt",
+                  "short-description": "verschmutztes unteres Hinterbein",
+                  "long-description": "Je Körperregion in der Summe mindestens handtellergroße Kotauflagerungen",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                }
+              ]
+            },
+            {
+              "name": "oberes Hinterbein",
+              "Var": [
+                {
+                  "name": "sauber",
+                  "short-description": "sauber",
+                  "long-description": "Keine Verschmutzung bzw. nur nasses Fell oder Verfärbung ohne Kotauflagerung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "C"
+                },
+                {
+                  "name": "Verschmutzt",
+                  "short-description": "verschmutztes oberes Hinterbein",
+                  "long-description": "Je Körperregion in der Summe mindestens handtellergroße Kotauflagerungen",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "D"
+                }
+              ]
+            },
+            {
+              "name": "Euter",
+              "Var": [
+                {
+                  "name": "sauber",
+                  "short-description": "sauber",
+                  "long-description": "Keine Verschmutzung bzw. nur nasses Fell oder Verfärbung ohne Kotauflagerung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "E"
+                },
+                {
+                  "name": "verschmutzt",
+                  "short-description": "verschmutztes Euter",
+                  "long-description": "Je Körperregion in der Summe mindestens handtellergroße Kotauflagerungen",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "F"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Tiere mit verschmutzem unteren Hinterbein",
+            "description": "Anteil Tiere mit verschmutztem unteren Hinterbein ",
+            "expression": "(A / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 65,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier verschmutzte untere Hinterbeine."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    10
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben verschmutzte untere Hinterbeine, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    55
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Tiere mit verschmutzem oberen Hinterbein",
+            "description": "Anteil Tiere mit verschmutztem oberem Hinterbein ",
+            "expression": "(C / (C+D)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 5,
+                "visual-upperbound": 50,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat verschmutze obere Hinterbeine."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    10
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben verschmutze obere Hinterbeine, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    40
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Tiere mit verschmutztem Euter",
+            "description": "Anteil Tiere mit verschmutztem Euter",
+            "expression": "(E / (E + F)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 25,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat ein verschmutztes Euter."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben verschmutze Euter, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    20
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Verschmutzung der Tiere"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Integumentschäden (inklusive Schwellungen)",
+      "description": "Integumentschäden ziehen gesundheitliche Probleme nach sich und sind ein Hinweis auf Probleme mit dem sozialen Umfeld und in der Haltungstechnik.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Die äußere Haut (das Integument) stellt die Schnittstelle des Tiers zu der es umgebenden Umwelt dar und bildet ab, wie erfolgreich sich Tiere mit der direkten Einwirkung der Haltungstechnik, aber auch dem sozialen Umfeld (z. B. Verletzungen durch Hornstöße) auseinandersetzen können. Schäden der Haut wie frische oder verkrustete Wunden und Schwellungen sind schmerzhaft und können auch als Eintrittspforte für Infektionen dienen; Gelenkveränderungen können sich zu Lahmheiten entwickeln. Beim Rind treten solche Schäden besonders häufig an den Sprunggelenken (Tarsalgelenken) und Vorderfußwurzelgelenken (Karpalgelenken) auf und sind in der Regel auf eine nicht tiergerechte Liegefläche zurückzuführen (nicht ausreichend weich, verformbar, sauber und trocken). Schäden am Nacken sind in der Regel auf nicht an Herdenmaße angepasste Fressgitterhöhen zurückzuführen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Stichprobe, die alle Gruppen laktierender Kühe sowie die trockenstehenden Kühe einer Herde anteilig berücksichtigt",
+      "how": "Es wird je Tier eine Körperseite zufällig ausgewählt. Aus maximal 2 m Entfernung werden die Sprung- und Vorderfußwurzelgelenke sowie der Nacken beurteilt. Erfasst werden mindestens 2 cm große Wunden (frische Verletzung) oder Krusten oder im Vergleich zum Normalzustand (mit dem bloßen Auge) erkennbare Schwellungen (Umfangsvermehrungen). Das Sprunggelenk wird inkl. der Innenseite beurteilt, dazu kann auch die Innenseite des gegenüberliegenden Beines betrachtet werden. Notiert wird das Auftreten von Schäden je Körperregion. ",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Nacken",
+              "Var": [
+                {
+                  "name": "Wunde oder Kruste",
+                  "short-description": "Wunde oder Kruste",
+                  "long-description": "Wunde (frische Verletzung) oder Kruste, jeweils > 2 cm (> 10-Cent-Münze)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "Schwellung",
+                  "short-description": "Schwellung",
+                  "long-description": "eindeutige, im Vergleich zum Normalzustand mit bloßem Auge erkennbare Umfangsvermehrung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                },
+                {
+                  "name": "weder Wunde oder Kruste noch Schwellung",
+                  "short-description": "weder Wunde oder Kruste noch Schwellung",
+                  "long-description": "weder Wunde oder Kruste noch Schwellung",
+                  "images": [ ],
+                  "__key": "C"
+                }
+              ]
+            },
+            {
+              "name": "Vorderfußwurzelgelenk",
+              "Var": [
+                {
+                  "name": "Wunde oder Kruste",
+                  "short-description": "Wunde oder Kruste",
+                  "long-description": "Wunde (frische Verletzung) oder Kruste, jeweils > 2 cm (> 10-Cent-Münze)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "D"
+                },
+                {
+                  "name": "Schwellung",
+                  "short-description": "Schwellung",
+                  "long-description": "eindeutige, im Vergleich zum Normalzustand mit bloßem Auge erkennbare Umfangsvermehrung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "E"
+                },
+                {
+                  "name": "weder Wunde oder Kruste noch Schwellung",
+                  "short-description": "weder Wunde oder Kruste noch Schwellung",
+                  "long-description": "weder Wunde oder Kruste noch Schwellung",
+                  "images": [ ],
+                  "__key": "F"
+                }
+              ]
+            },
+            {
+              "name": "Sprunggelenk",
+              "Var": [
+                {
+                  "name": "Wunde oder Kruste",
+                  "short-description": "Wunde oder Kruste",
+                  "long-description": "Wunde (frische Verletzung) oder Kruste, jeweils > 2 cm (> 10-Cent-Münze)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "G"
+                },
+                {
+                  "name": "Schwellung",
+                  "short-description": "Schwellung",
+                  "long-description": "eindeutige, im Vergleich zum Normalzustand mit bloßem Auge erkennbare Umfangsvermehrung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "H"
+                },
+                {
+                  "name": "weder Wunde oder Kruste noch Schwellung",
+                  "short-description": "weder Wunde oder Kruste noch Schwellung",
+                  "long-description": "weder Wunde oder Kruste noch Schwellung",
+                  "images": [ ],
+                  "__key": "I"
+                }
+              ]
+            }
+          ],
+          "ComposedVar": [
+            {
+              "OK": {
+                "expression": [
+                  "(I + F + C) / 3"
+                ]
+              }
+            },
+            {
+              "NichtOK": {
+                "expression": [
+                  "(G + H + E + D + A + B)"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Integumentschäden",
+            "description": "Anteil der Tiere in der Stichprobe mit mindestens einer Wunde/Kruste oder Schwellung",
+            "expression": "(NichtOK / (NichtOK + OK)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Integumentschäden."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    4
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Integumentschäden, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Integumentschäden (inklusive Schwellungen)"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Schwanzschäden",
+      "description": "Schwanzschäden können durch Fehler in der Haltungstechnik oder im Umgang mit den Tieren verursacht werden und ziehen gesundheitliche Probleme nach sich.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Gebrochene, verletzte oder verkürzte Schwänze können durch mechanische Einwirkung durch Schieber, Bürsten, Türen oder im Melkstand sowie groben Umgang der Betreuungspersonen mit den Kühen verursacht werden. Sie sind schmerzhaft für die betroffene Kuh, wobei das Tierwohl vor allem durch die Bewegung des verletzten Schwanzes beeinträchtigt wird. Das vermehrte Auftreten von Schwanzschäden zeigt ein massives (Tierwohl-)Problem im Betrieb an und erfordert eine sorgfältige einzelbetriebliche Schwachstellenanalyse und ein zeitnahes Abstellen der für das Auftreten auszumachenden Gründe.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Stichprobe, die alle Gruppen laktierender Kühe sowie die trockenstehenden Kühe einer Herde anteilig berücksichtigt.",
+      "how": "Bei jeder Kuh wird aus maximal 2 m Entfernung der Schwanz beurteilt. Als Schwanzschäden werden folgende Verän-derungen aufgenommen: Verletzung (Wunde/Kruste),(alter) Bruch, verkürzte Schwänze (abgerissen oder amputiert).",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "intakter Schwanz",
+                  "long-description": "Beschreibung der ersten Option",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "kein intakter Schwanz",
+                  "long-description": "Vorliegen von mindestens einer der folgenden Veränderungen: Verletzung (Wunde/Kruste), (alter) Bruch,verkürzte Schwänze (abgerissen oder amputiert).",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Schwanzschäden",
+            "description": "Anteil Tiere in der Stichprobe mit mindestens einem Schwanzschaden",
+            "expression": "(A / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kein Tier hat einen Schwanzschaden."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    0
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Schwanzschäden, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    6
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Schwanzschäden"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Klauenzustand",
+      "description": "Mängel an den Klauen lassen Rückschlüsse auf den Pflegezustand der Tiere zu und können gesundheiltiche Schäden und Leistungsrückgänge nach sich ziehen.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Der Anteil an Milchkühen mit Mängeln an den Klauen lässt Rückschlüsse auf den Pflegezustand der Tiere zu. Ein mangelhafter Klauenzustand liegt z. B. bei übermäßiger Klauenlänge und damit häufig verbundener Krümmung der Klauenspitze nach innen oder Verletzungen und Überwachsungen des Wandhorns vor. Er kann Fehlstellungen und damit eine unphysiologische Gewichtsverteilung, ein verändertes Gangbild und Beeinträchtigungen des Verhaltens (z. B. Futteraufnahme) zur Folge haben. Zudem beeinflusst er das Wohlbefinden und kann Klauenerkrankungen begünstigen. In der Folge davon kann die Milchleistung vermindert sein. Der Zustand der Klauen ergibt sich aus dem Zusammenwirken von verschiedenen Faktoren wie Klauenpflegemanagement, Umweltbedingungen und individueller, genetisch bedingter Hornqualität. Risikofaktoren für mangelhaften Klauenzustand sind zu seltene oder nicht fachgerechte Klauenpflege, Bewegungsmangel, ungünstige Bodenbeschaffenheit (mangelnder Abrieb, nicht trittsicher, feucht, verschmutzt) und nicht wiederkäuergerechte Fütterung (z. B. Pansenazidose).",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Stichprobe, die alle Gruppen laktierender Kühe sowie die trockenstehenden Kühe einer Herde anteilig berücksichtigt",
+      "how": "Es wird je Tier eine Körperseite zufällig ausgewählt. Aus maximal 2 m Entfernung werden die zwei Klauenpaare (vorderes und hinteres Klauenpaar) der zugewandten Körperseite beurteilt. Erfasst werden zu lange Klauen, gebogene Klauen, Klauen mit unvollständigem Bodenkontakt, Wandläsionen und unregelmäßige Wandoberflächen. Der Klauenzustand ist mangelhaft, wenn mindestens einer der genannten Mängel an mindestens einem Klauenpaar auftritt. ",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "Keine Mängel an beiden Klauenpaaren",
+                  "long-description": "Beschreibung der ersten Option",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "Mängel an mindestens einem Klauenpaar",
+                  "long-description": "Vorliegen von mindestens einem der folgenden Mängel an mindestens einem Klauenpaar: \nKriterien: \nZu lang/Klauenspitze evtl. gebogen\nKein voller Bodenkontakt \nWandläsion \nUnregelmäßige Wandoberfläche ",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Klauenzustand",
+            "description": "Anteil an Tieren in der Stichprobe mir mangelhaftem Klauenzustand",
+            "expression": "(A / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 20,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Mängel an den Klauen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Mängel an den Klauen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    15
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Klauenzustand"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Lahmheit",
+      "description": "Lahmheiten sind eines der wichtigsten Tierschutzprobleme und ziehen gsundheitliche und wirtschaftliche Probleme nach sich.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Der Begriff Lahmheit beschreibt Störungen des Gangbildes, die bei Milchkühen überwiegend schmerzbedingt sind. Aufgrund des häufigen Auftretens werden Lahmheiten daher als eines der wichtigsten Tierschutzprobleme in der Milchviehhaltung angesehen. Lahme Kühe sind aber nicht nur Schmerzen ausgesetzt, sondern haben auch eingeschränkten Zugang zu Futter und Wasser oder anderen Ressourcen. In der Folge sind Milchleistung und Fruchtbarkeit bei lahmen Tieren geringer. Lahmheit geht bei Milchkühen überwiegend von Klauenerkrankungen oder Infektionen der Haut am Unterfuß aus; zusätzlich können Gelenksveränderungen eine Rolle spielen. Die wichtigsten Risikofaktoren sind der Liegebereich (Überbelegung; harte Liegefläche; unzureichende Abmessungen), die Beschaffenheit der Laufflächen (rutschig, uneben, verschmutzt, feucht), Stoffwechselstörungen aufgrund von Fütterungsfehlern (Pansenübersäuerung und Eiweißüberschuss; Mineralstoffmangel) sowie das Fehlen einer regelmäßigen funktionellen Klauenpflege.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Stichprobe, die alle Gruppen laktierender Kühe sowie die trockenstehenden Kühe einer Herde anteilig berücksichtigt",
+      "how": "Lahmheiten werden durch Beurteilung des Ganges auf einem befestigten Untergrund erfasst. Dabei wird in gering- und hochgradige Lahmheiten unterschieden. Bei Anbindehaltung ohne Auslauf, Weidegang oder Melkstand erfolgt ersatzweise eine Beurteilung von Lahmheitsanzeichen im Stand. Bei Laufstallhaltung Beurteilung der Lahmheit durch Gangbeobachtung.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 2: Anbindehaltung, Beurteilung von Anzeichen von Lahmheiten im Stand",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "nicht lahm",
+                  "long-description": "Keine Lahmheitsanzeichen erkennbar ",
+                  "images": [ ],
+                  "__key": "D"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "lahm",
+                  "long-description": "Lahm, falls eines der drei folgenden Kriterien zutrifft:\nWiederholtes Anheben oder Entlasten eines Beins\nAufsetzen des vorderen Klauenteils auf die Kante einer Stufe oder Leisten eines Gitterrosts\nDeutliche Entlastung einer Gliedmaße bei der seitlichen Bewegung im Stand ",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "E"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Anbindehaltung: Tiere mit Lahmheitsanzeichen",
+            "description": "Anteil an Tieren in der Stichprobe, die bei Anbindehaltung lahm sind",
+            "expression": "(D / (D + E)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier geht lahm."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    3
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere gehen lahm, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    8
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Lahmheit, Anbindehaltung"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Lahmheit",
+      "description": "Lahmheiten sind eines der wichtigsten Tierschutzprobleme und ziehen gsundheitliche und wirtschaftliche Probleme nach sich.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Der Begriff Lahmheit beschreibt Störungen des Gangbildes, die bei Milchkühen überwiegend schmerzbedingt sind. Aufgrund des häufigen Auftretens werden Lahmheiten daher als eines der wichtigsten Tierschutzprobleme in der Milchviehhaltung angesehen. Lahme Kühe sind aber nicht nur Schmerzen ausgesetzt, sondern haben auch eingeschränkten Zugang zu Futter und Wasser oder anderen Ressourcen. In der Folge sind Milchleistung und Fruchtbarkeit bei lahmen Tieren geringer. Lahmheit geht bei Milchkühen überwiegend von Klauenerkrankungen oder Infektionen der Haut am Unterfuß aus; zusätzlich können Gelenksveränderungen eine Rolle spielen. Die wichtigsten Risikofaktoren sind der Liegebereich (Überbelegung; harte Liegefläche; unzureichende Abmessungen), die Beschaffenheit der Laufflächen (rutschig, uneben, verschmutzt, feucht), Stoffwechselstörungen aufgrund von Fütterungsfehlern (Pansenübersäuerung und Eiweißüberschuss; Mineralstoffmangel) sowie das Fehlen einer regelmäßigen funktionellen Klauenpflege.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Stichprobe, die alle Gruppen laktierender Kühe sowie die trockenstehenden Kühe einer Herde anteilig berücksichtigt",
+      "how": "Lahmheiten werden durch Beurteilung des Ganges auf einem befestigten Untergrund erfasst. Dabei wird in gering- und hochgradige Lahmheiten unterschieden. Bei Laufstallhaltung Beurteilung der Lahmheit durch Gangbeobachtung.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1: Laufstallhaltung, Beurteilung druch Gangbeobachtung",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "nicht lahm",
+                  "long-description": "Beschreibung der ersten Option",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "geringgradig lahm",
+                  "long-description": "Unregelmäßige Schrittfolge durch Entlastung eines Beins",
+                  "images": [ ],
+                  "__key": "B"
+                },
+                {
+                  "name": "Boniturnote 2",
+                  "short-description": "hochgradig lahm",
+                  "long-description": "Deutliches Widerstreben, ein Bein zu belasten oder Entlastung von mehr als einem Bein",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "C"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Laufstallhaltung: geringgradig lahme Tiere",
+            "description": "Anteil an Tieren in der Stichprobe, die bei Laufstallhaltung geringgradig lahm sind",
+            "expression": "(B / (A + B + C)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 1,
+                "visual-upperbound": 2,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist geringgradig lahm."
+                  ],
+                  "lowerbound": [
+                    1
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind geringradig lahm, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    1
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Laufstallhaltung: Hochgradig lahme Tiere",
+            "description": "Anteil an Tieren in der Stichprobe, die bei Laufstallhaltung hochgradig lahm sind",
+            "expression": "(C / (A + B + C))* 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 7.5,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kei Tier geht hochgradig lahm."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    0
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere gehen hochgradig lahm, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    3
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Laufstallhaltung: klinisch lahme Tiere",
+            "description": "Anteil an Tieren in der Stichprobe, die bei Laufstallhaltung geringgradig und hochgradig lahm sind",
+            "expression": "((B / (A + B + C))* 100) + ((C / (A + B + C))* 100)",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat geht klinsch lahm."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere gehen klinisch lahm, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Lahmheit, Laufstallhaltung"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Liegeplatznutzung",
+      "description": "Eine Allgemeine Beschreibung zusätzlich zu der detaillierten unten",
+      "animal-category": "Das Liegeverhalten der Kühe gibt Rückschlüsse auf das Wohlbefinden der Kühe und über Verfügbarkeit und Qualtiät von Liegeplätzen.",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Rinder zeigen beim Fress- und Ruheverhalten eine ausgeprägte Herdensynchronität; Voraussetzung dafür ist eine ausreichende Verfügbarkeit von Liegeplätzen sowie weiterer relevanter Ressourcen. Darüber hinaus führen nicht optimal gestaltete Liegeplätze zu mangelnder Akzeptanz und zu reduzierter Liegezeit. Dies kann das Wohlbefinden von Kühen beeinträchtigen, das Auftreten von Klauen- und Gliedmaßenerkrankungen begünstigen und sich negativ auf die Milchleistung auswirken. Die folgenden Indikatoren der Liegeplatznutzung geben in der Laufstall- und Anbindehaltung Auskunft über Verfügbarkeit und Qualität von Liegeplätzen und -flächen. Die Art und Weise der Liegeplatznutzung gibt dabei nähere Information zur speziellen Schwachstelle: Wenn Milchkühe 3 h nach Futtervorlage noch nicht liegen, kann dies z. B. auf eine zu geringe Anzahl an Fressplätzen oder in der Anbindehaltung auf zu schmale Stände hinweisen. Kühe, die mit zwei Beinen in der Liegebox stehen, können eine falsche Nackenrohrpositionierung anzeigen. Kühe, die mit vier Beinen in der Liegebox stehen und sich verzögert ablegen, zeigen mögliche Schwächen in der Gestaltung der Liegeboxen und Qualität der Liegeflächen auf. Liegen Kühe nur unvollständig oder sehr schräg in der Liegebox/auf dem Stand, sind häufig Fehleinstellungen der Boxeneinrichtung die Ursache. Spalten- bzw. Ganglieger (im Folgenden „Spaltenlieger“ genannt) zeigen fehlende Kapazitäten, falsche Einstellungen der Liegeboxen oder aber eine fehlende Eingewöhnung junger Kühe an dieses Haltungssystem an.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Gesamtherde, gruppenweise",
+      "how": "3 h nach Futtervorlage (in der Ruhephase der Tiere) werden Kühe gezählt.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Laufstallhaltung",
+              "Var": [
+                {
+                  "name": "vollständig",
+                  "short-description": "Kühe liegen vollständig auf der Liegefläche bzw. in der Liegebox",
+                  "long-description": "Beschreibung der ersten Option",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "unvollständig",
+                  "short-description": "Kühe liegen unvollständig auf der Liegefläche bzw. in der Liegebox",
+                  "long-description": "Kühe liegen unvollständig auf der Liegefläche bzw. in der Liegebox: Tiere werden als unvollständig liegend gezählt, wenn sich mehr als die Hälfte der gedachten Verbindungslinie zwischen Sitzbeinhöcker und Hüfthöcker außerhalb der Liegefläche befindet.",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                },
+                {
+                  "name": "nicht mit liegen beschäftigt",
+                  "short-description": "Kühe sind aktiv mit der Futter- oder Wasseraufnahme beschäftigt",
+                  "long-description": "Kühe sind aktiv mit der Futter- oder Wasseraufnahme beschäftigt",
+                  "images": [ ],
+                  "__key": "C"
+                },
+                {
+                  "name": "stehend",
+                  "short-description": "Kühe stehen mit zwei oder vier Beinen in der Box",
+                  "long-description": "Kühe stehen mit zwei oder vier Beinen in der Box",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "D"
+                },
+                {
+                  "name": "Spaltenlieger",
+                  "short-description": "Kühe liegen vollständig außerhalb der Liegefläche („Spaltenlieger“)",
+                  "long-description": "Kühe liegen vollständig außerhalb der Liegefläche („Spaltenlieger“)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "E"
+                },
+                {
+                  "name": "stehen oder gehen",
+                  "short-description": "Kühe, die weder aktiv mit der Futter- oder Wasseraufnahme beschäftigt sind, noch liegen oder in den Liegeboxen stehen",
+                  "long-description": "Kühe, die weder aktiv mit der Futter- oder Wasseraufnahme beschäftigt sind, noch liegen oder in den Liegeboxen stehen",
+                  "images": [ ],
+                  "__key": "F"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Stall Usage Index - Laufstallhaltung",
+            "description": "Liegende Tiere bezogen auf alle Tiere der Gruppe, die nicht mit der Futter- oder Wasseraufnahme beschäftigt sind",
+            "expression": "((A + B)/ ((A + B + D) - (C + F))) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 40,
+                "visual-upperbound": 75,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Fast alle Tiere, die nicht aktiv mit der Futter- oder Wasseraufnahme beschäftig sind, liegen in der Herde."
+                  ],
+                  "lowerbound": [
+                    66
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere, die nicht aktiv mit der Futter- oder Wasseraufnahme beschäftig sind, liegen nicht in der Herde, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    50
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Anteil unvollständig auf der Liegefläche liegende Tiere - Anbindehaltung",
+            "description": "Tiere die nicht vollständig auf der vorgesehenen Liegefläche liegen",
+            "expression": "((H / (G + H + I)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 1,
+                "visual-upperbound": 2,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier liegt unvollständig in der Liegefläche."
+                  ],
+                  "lowerbound": [
+                    12
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere liegen unvollständig in der Liegefläche, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    1
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Liegeplatznutzung, Laufstallhaltung"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Liegeplatznutzung",
+      "description": "Eine Allgemeine Beschreibung zusätzlich zu der detaillierten unten",
+      "animal-category": "Das Liegeverhalten der Kühe gibt Rückschlüsse auf das Wohlbefinden der Kühe und über Verfügbarkeit und Qualtiät von Liegeplätzen.",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Rinder zeigen beim Fress- und Ruheverhalten eine ausgeprägte Herdensynchronität; Voraussetzung dafür ist eine ausreichende Verfügbarkeit von Liegeplätzen sowie weiterer relevanter Ressourcen. Darüber hinaus führen nicht optimal gestaltete Liegeplätze zu mangelnder Akzeptanz und zu reduzierter Liegezeit. Dies kann das Wohlbefinden von Kühen beeinträchtigen, das Auftreten von Klauen- und Gliedmaßenerkrankungen begünstigen und sich negativ auf die Milchleistung auswirken. Die folgenden Indikatoren der Liegeplatznutzung geben in der Laufstall- und Anbindehaltung Auskunft über Verfügbarkeit und Qualität von Liegeplätzen und -flächen. Die Art und Weise der Liegeplatznutzung gibt dabei nähere Information zur speziellen Schwachstelle: Wenn Milchkühe 3 h nach Futtervorlage noch nicht liegen, kann dies z. B. auf eine zu geringe Anzahl an Fressplätzen oder in der Anbindehaltung auf zu schmale Stände hinweisen. Kühe, die mit zwei Beinen in der Liegebox stehen, können eine falsche Nackenrohrpositionierung anzeigen. Kühe, die mit vier Beinen in der Liegebox stehen und sich verzögert ablegen, zeigen mögliche Schwächen in der Gestaltung der Liegeboxen und Qualität der Liegeflächen auf. Liegen Kühe nur unvollständig oder sehr schräg in der Liegebox/auf dem Stand, sind häufig Fehleinstellungen der Boxeneinrichtung die Ursache. Spalten- bzw. Ganglieger (im Folgenden „Spaltenlieger“ genannt) zeigen fehlende Kapazitäten, falsche Einstellungen der Liegeboxen oder aber eine fehlende Eingewöhnung junger Kühe an dieses Haltungssystem an.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Gesamtherde, gruppenweise",
+      "how": "3 h nach Futtervorlage (in der Ruhephase der Tiere) werden Kühe gezählt.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Anbindehaltung",
+              "Var": [
+                {
+                  "name": "vollständig",
+                  "short-description": "Kühe liegen vollständig auf der Liegefläche bzw. in der Liegebox",
+                  "long-description": "Kühe liegen vollständig auf der Liegefläche bzw. in der Liegebox",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "G"
+                },
+                {
+                  "name": "unvollständig",
+                  "short-description": "Kühe liegen unvollständig auf der Liegefläche bzw. in der Liegebox",
+                  "long-description": "Kühe liegen unvollständig auf der Liegefläche bzw. in der Liegebox: Tiere werden als unvollständig liegend gezählt, wenn sich mehr als die Hälfte der gedachten Verbindungslinie zwischen Sitzbeinhöcker und Hüfthöcker außerhalb der Liegefläche befindet.",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "H"
+                },
+                {
+                  "name": "nicht mit liegen beschäftigt",
+                  "short-description": "Kühe sind aktiv mit der Futter- oder Wasseraufnahme beschäftigt",
+                  "long-description": "Kühe sind aktiv mit der Futter- oder Wasseraufnahme beschäftigt",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "I"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Stall Usage Index - Anbindehaltung",
+            "description": "Liegende Tiere bezogen auf alle Tiere der Gruppe, die nicht mit der Futter- oder Wasseraufnahme beschäftigt sind",
+            "expression": "((G+H) / ((G + H) - I)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 40,
+                "visual-upperbound": 75,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Fast alle Tiere, die nicht aktiv mit der Futter- oder Wasseraufnahme beschäftig sind, liegen in der Herde."
+                  ],
+                  "lowerbound": [
+                    66
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere, die nicht aktiv mit der Futter- oder Wasseraufnahme beschäftig sind, liegen nicht in der Herde, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    50
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Anteil unvollständig auf der Liegefläche liegende Tiere - Anbindehaltung",
+            "description": "Tiere die nicht vollständig auf der vorgesehenen Liegefläche liegen",
+            "expression": "((H / (G + H + I)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 1,
+                "visual-upperbound": 2,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier liegt unvollständig in der Liegefläche."
+                  ],
+                  "lowerbound": [
+                    1
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere liegen unvollständig in der Liegefläche, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    1
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Liegeplatznutzung, Anbindehaltung"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Aufstehverhalten",
+      "description": "Das Aufstehverhalten gibt Auskünfte über die Beschaffenheit der Liegeplätze und die Gesundheit der Kühe.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Der natürliche Aufstehvorgang der Milchkuh ist flüssig, kann aber durch die Abmessungen und Aufstallungsformen negativ beeinflusst werden. Abweichungen im Bewegungsablauf deuten auf Überforderungen der Anpassungsfähigkeit der Kühe hin und können zu Unsicherheit, Stress, Schmerzen und Verletzungen führen. Im Liegeboxenlaufstall können ein zu gering dimensionierter Kopfraum, Einengungen durch Kopfrohre, zu tief angebrachte Nackenrohre, muldenartige Liegeflächen, hohe Bugschwellen oder glatte Liegeflächen den Aufstehvorgang beeinträchtigen. In der Anbindehaltung wirken sich eine zu hohe Krippenrückwand, glatte Standflächen oder die Art der Anbindevorrichtung sowie ein unzureichender Bewegungsspielraum durch die Anbindung negativ aus.",
+      "when-and-how-often": "Stichprobe aus mindestens 10 Kühen je Gruppe, zufällig aus den liegenden Kühen ausgewählt (in Gruppen mit weniger als 10 Kühen alle liegenden Kühe; in Gruppen mit mehr als 100 Kühen 10 % der Tiere).",
+      "how": "In der Ruhephase wird die liegende Kuh durch möglichst minimale Gesten, z. B. durch Ansprechen oder sanfte Berührung am Rücken, zum Aufstehen ermuntert und dabei beobachtet. Bei Kühen, die selbstständig ohne Auftreiben) und ohne übermäßige Hast aufstehen, wird das Aufstehverhalten ebenfalls beurteilt. Kühe, die sich nicht zum Aufstehen bewegen lassen, werden nicht beurteilt.\nAls „nicht flüssiges Aufstehverhalten“ wird verstanden, wenn eines der genannten Kriterien auftritt: Lange Pause auf den Karpalgelenken (> 3 Sekunden), Schwierigkeiten beim Aufstehen (z. B. Wippen oder starker Kontakt mit Steuerungseinrichtungen im Kopfbereich), Abweichung von der normalen Bewegungsabfolge, z. B. pferdeartiges Aufstehen. ",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Aufstehverhalten",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "flüssig",
+                  "long-description": "flüssiges Aufstehverhalten",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "nicht flüssigg",
+                  "long-description": "lange Pause auf den Karpalgelenken (> 3 Sekunden), Schwierigkeiten beim Aufstehen (z. B. Wippen oder starker Kontakt mit Steuerungseinrichtungen im Kopfbereich), Abweichung von der normalen Bewegungsabfolge, z. B. pferdeartiges Aufstehen.",
+                  "images": [ ],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Aufstehverhalten",
+            "description": "Anteil der beobachteten Tiere, die nicht flüssig aufstehen",
+            "expression": "((B / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 10,
+                "visual-upperbound": 60,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier steht nicht flüssig auf."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    25
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere stehen nicht flüssig auf, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    50
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Aufstehverhalten"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Ausweichdistanz",
+      "description": "Indikator für die Furchtreaktion der Tiere vor dem Menschen.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Zur Beurteilung der Qualität der Mensch-Tier-Beziehung gilt die Ausweichdistanz als geeigneter Indikator für die Furchtreaktion der Tiere vor dem Menschen. Geringe Ausweichdistanzen werden mit einer guten Mensch-Tier-Beziehung in Verbindung gebracht. Durch den täglichen Umgang hat der Mensch einen wesentlichen Einfluss auf das Tier. Negativer Umgang (z. B. laut, grob, hektisch, unvorhersehbare Kontakte) kann zu Verletzungen, Schmerzen und Leiden und zu chronischem Stress führen sowie sich negativ auf das Verhalten, die Gesundheit und die Leistung der Tiere auswirken.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten",
+      "which-and-how-many": "Stichprobe, die alle Gruppen laktierender Kühe sowie die trockenstehenden Kühe einer Herde anteilig berücksichtigt ",
+      "how": "Zur Erfassung der Ausweichdistanz zunächst darauf achten, dass die Tiere aufmerksam sind (ggf. die Tiere kurz ansprechen). Dann aus einer Entfernung von 2 Metern (möglichst immer aus einer gleichbleibenden Entfernung zu den Tieren starten) mit nach vorne-unten ausgestrecktem Arm (Handrücken zum Tier) sich der Kuh in gleichmäßiger Geschwindigkeit annähern (1 Schritt/s). Dabei auf das Flotzmaul und nicht dem Tier direkt in die Augen schauen. Bei Auftreten einer Ausweichreaktion (Zurückziehen und/oder Senken und/oder zur Seite drehen des Kopfes) stoppen und die Distanz zum Zeitpunkt des Ausweichens zwischen Hand und Flotzmaul abschätzen und einer Kategorie zuordnen (siehe Abbildungen sowie Beispielvideo).\nZur Erfassung der Ausweichdistanz kann die Zeit, wenn die Milchkühe am Futtertisch stehen, genutzt werden, (z.B. nach dem Melken). Die Ausweichdistanz kann aber auch erfasst werden, wenn sich die Tiere während der Aktivitätsphase frei im Stall bewegen. Wenn ein Fressgitter vorhanden ist und die Tiere regelmäßig darin fixiert werden, kann die Erfassung der Ausweichdistanz auch während der Fixierung im Fressgitter erfolgen. \nDie Tiere sollten aufmerksam sein, die Beurteilung sollte nicht unmittelbar vor oder nach der Futtervorlage durchgeführt werden.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Ausweichdistanz",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "Berührung des Flotzmaules mit der Hand",
+                  "long-description": "Berührung des Flotzmaules mit der Hand",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "Lässt keine Berührung zu, aber Ausweichdistanz unter 1 m (geschätzte Distanz zwischen Hand und Flotzmaul)",
+                  "long-description": "Lässt keine Berührung zu, aber Ausweichdistanz unter 1 m (geschätzte Distanz zwischen Hand und Flotzmaul)",
+                  "images": [ ],
+                  "__key": "B"
+                },
+                {
+                  "name": "Boniturnote 2",
+                  "short-description": "Ausweichdistanz ≥ 1 m (geschätzte Distanz zwischen Hand und Flotzmaul)",
+                  "long-description": "Ausweichdistanz ≥ 1 m (geschätzte Distanz zwischen Hand und Flotzmaul)",
+                  "images": [ ],
+                  "__key": "C"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Ausweichreaktion",
+            "description": "Tiere, die sich ohne Ausweichreakton berühren lassen",
+            "expression": "(A / (A + B + C)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier zeigt bei Berührung eine Ausweichreaktion."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    4
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere zeigen bei Berührung eine Ausweichreaktion, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Annäherung",
+            "description": "Tiere, denen man sich maximal auf eine Entfernung von einem Meter nähern kann",
+            "expression": "((A + B)/ (A + B + C)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Man kann sich den meisten Tieren auf einem Meter nähern."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    4
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Man kann sich zu viele Tiere nicht auf 1 Meter nähern, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Ausweichdistanz"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Wasserversorgung",
+      "description": "Die Wasserversorgung beeinflussen das Wohlbefinden der Kühe und die Wirtschaftlichkeit.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Sowohl eine unzureichende Wasserversorgung als auch mangelhafte Wasserqualität beeinflussen das Wohlbefinden, führen zu Leistungseinbußen und fördern Stoffwechselstörungen sowie Erkrankungen der Milchkühe. Für eine sichere und stressfreie Wasserversorgung muss eine bezogen auf die Tierzahl ausreichende Anzahl an fachgerecht installierten, frostsicheren Tränkeplätzen mit ausreichender Dimensionierung der Anschlüsse gewährleistet sein. Korrosion und Ablagerungen können die Leitungsquerschnitte und somit auch die Wasserdurchflussrate allmählich reduzieren. Der Zugang zu Tränkestellen in ausreichender Zahl und ihre Funktionssicherheit mit ausreichender Wasserdurchflussrate sind daher wichtige Indikatoren der Wasserversorgung. Da einzelne ranghohe Tiere oft den Zugang zu „theoretisch“ ausreichend langen Trogtränken blockieren, sollte der Anzahl der Tränkestellen mehr Bedeutung zugemessen werden als der Gesamttroglänge. Defekte Tränken müssen umgehend instandgesetzt, falsch dimensionierte Leitungen zeitnah ausgetauscht sowie fehlende Tränken ergänzt werden. Die Prüfung der Wasserversorgung im Rahmen der täglichen Routinekontrolle ist durch die eine halbjährliche Kontrolle nicht ersetzbar. Routinemäßig sollte hierbei auch die Sauberkeit von Tränken und Tränkewasser überprüft werden. Bei regelmäßig beobachteter Verschmutzung des Wassers sollte die Positionierung der Tränke überprüft werden.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und bewerten",
+      "which-and-how-many": "Alle Tränken",
+      "how": "Prüfung der Tränkeeinrichtungen auf Funktionsfähigkeit und ausreichenden, stark strömenden Wassernachfluss. Durch das Öffnen des Tränkeventils über 30 oder 60 Sekunden wird die Menge des ausströmenden Wassers ermittelt. Die Durchflussrate ist unzureichend, wenn die folgenden Mindestanforderungen nicht erfüllt werden. Bei Trogtränken mit großem Vorratsbehälter (Tränken für mehrere Tiere), die ausreichend mit Wasser gefüllt sind, wird die Funktionsfähigkeit des Nachflusses geprüft. Die genaue Nachflussgeschwindigkeit muss hier nicht ermittelt werden. Da Zapfentränken keine artgemäße Wasseraufnahme ermöglichen, wird der Nachlauf grundsätzlich als unzureichend eingestuft und diese nicht weiter berücksichtigt.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Einzeltiertränken",
+              "Var": [
+                {
+                  "name": "mindestens 10 Liter pro Minute",
+                  "short-description": "...",
+                  "long-description": "Beschreibung der ersten Option",
+                  "images": [ ],
+                  "__key": "labelClass0"
+                },
+                {
+                  "name": "weniger 10 Liter pro Minute",
+                  "short-description": "Beschreibung der zweiten Option",
+                  "long-description": "Ziemlich lange Beschreibung\nAuch über mehrere Zeilen Hinweg",
+                  "images": [ ],
+                  "__key": "labelClass1"
+                }
+              ]
+            },
+            {
+              "name": "Tränken für mehrer Tiere",
+              "Var": [
+                {
+                  "name": "mindestens 20 Liter pro Minute",
+                  "short-description": "...",
+                  "long-description": "...",
+                  "images": [ ],
+                  "__key": "labelclass2"
+                },
+                {
+                  "name": "weniger 20 Liter pro Minute",
+                  "short-description": "...",
+                  "long-description": "...",
+                  "images": [ ],
+                  "__key": "labelclass3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Tränkewasser",
+            "description": "Tiere mit unzureichender Wasserversorgung",
+            "expression": "(labelClass1 / sample_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kein Tier hat eine unzureichende Wasserversorgung."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    0
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben eine unzureichende Wasserversorgung, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Wasserversorgung, Laufstallhaltung"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Wasserversorgung",
+      "description": "Die Wasserversorgung beeinflussen das Wohlbefinden der Kühe und die Wirtschaftlichkeit.",
+      "animal-category": "Milchkuh",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Sowohl eine unzureichende Wasserversorgung als auch mangelhafte Wasserqualität beeinflussen das Wohlbefinden, führen zu Leistungseinbußen und fördern Stoffwechselstörungen sowie Erkrankungen der Milchkühe. Für eine sichere und stressfreie Wasserversorgung muss eine bezogen auf die Tierzahl ausreichende Anzahl an fachgerecht installierten, frostsicheren Tränkeplätzen mit ausreichender Dimensionierung der Anschlüsse gewährleistet sein. Korrosion und Ablagerungen können die Leitungsquerschnitte und somit auch die Wasserdurchflussrate allmählich reduzieren. Der Zugang zu Tränkestellen in ausreichender Zahl und ihre Funktionssicherheit mit ausreichender Wasserdurchflussrate sind daher wichtige Indikatoren der Wasserversorgung. Da einzelne ranghohe Tiere oft den Zugang zu „theoretisch“ ausreichend langen Trogtränken blockieren, sollte der Anzahl der Tränkestellen mehr Bedeutung zugemessen werden als der Gesamttroglänge. Defekte Tränken müssen umgehend instandgesetzt, falsch dimensionierte Leitungen zeitnah ausgetauscht sowie fehlende Tränken ergänzt werden. Die Prüfung der Wasserversorgung im Rahmen der täglichen Routinekontrolle ist durch die eine halbjährliche Kontrolle nicht ersetzbar. Routinemäßig sollte hierbei auch die Sauberkeit von Tränken und Tränkewasser überprüft werden. Bei regelmäßig beobachteter Verschmutzung des Wassers sollte die Positionierung der Tränke überprüft werden.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und bewerten",
+      "which-and-how-many": "Alle Tränken",
+      "how": "Prüfung der Tränkeeinrichtungen auf Funktionsfähigkeit und ausreichenden, stark strömenden Wassernachfluss. Durch das Öffnen des Tränkeventils über 30 oder 60 Sekunden wird die Menge des ausströmenden Wassers ermittelt. Die Durchflussrate ist unzureichend, wenn die folgenden Mindestanforderungen nicht erfüllt werden. Bei Trogtränken mit großem Vorratsbehälter (Tränken für mehrere Tiere), die ausreichend mit Wasser gefüllt sind, wird die Funktionsfähigkeit des Nachflusses geprüft. Die genaue Nachflussgeschwindigkeit muss hier nicht ermittelt werden. Da Zapfentränken keine artgemäße Wasseraufnahme ermöglichen, wird der Nachlauf grundsätzlich als unzureichend eingestuft und diese nicht weiter berücksichtigt.",
+      "branches": [
+        "Milchviehhaltung"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Tränkestelle",
+              "Var": [
+                {
+                  "name": "funktionsfähig",
+                  "short-description": "mindestens 10 Liter pro Minute",
+                  "long-description": "mindestens 10 Liter pro Minute",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "nicht funtkionsfähig",
+                  "short-description": "weniger 10 Liter pro Minute",
+                  "long-description": "weniger 10 Liter pro Minute",
+                  "images": [ ],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Tränkewasser",
+            "description": "Tiere mit unzureichender Wasserversorgung",
+            "expression": "(labelClass1 / sample_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kein Tier hat eine unzureichende Wasserversorgung."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    0
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben eine unzureichende Wasserversorgung, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "Wasserversorgung, Anbindehaltung"
+    }
+  ]
+}

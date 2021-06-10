@@ -1,0 +1,2467 @@
+// This is a comment
+
+// Basic example of the IndiCator-Description-Language (short ICDL)
+// This example only contains currently (or to be used) features.
+// Thus Events and Locations are not contained.
+// The comments and the closing curly-braces are optional, but it is  recommended to use them
+// in case the opening is not visible or too far from the closing one.
+
+
+AnimalCategory "Sauen" {
+  last-modified = "timestamp der letzten Änderung"
+  species = "Schweine"
+  name = "Ferkelerzeugung"
+  // soll: nicht mehr als 40 Zeichen
+  description = "haltung von Sauen zur Produktion von Ferkeln"
+  // soll: nicht mehr als 200 zeichen
+  thumbnail = ""
+  //sample-map = { "10": "2", "20": "5", "30": "8", "50": "15", "100": "30" }
+  Branch "Abferkelstall" {
+    name = "Sauen im Abferkelstall"
+    description = "Einstallung 3 bis 7 Tage vor dem Abferkeln, Ausstallung beim Absetzen 21 bis 30 Tage nach der Geburt (mind. 42 bei ökologischer Tierhaltung)"
+  }
+  Branch "Deckstall" {
+    name = "Sauen im Deckstall"
+    description = "Vom Absetzen bis zum Umstallen in den Wartebereich"
+  }
+  Branch "Wartestall" {
+    name = "Sauen im Wartestall"
+    description = "Nach Belegung (ab dem 1. Trächtigkeitstag) bzw. nach dem Deckbereich bis zur Aufstallung im Abferkelbereich (ab etwa 110. Trächtigkeitstag)"
+  }
+}
+// End-AnimalCategory productionLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Abferkelquote"
+  description = "Die Abferkelquote ist ein Maß für den Belegungserfolg und gibt an, wie viele belegte Sauen am Ende der Trächtigkeit abgeferkelt haben."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Die Abferkelquote (Abferkelrate) ist ein Maß für den Belegungserfolg und gibt an, wie viele belegte Sauen am Ende der Trächtigkeit abgeferkelt haben. Sie beträgt 100 %, wenn aus jeder Belegung ein Wurf hervorgegangen ist. Sie kann jedoch aufgrund von Umrauschen, Abgängen nach dem Belegen und Aborten geringer ausfallen. Dabei werden mit der Abferkelquote sowohl Spätaborte als auch leere Sauen berücksichtigt. Eine niedrige Abferkelquote kann ein Hinweis auf gesundheitliche Probleme oder Stress (Hitzestress, soziale Rangkämpfe) mit negativen Auswirkungen auf die Fruchtbarkeitsleistung im Bestand sein. Zusätzlich kann eine verringerte Abferkelquote auf Defizite im eigenen Besamungsmanagement hinweisen."
+  when-and-how-often = "Fortlaufend erheben, halbjährlich auswerten"
+  which-and-how-many = "Alle Sauen"
+  how = "Die Abferkelquote wird vom Sauenplaner standardmäßig berechnet. Für die Auswertung innerhalb eines Erhebungshalbjahres können Sie sich die Abferkelquote nach Echtzeit (Berichtszeitraum „von – bis“) auslesen lassen."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = "herd_size"
+    default_type = "Report"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Wurf"
+          short-description = "Wurf"
+          long-description = "Wurf"
+          images = [ ]
+        }
+        Var "B" {
+          name = "Belegung"
+          short-description = "Belegung"
+          long-description = "Belegung"
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Abferkelquote"
+      description = "Anteil der Sauen, die am Ende der Trächtigkeit abgeferkelt haben, an der Gesamtzahl belegter Sauen."
+      expression = (A / B) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 70
+        visual-upperbound = 90
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Viele Sauen haben am Ende der Trächtigkeit abgeferkelt."
+          lowerbound = 85
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 100
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu wenige Sauen haben am Ende der Trächtigkeit abgeferkelt, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 0
+          upperbound = 75
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Wurfnummer bei Abgang"
+  description = "Die durchschnittliche Wurfzahl aller aus der Herde abgehenden Sauen wird als Maßstab für Alter und Lebensleistung der Sauen herangezogen."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Die durchschnittliche Wurfnummer (Wurfzahl) aller aus der Herde abgehenden Sauen wird als Maßstab für Alter und Lebensleistung der Sauen herangezogen. Eine geringe Anzahl an Würfen je abgehender Sau kann entweder durch eine hohe Remontierungsrate, zu frühe Abgänge oder eine lan- ge Zwischenwurfzeit (z. B. durch erhöhte Umrauscherquote oder Abortrate) bedingt sein. Damit kann eine geringe durchschnittliche Wurfnummer auf verschiedene Gesundheitsprobleme im Bestand hinweisen."
+  when-and-how-often = "Fortlaufend erheben, halbjährlich auswerten"
+  which-and-how-many = "Alle Sauen"
+  how = "Die durchschnittliche Wurfnummer bei Abgang wird von den meisten Sauenplanern standardmäßig berechnet. Für die Auswertung innerhalb eines Erhebungshalbjahres können Sie sich die mittlere Wurfnummer bei Abgang nach Echtzeit (Berichtszeitraum „von – bis“) auslesen lassen."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = "herd_size"
+    default_type = "Report"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Wurfnummer"
+          short-description = "Wurfnummer der abgehenden Sau"
+          long-description = "Wurfnummer der abgehenden Sau"
+          images = [ ]
+        }
+        Var "B" {
+          name = "abgehenden Sauen"
+          short-description = "abgehenden Sauen"
+          long-description = "abgehenden Sauen"
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Wurfnummer"
+      description = "Durchschnittliche Wurfnummer bei Abgang"
+      expression = A / B
+      Ranges {
+        unit = ""
+        visual-lowerbound = 1
+        visual-upperbound = 7
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Die Wurfnummer war groß genug"
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 3.5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere hatten eine zu geringe Wurfnummer, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 3.5
+          upperbound = 2
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Tierverluste"
+  description = "Tierverluste setzen sich aus verendeten und euthanasierten Tieren zusammen und sind Tierschutzrechtlich und wirtschaftlich interessant."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Tierverluste setzen sich aus verendeten und euthanasierten Tieren zusammen. Sie sind vom betriebsindividuellen Management sowie gegebenenfalls auch von technischen Mängeln der Haltungsbedingungen abhängig und haben – neben ihrer Tierschutzrelevanz – auch aus ökonomischer Sicht eine große Bedeutung. Zu den Ursachen zählen nicht infektiöse Gründe (z. B. Verletzungen, Herz-Kreislauf-Erkrankungen) sowie infektiöse Ursachen (z. B. PRRS). Da den Tierverlusten in der Regel starke Beeinträchtigungen des Wohlergehens vorausgehen, ist deren Höhe ein wichtiger Tierschutzindikator."
+  when-and-how-often = "Fortlaufend erheben, halbjährlich auswerten"
+  which-and-how-many = "Alle Sauen"
+  how = "Die Tierverluste (verendete und euthanasierte Tiere) werden von Sauenplanern standardmäßig berechnet. Um bei Problemen die Planung von Gegenmaßnahmen zu vereinfachen, sollte bei der Datenerfassung im Sauenplaner stets auch die (vermutete) Ursache miterfasst werden. Für die Auswertung innerhalb eines Erhebungshalbjahres können Sie sich die Tierverluste nach Echtzeit (Berichtszeitraum „von … bis“) im Sauenplaner auslesen lassen."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = "herd_size"
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "verendet und euthanasiert"
+          short-description = "Anzahl der verendeten und euthanasierten Tiere"
+          long-description = "Anzahl der verendeten und euthanasierten Tiere"
+          images = [ ]
+        }
+        Var "B" {
+          name = "Anfangsbestand"
+          short-description = "Anzahl Tiere am Anfang"
+          long-description = "Anzahl Tiere am Anfang"
+          images = [ ]
+        }
+        Var "C" {
+          name = "Zugänge"
+          short-description = "Tiere, die dazugekommen sind"
+          long-description = "Tiere, die dazugekommen sind"
+          images = [ ]
+        }
+        Var "D" {
+          name = "Abgänge"
+          short-description = "Tiere, die abgegangen sind"
+          long-description = "Tiere, die abgegangen sind, zum Beispiel wegen Verkauf oder Schlachtung"
+          images = [ ]
+        }
+      }
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Tierverluste"
+      description = "Anteil der verendenten und euthanasierten Tiere am Gesamtbestand"
+      expression = (A / (B + C - D)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 10
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier ist verendet oder euthanasiert worden."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 2
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere sind verendet oder euthanasiert worden, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 5
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Antibiotikaeinsatz"
+  description = "Ein hoher Antibiotikaeinsatz weist auf eine hohe Erkrankungsrate und damit möglicherweise auf Probleme in Haltung oder Management hin. "
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Die Verabreichung von Antibiotika zur Behandlung von bakteriellen Infektionen ist im Bedarfsfall aus Tierschutzsicht geboten. Ein hoher Antibiotikaeinsatz weist auf eine hohe Erkrankungsrate und damit möglicherweise auf Probleme in Haltung oder Management hin. Relevant sind die Behandlungsdauer, die Anzahl der eingesetzten Wirkstoffe und die Anzahl der behandelten Tiere. Risikofaktoren für bakterielle Infektionen sind z. B. Defizite in der Hygiene oder dem Stallklima, aber auch eine chronische Stressbelastung der Tiere, die eine erhöhte Infektionsanfälligkeit zur Folge haben kann."
+  when-and-how-often = "Fortlaufend erheben; halbjährlich prüfen"
+  which-and-how-many = "Alle Sauen"
+  how = <<EOF
+Der Antibiotikaeinsatz kann über 1) den Therapieindex bzw. alternativ 2) die Therapiehäufigkeit ermittelt werden:
+1)Für am QS-System (Qualität und Sicherheit GmbH) teilnehmende Tierhalter nimmt der Tierarzt die Meldung des Antibiotikaeinsatzes vor. Tierhalter werden daraufhin halbjährlich über ihren Therapieindex und die Einstufung im Vergleich zu allen teilnehmenden Betrieben sowie über die betriebsinterne zeitliche Entwicklung informiert.
+2)Alternativ kann die betriebliche halbjährliche Therapiehäufigkeit gemäß § 58c Arzneimittelgesetz (AMG 2005) ermittelt werden, indem der Antibiotikaeinsatz vom Schweinehalter oder Tierarzt in die Datenbank des HIT (Herkunftssicherungs- und Informationssystem für Tiere) eingetragen wird.
+EOF
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = "herd_size"
+    default_type = "Report"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Antibiotikanwendung"
+          short-description = "Anwendungsdauer inkl. Wirktage · Anzahl Wirkstoffe · Anzahl behandelter Tiere"
+          long-description = "Anwendungsdauer inkl. Wirktage · Anzahl Wirkstoffe · Anzahl behandelter Tiere"
+          images = [ ]
+        }
+      }
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Therapieindex"
+      description = "Beschreibung der Formel"
+    }
+    // End-Formula
+    Formula {
+      name = "Therapiehäufigkeit"
+      description = "Beschreibung der Formel"
+      Ranges {
+        unit = "%|m²|kg|..."
+        visual-lowerbound = 15.5
+        visual-upperbound = 75.0
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat xy."
+          lowerbound = 60
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 100
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 0
+          upperbound = 30
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Schlachtbefunde"
+  description = "Eine Allgemeine Beschreibung zusätzlich zu der detaillierten unten"
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Die Daten, die vom Schlachthof entsprechend der rechtlichen Vorgaben oder zusätzlich freiwillig erhoben werden und dem Tierhalter zur Verfügung gestellt werden, liefern Informatio- nen über Krankheitsgeschehen oder haltungsbedingte Schäden (Technopathien). Eine Auskunft über Schlachtbefunde von Sauen erfolgt gegebenenfalls erst nach Anfrage beim zuständigen Schlachthof. Folgende Daten werden von Schlachthöfen erhoben: Brustfellentzündungen (Pleuritiden), Bauchfellentzündungen (Peritonitiden), Lungenentzündungen (Pneumonien), Gelenkentzündungen (Arthritiden), Leberveränderungen, Herzveränderungen, Darmveränderungen, Nierenveränderungen, Milzveränderungen, Hautveränderungen, Liegebeulen/Bursitiden, Abszesse, Treibespuren."
+  when-and-how-often = "Daten vom Schlachthof halbjährlich auswerten."
+  which-and-how-many = "Alle Schlachtbefunde aller Sauen vom Schlacht- und Trimmband, gegebenenfalls aus der Lebendtierbeschau."
+  how = "Auswertung der Schlachtbefunde des betrachteten Halbjahres hinsichtlich Verletzungen und Krankheiten. Am QS-System teilnehmende Tierhalter haben Zugang zur zentralen Befunddatenbank und können sich zu jeder Lieferpartie selbst die Einzeldaten der Schlachtbefunde herunterladen."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = "herd_size"
+    default_type = "Report"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Schlachtbefund"
+          short-description = "Tiere mit Schlachtbefunden"
+          long-description = "Tiere mit Schlachtbefunden"
+          images = [ ]
+        }
+        Var "B" {
+          name = "beurteilte Tiere"
+          short-description = "Gesamtzahl beurteilter Tiere"
+          long-description = "Gesamtzahl beurteilter Tiere"
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      //End-Options
+    }
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Schlachtbefunde"
+      description = "Auswertung der Schlachtbefunde hinsichtlich Verletzungen und Krankheiten"
+      expression = (A / B) * 100
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Nestbaumaterial"
+  description = "Vor dem Abferkeln haben Sauen eine hohe Motivation, ein Nest zu bauen. Hierzu sollte geeignetes Material ab dem 112. Trächtigkeitstag zur Verfügung gestellt werden."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Vor dem Abferkeln haben Sauen eine hohe Motivation, ein Nest zu bauen. Hierzu sollte geeignetes Material wie Langstroh, Jutesäcke oder vergleichbare Materialien, die von der Sau ins Maul aufgenommen, am Boden bewegt oder hin und her getragen werden können, angeboten werden. Bei nicht vorhandenem oder nicht angenommenem Nestbaumaterial können die Tiere dieses Verhalten nicht ausüben, was zu Unruhe beim Tier, verlängerter Geburtsdauer und höheren Ferkelverlusten führen kann. Die Materialien zum Nestbau sollten der Sau ab dem 112. Trächtigkeitstag zur Verfügung gestellt und mindestens bis zum ersten Tag nach dem Abferkeln täglich erneuert bzw. beim Verbleiben in der Bucht auf Kotverschmutzung kontrolliert werden"
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, am Tag vor dem Abferkeln erheben und auswerten."
+  which-and-how-many = "Abferkelstall. Jede Sau der neu eingestallten Gruppe."
+  how = "Es wird erfasst, ob Nestbaumaterial wie Langstroh, Jutesäcke oder vergleichbare Materialien, die von der Sau ins Maul aufgenommen und am Boden bewegt oder hin und her getragen werden können, angeboten wird. „Geeignet“ ist das angebotene Nestmaterial, wenn es vorhanden ist, Gebrauchsspuren zeigt bzw. aufgebraucht wird und nicht mit Kot verschmutzt ist."
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = "herd_size"
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "geeignet"
+          short-description = "Das angebotene Nestmaterial ist vorhanden, zeigt Gebrauchsspuren bzw. ist aufgebraucht und nicht mit Kot verschmutzt."
+          long-description = "Das angebotene Nestmaterial ist vorhanden, zeigt Gebrauchsspuren bzw. ist aufgebraucht und nicht mit Kot verschmutzt."
+          images = [ ]
+        }
+        Var "B" {
+          name = "nicht geeignet"
+          short-description = "Das angebotene Nestmaterial ist nicht vorhanden, zeigt keine Gebrauchsspuren und ist mit Kot verschmutzt."
+          long-description = "Das angebotene Nestmaterial ist nicht vorhanden, zeigt keine Gebrauchsspuren und ist mit Kot verschmutzt."
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Nestbaumaterial"
+      description = "Anteil von Sauen mit geeigentem Nestbaumaterial"
+      expression = (A / (A + B)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 80
+        visual-upperbound = 100
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat kein geeignetes Nestbaumaterial."
+          lowerbound = 100
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 100
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben ungeeignetes Nestbaumaterial , sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 90
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Anzeichen für Stereotypien"
+  description = "Stereotypien sind Verhaltensweisen, die wiederholt in der immer gleichen Abfolge gezeigt werden und keine erkennbare Funktion haben. Sie sind ein Ausdruck von Frustration. Ein Hinweis auf diese Stereotypien ist in der Regel eine deutliche Schaumbildung am Maul der betroffenen Sauen."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Stereotypien sind Verhaltensweisen, die wiederholt in der immer gleichen Abfolge gezeigt werden und keine erkennbare Funktion haben. Sie sind ein Ausdruck von Frustration und weisen auf einen starken Beschäftigungsmangel hin, der häufig auf eine Unterversorgung mit strukturreichem Futter oder Beschäftigungsmaterial zurückzuführen ist. Leerkauen und Zungenrollen sind typische Stereotypien von Sauen. Beim Leerkauen zeigen Sauen Kaubewegungen ohne Futter oder anderes Material im Maul. Dieses Verhalten kann auch in Kombination mit Zähneknirschen und Zungenrollen auftreten. Beim Zungenrollen wird die Zunge wiederkehrend und über mehrere Sekunden anhaltend vor- und zurückbewegt oder auch eingerollt, ohne dass dabei Futter oder Material bearbeitet oder beleckt wird. Ein Hinweis auf diese Stereotypien ist in der Regel eine deutliche Schaumbildung am Maul der betroffenen Sauen. Schaum entsteht, wenn der angesammelte Speichel ständig von der Zunge bewegt und dabei mit Luft vermischt wird."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Sauen im Deck-, Warte- und Abferkelstall"
+  how = "Beurteilung der Tiere auf deutliche weiße Schaumbildung am Maul. Schaumbildung am Maul kann auch im Zusammenhang mit der Futteraufnahme entstehen. Dieser Indikator sollte deshalb nicht während oder unmittelbar nach der Fütterung erhoben werden."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Keine Schaumbildung am Maul"
+          long-description = "Beschreibung der ersten Option"
+          images = [ ]
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Deutliche Schaumbildung am Maul"
+          long-description = "Deutliche Schaumbildung am Maul (weißer Schaum)"
+          images = [
+            "Stereotypien1",
+            "Stereotypien2"]
+          thumbnail = ""
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Anzeichen für Stereotypien"
+      description = "Anteil der Tiere mit Schaumbildung am Maul."
+      expression = "(A / ((A + B)) * 100"
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 30
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat Schaumbildung am Maul."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben Schaumbildung am Maul, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 15
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Kotverschmutzung der Tiere"
+  description = "Verschmutzungen der Tiere mit Kot sind ein Indikator für unpassende Haltungsbedingungen und können Infektionen nach sich ziehen."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Verschmutzungen der Tiere mit Kot sind ein Indikator für un- passende Haltungsbedingungen und können durch Schmutzkeime zu Infektionen des Gesäuges, des Urogenitaltrakts oder der Klauen führen. Besonders im Deckstall können bereits leichte Kotverschmutzungen beim Besamen zum Eintrag von Keimen in den Genitaltrakt führen. Verschmutzungen von Schweinen mit Kot deuten bei optimalen Stalltemperaturen auf zu kleine oder verschmutzte Liegeflächen hin. Kranke Tiere werden häufig aus dem Liegebereich verdrängt und legen sich in verkoteten Bereichen ab. Bei hohen Temperaturen oder bei Hitzestress kann Verschmutzung zusätzlich durch Suhlen im Kot entstehen, wenn die Tiere Abkühlungsmöglichkeiten suchen."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Sauen im Deck-, Warte- und Abferkelstall"
+  how = "Beurteilung einer je Tier zufällig ausgewählten Körperseite hinsichtlich Kotverschmutzungen. Verschmutzungen sind nur dann als solche zu beurteilen, wenn eine Kotauflagerung (frisch oder getrocknet) zu sehen ist. Verfärbungen der Haut bzw. des Borstenkleids alleine sind nicht zu werten."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Animal"
+    type_changeable = false
+    presentation = "classification"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Sauber bis leicht verschmutzt"
+          long-description = "„Sauber bis leicht verschmutzt“: bis 30 % der Oberfläche mit Kotauflagerung"
+          images = [
+            "Kotverschmutzung1",
+            "Kotverschmutzung2"]
+          thumbnail = ""
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Stark verschmutzt"
+          long-description = "„Stark verschmutzt“: mehr als 30 % der Oberfläche mit Kotauflagerung"
+          images = [
+            "Kotverschmutzung3",
+            "Kotverschmutzung4"]
+          thumbnail = ""
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Kotverschmutzung"
+      description = "Anteil der Tiere mit starker Kotverschmutzung"
+      expression = "(A / ((A + B)) * 100"
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 20
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat starke Kotverschmutzungen."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben starke Kotverschmutzungen, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 10
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Hautverletzungen (außer Vulva, Gesäuge und Schulterläsion)"
+  description = "Verletzungen der Haut entstehen durch soziale Auseinandersetzungen beim Gruppieren der Tiere sowie durch gegenseitiges Verdrängen und sind ein Hinweis auf andauernden sozialen Stress."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Verletzungen der Haut entstehen durch soziale Auseinandersetzungen beim Gruppieren der Tiere (meist an Hals, Schulter oder Flanke) sowie durch gegenseitiges Verdrängen, z. B. vom Futterplatz. Auch hervorstehende Kanten der Aufstallung und des Bodens können zu Verletzungen führen. Hautverletzungen sind schmerzhaft. Wenn eine Woche oder länger nach der Neugruppierung sowohl frische als auch abheilende Verletzungen vorhanden sind, sind diese ein Hinweis auf andauernden sozialen Stress."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, aber frühestens eine Woche nach Neugruppierungen erheben und auswerten."
+  which-and-how-many = "Sauen im Deck-, Warte- und Abferkelstall"
+  how = "Beurteilung einer je Tier zufällig ausgewählten Körperseite hinsichtlich frischer und verkrusteter Hautverletzungen. Ausgenommen sind Verletzungen an Vulva, Gesäuge und Schulterläsionen. Strichförmige und flächige Hautverletzungen können sowohl oberflächliche Kratzer als auch tiefergehende Wunden sein. Abheilende Verletzungen werden als eine durchgängige Verletzung gezählt, wenn die abgeheilten Zwischenräume jeweils nicht länger als 0,5 cm sind."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Animal"
+    type_changeable = false
+    presentation = "classification"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "< 4 strichförmige Verletzungen mit ≥ 5 cm Länge, und keine flächige Verletzung mit ≥ 2,5 cm Ø (2-Euro-Münze)"
+          long-description = "< 4 strichförmige Verletzungen mit ≥ 5 cm Länge, und keine flächige Verletzung mit ≥ 2,5 cm Ø (2-Euro-Münze)"
+          images = [
+            "Hautverletzung1"]
+          thumbnail = ""
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "4–15 strichförmige Verletzungen mit ≥ 5 cm Länge, und keine flächige Verletzung mit r ≥ 2,5 cm Ø (2-Euro-Münze)"
+          long-description = "4–15 strichförmige Verletzungen mit ≥ 5 cm Länge, und keine flächige Verletzung mit r ≥ 2,5 cm Ø (2-Euro-Münze)"
+          images = [
+            "Hautverletzung2",
+            "Hautverlezung3"]
+          thumbnail = ""
+        }
+        Var "C" {
+          name = "Bonitur 2"
+          short-description = "> 15 strichförmige Verletzungen mit ≥ 5 cm Längeoder eine flächige Verletzung mit r ≥ 2,5 cm Ø (2-Euro-Münze)"
+          long-description = "> 15 strichförmige Verletzungen mit ≥ 5 cm Längeoder eine flächige Verletzung mit r ≥ 2,5 cm Ø (2-Euro-Münze)"
+          images = [
+            "Hautverletzung4",
+            "Hautverletzung5"]
+          thumbnail = ""
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Hautverletzungen"
+      description = "Anteil der Tiere mit starken Hautverletzungen"
+      expression = (C / (A + B + C)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 20
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat starke Hautverletzungen."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben starke Hautverletzungen, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 10
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Körperkondition"
+  description = "Eine optimale Körperkondition ist wichtig für die Gesundheit und Aufzuchtleistung von Sauen."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Eine optimale Körperkondition ist wichtig für die Gesundheit und Aufzuchtleistung von Sauen. Unterkonditionierte Sauen weisen auf eine quantitativ oder qualitativ unzureichende Fütterung hin, d. h. entweder auf zu wenig Futter je Tier und Tag, zu wenig Fressplätze oder aber zu wenig Energie und/ oder Rohprotein. Außerdem kann Abmagerung ein Hinweis auf eine (chronische) Erkrankung oder einen eingeschränkten Zugang zum Futter sein, z. B. aufgrund von Lahmheit. Zu dünne Sauen nehmen schlechter auf, haben eine verminderte Milchleistung und entwickeln leichter Schulterläsionen. Eine Überkonditionierung hingegen weist auf eine Fütterung über den Bedarf hin, d. h. entweder auf zu viel Futter je Tier und Tag, nicht tierindividuelle Futtervorlage in der Gruppenhaltung oder zu viel Energie und zu wenig Rohfaser je kg Futter. Fette Sauen neigen zu Fundamentproblemen, einer längeren Geburtsdauer, erhöhten Totgeburtenraten und größeren tiergesundheitlichen Problemen nach der Geburt. Außerdem sind fette Sauen weniger beweglich und es besteht die Gefahr von erhöhten Erdrückungsverlusten neugeborener Ferkel."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten"
+  which-and-how-many = "Sauen im Deck-, Warte- und Abferkelstall "
+  how = "Beurteilung der Köperkondition mit dem Body Condition Score (BCS). Die Körperkondition sollte an stehenden Sauen beurteilt werden. Liegende Sauen im Abferkelstall lassen sich mit etwas Futter, das Sie zum Zeitpunkt der Beurteilung in den Trog geben, zum Aufstehen bewegen."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    Sample {
+      // work-in-progress
+      type = "complete|partial"
+      partial-factor = 0.3
+      // This key will only be of use if the sample-type is "partial"
+    }
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 1"
+          short-description = "Zu mager"
+          long-description = "Sitzbein und Hüfthöcker stehen deutlich hervor. Schwanzansatz und Flanken sind eingefallen. Dornfortsätze der Wirbel stehen über den gesamten Rücken deutlich hervor. Einzelne Rippen sind klar zu erkennen."
+          images = [
+            "Körperkondition1"]
+          thumbnail = ""
+        }
+        Var "B" {
+          name = "Bonitur 2"
+          short-description = "Mager"
+          long-description = "Sitzbein- und Hüfthöcker sind leicht mit Gewebe bedeckt und können bei Auflegen des Handballens gefühlt werden. Schwanzansatz und Flanken sind leicht eingefallen. Nur einzelne Dornfortsätze der Wirbel und einzelne Rippen sind sichtbar."
+          images = [
+            "Körperkondition2"]
+          thumbnail = ""
+        }
+        Var "C" {
+          name = "Bonitur 3"
+          short-description = "Gut"
+          long-description = "Sitzbein- und Hüfthöcker sind mit Gewebe bedeckt, können aber mit leichtem Druck des Handballens ertastet werden. Die Dornfortsätze der Wirbel sind nur in Schulterhöhe gerade noch sichtbar. Der Schwanzansatz ist von Gewebe umgeben."
+          images = [
+            "Körperkondition3"]
+          thumbnail = ""
+        }
+        Var "D" {
+          name = "Bonitur 4"
+          short-description = "Sehr gut"
+          long-description = "Sitzbein- und Hüfthöcker sind sehr gut mit Gewebe bedeckt, können aber mit festem Druck eines Fingers ertastet werden. Becken und Rippen sind nicht sichtbar. Die Dornfortsätze der Rückenwirbel sind nicht sichtbar. Die Flanken sind voll. Am Schwanzansatz und an den Innenschenkeln sind leichte Fettfalten zu erkennen."
+          images = [
+            "Körperkondition4"]
+          thumbnail = ""
+        }
+        Var "E" {
+          name = "Bonitur 5"
+          short-description = "Fett"
+          long-description = "Becken, Rippen, Rücken- und Lendenwirbel lassen sich auch unter starkem Druck nicht ertasten. Der Schwanzansatz ist mit Fettfalten tief im Gewebe versunken. Starke Fettfalten an den Innenschenkeln."
+          images = [
+            "Körperkondition5"]
+          thumbnail = ""
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "zu magere Sauen"
+      description = "Anteil der Sauen, die zu mager sind."
+      expression = (A / (A + B + C + D + E)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 5
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier ist zu mager."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 0
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere sind zu mager, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 3
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      Formula {
+        name = "zu magere und magere Sauen"
+        description = "Anteil der Sauen, die zu mager und mager sind."
+        expression = "((A + B) / (A + B + C + D + E)) * 100"
+      }
+      Formula {
+        name = "Fette Sauen"
+        description = "Anteil der Sauen, die zu fett sind."
+        expression = (E / (A + B + C + D + E)) * 100
+        Ranges {
+          unit = "%"
+          visual-lowerbound = 0
+          visual-upperbound = 10
+          Targetrange {
+            tag = "Zielbereich"
+            description = "Kaum ein Tier ist zu fett."
+            lowerbound = 0
+            //Dezimalzahlen wären hier genauso möglich
+            upperbound = 3
+          }
+          Alertrange {
+            tag = "Alarmbereich"
+            description = "Zu viele Tiere sind zu fett, sofortiger Handlungsbedarf ist nötig!"
+            lowerbound = 6
+            upperbound = 100
+          }
+          Warningrange {
+            tag = "Frühwarnbereich"
+            description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+          }
+        }
+        // End-Ranges
+      }
+      // End-Formula
+
+    }
+    // End-Evaluation
+  }
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Schwellungen an den Hinterbeinen"
+  description = "Schwellungen an den Hinterbeinen können durch Liegen auf hartem Untergrund entstehen und können schmerzhaft sein sowie beim Aufbrechen zu Infektionen oder Lahmheit führen."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Schwellungen an den Hinterbeinen, insbesondere am Mittelfuß, können durch Liegen auf hartem Untergrund entstehen. Sie entwickeln sich als Verdickung der Haut, gefolgt durch Bildung zusätzlicher Schleimbeutel bzw. Schleimbeutelentzündungen, die auch aufbrechen können. Schwellungen können schmerzhaft sein sowie beim Aufbrechen zu Infektionen oder Lahmheit führen."
+  when-and-how-often = "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Sauen im Deck-, Warte- und Abferkelstall "
+  how = "Beurteilung beider Hinterbeine (Unterbeine) hinsichtlich deutlich erkennbarer Schwellungen (ca. mandarinengroß). Der schwerere Befund wird notiert."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Animal"
+    type_changeable = false
+    presentation = "classification"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Keine Schwellung oder allenfalls Schwellung < 5 cm Ø "
+          long-description = "Keine Schwellung oder allenfalls Schwellung < 5 cm Ø "
+          images = [
+            "Schwellungen_an_den_Hinterbeinen1"]
+          thumbail = "Schwellungen_an_den_Hinterbeinen1"
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Deutlich erkennbare Schwellung ≥ 5 cm Ø "
+          long-description = "Deutlich erkennbare Schwellung ≥ 5 cm Ø "
+          images = [
+            "Schwellungen_an_den_Hinterbeinen2",
+            "Schwellungen_an_den_Hinterbeinen3"]
+          thumbail = "Schwellungen_an_den_Hinterbeinen2"
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Schwellungen an den Hinterbeinen"
+      description = "Anteil der Tiere mit deutlich erkennbarer Schwellung an den Hinterbeinen."
+      expression = (A / (A + B)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 20
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat Schwellungen."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben Schwellungen, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 10
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Anzeichen von Ektoparasiten "
+  description = "Ektoparasiten sind Parasiten, die auf oder in der Haut der Schweine leben und sind für die Tiere nicht nur irritierend, sondern können auch schmerzhaft sein und zu erhöhter Unruhe und damit zu erhöhten Ferkelverlusten sowie verminderten Zunahmen führen."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Ektoparasiten sind Parasiten, die auf oder in der Haut der Schweine leben; insbesondere sind hier Räudemilben (Sarcoptes suis) und Läuse (Hämatopinus suis) relevant. Läuse und deren Eier sind direkt am Tier (Hinterhand bzw. Nacken) mit bloßem Auge erkennbar. Eine Infektion mit Räudemilben führt zunächst zu roten Punkten am ganzen Körper; chronische Infektionen bei Sauen äußern sich in graubraunen Krusten an den Unterbeinen, Schwanzansatz, Nacken und an den Ohren. In jedem Fall ist auffälliger Juckreiz zu beobachten. Ektoparasiten sind für die Tiere nicht nur irritierend, sondern können auch schmerzhaft sein und zu erhöhter Unruhe und damit zu erhöhten Ferkelverlusten sowie verminderten Zunahmen führen."
+  when-and-how-often = "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten. Bester Zeitpunkt zur Erhebung der Hautirritationen ist nach dem Einstallen gewaschener Sauen in den Abferkelstall."
+  which-and-how-many = "Sauen im Deck-, Warte- und Abferkelstall"
+  how = "Beurteilung der Tiere aus ca. 1 m Entfernung hinsichtlich sichtbarer Parasiten wie Läuse, Läuseeier und Räude."
+  branches = [
+    "Abferkelstall",
+    "Deckstall",
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Läuse oder Eier"
+          short-description = "Sichtbare Parasiten"
+          long-description = "Mit bloßem Auge sichtbare Parasiten wie Läuse-und/oder deren Eier an den Borsten klebend, zusätzlich oft intensives Scheuern an Gegenständen oder Kratzen mit Beinen"
+          images = [
+            "Ektoparasiten1",
+            "Ektoparasiten2"]
+          thumbail = "Ektoparasiten1"
+        }
+        Var "B" {
+          name = "Beginnende Räude"
+          short-description = "Viele rote Punkte"
+          long-description = "Hautirritationen sind wie viele rote Punkte über den Körper verteilt, zusätzlich intensives Scheuern an Gegenständen oder Kratzen mit Beinen"
+          images = [
+            "Ektoparasiten3"]
+          thumbail = "Ektoparasiten3"
+        }
+        Var "C" {
+          name = "Räude"
+          short-description = "Graubraune Krusten"
+          long-description = "Graubraune Krusten an Ohren bzw. Ohrgrund, Nacken, Schwanzbasis bzw. Mittelfußbereich, zusätzlich intensives Scheuern an Gegen-ständen oder Kratzen mit Beinen"
+          images = [
+            "Ektoparasiten4"]
+          thumbail = "Ektoparasiten4"
+        }
+        Var "D" {
+          name = "ohne Befund"
+          short-description = "ohne Befund"
+          long-description = "ohne Befund"
+          images = [ ]
+        }
+        //End-Var labelClass2
+      }
+      ComposedVar "Ektoparasit" {
+        expression = "(A + B + C + D) / 3"
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Verdacht auf Ektoparasiten"
+      description = "Es besteht Verdacht auf Ektoparasiten"
+      expression = "Ektoparasit"
+      Ranges {
+        unit = "Tier"
+        visual-lowerbound = 0
+        visual-upperbound = 10
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kein Tier hat Verdacht auf Ektoparasiten."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 0
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben Verdacht auf Ektoparasiten, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 1
+          upperbound = 1000
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Vulvaverletzungen"
+  description = "Verletzungen der Vulva entstehen durch gegenseitiges Verdrängen oder durch soziale Auseinandersetzungen beim Gruppieren der Tiere und sind ein Hinweis auf andauernden sozialen Stress."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Verletzungen der Vulva entstehen durch gegenseitiges Verdrängen, z. B. vom Futterplatz, oder durch soziale Auseinandersetzungen beim Gruppieren der Tiere. Diese Verletzungen sind schmerzhaft. Wenn eine Woche oder länger nach der Neugruppierung sowohl frische als auch abheilende Verletzungen vorhanden sind, sind diese ein Hinweis auf andauernden sozialen Stress."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, aber frühestens eine Woche nach der Neugruppierung erheben und auswerten."
+  which-and-how-many = "Sauen im Wartestall"
+  how = "Beurteilung hinsichtlich frischer oder verkrusteter Verletzungen im Bereich der Vulva. Verletzungen können sowohl oberflächliche Kratzer als auch tiefergehende Wunden sein."
+  branches = [
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Animal"
+    type_changeable = false
+    presentation = "classification"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Keine Verletzung an der Vulva"
+          long-description = "Keine Verletzung an der Vulva"
+          images = [
+            "Vulvaverletzung1"]
+          thumbail = "Vulvaverletzung1"
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Eine frische oder verkrustete Verletzung an der Vulva"
+          long-description = "Eine frische oder verkrustete Verletzung an der Vulva (jeder Größe)"
+          images = [
+            "Vulvaveretzung2",
+            "Vulvaverletzung3"]
+          thumbail = "Vulvaverletzung2"
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Vulvaverletzungen"
+      description = "Anteil der Tiere mit Vulvaverletzungen"
+      expression = (B / (A + B)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 30
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat Vulvaverletzungen."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben Vulvaverletzungen, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 10
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Lahmheit"
+  description = "Der Begriff Lahmheit beschreibt Störungen des Gangbildes, die schmerzbedingt sind. Lahmheiten ziehen neben erhöhten Behandlungskosten und Arbeitsaufwand verminderte Fruchtbarkeit und vermehrte Abgänge nach sich."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Der Begriff Lahmheit beschreibt Störungen des Gangbildes, die schmerzbedingt sind. Lahme Sauen empfinden aber nicht nur Schmerzen, sondern haben auch eingeschränkten Zugang zu Futter und Wasser oder anderen Ressourcen. Lahmheiten ziehen neben erhöhten Behandlungskosten und Arbeitsaufwand verminderte Fruchtbarkeit und vermehrte Abgänge nach sich. Lahmheit geht bei Sauen überwiegend von Klauen- und Gelenkserkrankungen aus. Lahmheit weist auf schlechte Bodengestaltung im Liegebereich (zu hart, nicht sauber) oder im Aktivitätsbereich (inadäquate Spaltenböden, verschmutzt, rutschig) sowie unzureichende Klauenpflege hin. Das frühe Erkennen lahmer Sauen sowie die Diagnose und Behandlung der Ursache sind wesentlich, um Schmerzen zu reduzieren und vorbeugende Maßnahmen treffen zu können."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Sauen im Wartestall"
+  how = "Beurteilung von Tieren hinsichtlich Lahmheit auf möglichst trittsicherem Boden."
+  branches = [
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Keine oder leichte Lahmheit"
+          long-description = "Normaler Gang (flüssige Bewegung, alle Schritte gleich lang, alle Gliedmaßen gleichmäßig belastet) oder leichte Lahmheit (steifer Gang, Verkürzung der Schrittlänge, schlangenartige Bewegung der Wirbelsäule)."
+          images = [ ]
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Deutliche Lahmheit"
+          long-description = "Deutlich verminderte Belastung einer Gliedmaße, schnelles Be- und Entlasten des betroffenen Beines („Tippen“) bis hin zu ausgeprägter Entlastung der betroffenen Gliedmaße"
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Lahmheiten"
+      description = "Anteil der Tiere, die deutlich lahm sind."
+      expression = (B / (A + B)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 10
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier geht deutlich lahm."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 3
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere gehen deutlich lahm, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 6
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Schulterläsionen"
+  description = "Schulterläsionen sind Veränderungen der Haut direkt über dem Knochenvorsprung des Schulterblattes und schmerzhaft und können Infektionen nach sich ziehen."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Veränderungen der Haut direkt über dem Knochenvorsprung des Schulterblattes sind bei Sauen zu beobachten, die – meist während der Säugeperiode – stark abgemagert sind und/oder auf zu hartem Boden liegen. Die Veränderungen sind schmerzhaft und können bei Aufbrechen eine Eintrittspforte für Infektionserreger sein."
+  when-and-how-often = "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Sauen im Abferkelstall"
+  how = "Beurteilung beider Seiten der Tiere hinsichtlich Rötung oder durchbrochener Haut über dem Schulterblatt. Der schwerere Befund wird notiert. Bei der Beurteilung der Schulterläsionen müssen beide Schulterblätter gut sichtbar sein. Liegende Sauen lassen sich mit etwas Futter, das Sie zum Zeitpunkt der Beurteilung in den Trog geben, leicht zum Aufstehen bewegen. "
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Animal"
+    type_changeable = false
+    presentation = "classification"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Keine Veränderung"
+          long-description = "Keine Veränderung"
+          images = [
+            "Schulterlaesionen1"]
+          thumbail = "Schulterlaesionen1"
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Deutlich Sichtbare Rötung"
+          long-description = "Druckstelle mit deutlich sichtbarer Rötung, Haut nicht durchbrochen"
+          images = [
+            "Schulterlaesionen2"]
+          thumbail = "Schulterlaesionen2"
+        }
+        Var "C" {
+          name = "Bonitur 2"
+          short-description = "Deutlich sichtbare Schulterläsion"
+          long-description = "Offene, frische oder verkrustete Wunde (Haut durchbrochen)"
+          images = [
+            "Schulterlaesionen3"]
+          thumbail = "Schulterlaesionen3"
+        }
+        //End-Var labelClass2
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Veränderungen an der Schulter"
+      description = "Anteil der Tiere mit Veränderungen an der Schulter."
+      expression = ((B + C) / (A + B + C)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 20
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat Veränderungen an der Schulter."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben Veränderungen an der Schulter, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 10
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+    Formula {
+      name = "Deutlich sichtbarer Schulterläsion"
+      description = "Anteil der Tiere mit deutlich sichtbarer Schulterläsion"
+      expression = (C / (A + B + C)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 10
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kein Tier hat eine deutlich sichtbare Schulterläsion."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 0
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben deutlich sichtbare Schulterläsionen, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 5
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Verletzungen an Zitzen und Gesäuge"
+  description = "Verletzungen an Zitzen und Gesäuge sind nicht nur schmerzhaft für die Sau, sondern können die Zahl funktionaler Zitzen verringern und somit zu einer schlechteren Aufzuchtleistung führen."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Verletzungen an Zitzen und Gesäuge sind nicht nur schmerzhaft für die Sau, sondern können die Zahl funktionaler Zitzen verringern und somit zu einer schlechteren Aufzuchtleistung führen. Durch Auseinandersetzungen zwischen Ferkeln bei großen Würfen, zu geringer Milchleistung oder zu wenigen funktionalen Zitzen der Sau kann es zu Schäden des Gesäuges kommen. Verletzungen an Zitzen und Gesäuge sind außerdem ein Hinweis auf mangelhafte Spaltenböden im Liegebereich der Sauen im Abferkelstall und werden zusätzlich beim Aufstehen durch zu lange Klauen oder rutschige Böden verursacht."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Sauen im Abferkelstall"
+  how = "Beurteilung einer je Tier zufällig ausgewählten Körperseite hinsichtlich frischer oder verkrusteter Verletzungen am Gesäuge und den Zitzen."
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Animal"
+    type_changeable = false
+    presentation = "classification"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Maximal 4 frische oder verkrustete Verletzungen jeder Größe am Gesäuge, Zitzen sind unverletzt oder vollständig abgeheilt"
+          long-description = "Maximal 4 frische oder verkrustete Verletzungen jeder Größe am Gesäuge, Zitzen sind unverletzt oder vollständig abgeheilt"
+          images = [
+            "Verletzungen_an_Zitzen_und_Gesaeuge1"]
+          thumbail = "Verletzungen_an_Zitzen_und_Gesaeuge1"
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Mindestens 5 frische oder verkrustete Verletzungen jeder Größe am Gesäuge oder mindestens eine verletzte oder abgerissene Zitze"
+          long-description = "Mindestens 5 frische oder verkrustete Verletzungen jeder Größe am Gesäuge oder mindestens eine verletzte oder abgerissene Zitze"
+          images = [
+            "Verletzungen_an_Zitzen_und_Gesaeuge2",
+            "Verletzungen_an_Zitzen_und_Gesaeuge3",
+            "Verletzungen_an_Zitzen_und_Gesaeuge4"]
+          thumbail = "Verletzungen_an_Zitzen_und_Gesaeuge3"
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Verletzungen an Zitzen und Gesäuge"
+      description = "Anteil der Tiere mit Verletzungen an Zitzen und Gesäuge"
+      expression = (B / (A + B)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 30
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat Verletzungen an Zitzen und Gesäuge."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben Verletzungen an Zitzen und Gesäuge, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 20
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Überlange Klauen"
+  description = "Überlange Klauen können Fehlstellungen und damit eine unphysiologische Gewichtsverteilung, ein verändertes Gangbild und Beeinträchtigungen des Verhaltens zur Folge haben."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Überlange Klauen können Fehlstellungen und damit eine unphysiologische Gewichtsverteilung, ein verändertes Gangbild und Beeinträchtigungen des Verhaltens zur Folge haben. Zudem sind lange Klauen verletzungsanfällig und es kann zu Hornbrüchen oder zum Abriss einer Afterklaue kommen. Der Zustand der Klauen ergibt sich aus dem Zusammenwirken von Klauenpflegemanagement, Umweltbedingungen und individueller, genetisch bedingter Hornqualität sowie der Beinstellung. Risikofaktoren für überlange Klauen sind somit zu seltene oder nicht fachgerechte Klauenpflege, genetische Dispositionen für überlange Klauen, aber auch Stalleinrichtungen, die den natürlichen Klauenabrieb verhindern"
+  when-and-how-often = "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Sauen im Abferkelstall"
+  how = "Beurteilung der Klauen des Hinterbeines einer je Tier zufällig ausgewählten Körperseite hinsichtlich überlanger Klauen."
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Keine überlange Haupt- und Afterklaue"
+          long-description = "Der Winkel zwischen Vorderwand und Sohle der Vorderklaue beträgt 50–60 Grad. Die Afterklauen berühren im Normalfall nicht den Boden, wenn die Tiere auf festem Untergrund stehen"
+          images = [
+            "Klauen1",
+            "Klauen2"]
+          thumbail = "Klauen1"
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Überlange Haupt- und/oder Afterklaue"
+          long-description = "Überlange Haupt- und/oder Afterklaue"
+          images = [
+            "Klauen3",
+            "Klauen4"]
+          thumbail = "Klauen3"
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Überlange Klauen"
+      description = "Anteil der Tiere mit überlangen Klauen"
+      expression = "((B / (A + B)) * 100"
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 20
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat überlange Klauen."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben überlange Klauen, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 10
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Klauenveränderungen (außer an Ballen und Sohle)"
+  description = "Klauenveränderungen liegen z. B. bei Verletzungen der Klaue, blutigen Abschürfungen des Wandhorns, deutlich sichtbaren Hornspalten und langen oder tiefen Rissen entlang des Übergangs zwischen Ballen- und Klauenhorn vor."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Klauenveränderungen liegen z. B. bei Verletzungen der Klaue, blutigen Abschürfungen des Wandhorns, deutlich sichtbaren Hornspalten und langen oder tiefen Rissen entlang des Übergangs zwischen Ballen- und Klauenhorn vor. Als Sekundärfolge können Klauenentzündungen durch das Eindringen von Keimen auftreten, was meist mit gesundheitlichen Problemen, Schmerzen und Leiden für die Tiere einhergeht. Klauenveränderungen können ein verändertes Gangbild und Beeinträchtigungen des Verhaltens zur Folge haben. Der Zustand der Klauen ergibt sich aus dem Zusammenwirken von Klauenpflegemanagement, Umweltbedingungen und individueller, genetisch bedingter Hornqualität sowie der Beinstellung. Risikofaktoren für Klauenveränderungen sind zu seltene oder nicht fachgerechte Klauenpflege, aber auch unzulängliche Stalleinrichtungen, wie schlecht verlegte Spaltenelemente oder falsch montierte Buchteneinrichtungen, zu glatte oder zu raue Böden."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Sauen im Abferkelstall "
+  how = "Beurteilung der Klauen des Hinterbeines einer je Tier zufällig ausgewählten Körperseite hinsichtlich Klauenveränderungen (außer an Ballen und Sohle)."
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Animal"
+    type_changeable = false
+    presentation = "classification"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Bonitur 0"
+          short-description = "Keine offensichtlichen Veränderungen an Haupt- und Afterklaue"
+          long-description = "Keine offensichtlichen Veränderungen an Haupt- und Afterklaue"
+          images = [
+            "Klauenveraenderung1"]
+          thumbail = "Klauenveraenderung1"
+        }
+        Var "B" {
+          name = "Bonitur 1"
+          short-description = "Vorliegen von mindestens einer der folgenden Veränderungen an mindestens einem Klauenpaar"
+          long-description = "Verletzung an der Klaue, blutige Abschürfung des Wandhorns, deutlich sichtbare Hornspalte, langer oder tiefer Riss entlang des Übergangs zwischen Ballen- und Klauenhorn"
+          images = [
+            "Klauenveraenderung2",
+            "Klauenveraenderung3",
+            "Klauenveraenderung4",
+            "Klauenveraenderung5"]
+          thumbail = "Klauenveraenderung2"
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Klauenveränderung"
+      description = "Anteil der Tiere mit Klauenveränderungen"
+      expression = (B / (A + B)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 20
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat Klauenveränderungen."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben Klauenveränderungen, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 15
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Wasserversorgung - Wartestall"
+  description = "Wasser ist ein wichtiger Nährstoff, der viele Funktionen im Tier erfüllt."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Wasser ist ein wichtiger Bestandteil der Ernährung und erfüllt viele Funktionen im Tier. Es unterstützt die Erhaltung des Zelldrucks, den Nährstofftransport, die Stoffwechselreaktionen und ist Bestandteil von Körperflüssigkeiten. In einer thermoneutralen Haltungsumwelt ist die tägliche Wasseraufnahme abhängig vom Alter, der Lebendmasse, der Fütterungstechnik (trocken oder flüssig), der Futteraufnahme und -zusammensetzung, der Wasserqualität, der Tränketechnik, dem Reproduktionsstatus und der Wurfgröße bei säugenden Sauen. Für die Versorgung mit Wasser spielt auch die Durchflussrate der Tränkeeinrichtungen eine  bedeutende  Rolle. Zu kleine Leitungsquerschnitte, sehr lange Wasserleitungen sowie Korrosion und Ablagerungen in Leitungen und Ventilen können die Durchflussrate vermindern, sodass keine ausreichende Wasseraufnahme möglich ist. Aber auch zu hohe Durchflussraten können die Wasseraufnahme erschweren."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Alle Tränken in den Buchten des Deck-, Warte- und Abferkelstalls, die für die Erhebungen betreten werden. Becken- und Trogtränken mit Aqualevel können nicht ausgelitert werden, hier ist die Wasserfüllhöhe der Tränken und deren Sauberkeit zu prüfen."
+  how = <<EOF
+Prüfung der Tränkeeinrichtungen auf A) Funktionsfähigkeit und B) Durchflussrate.
+A)	Eine Tränke ist nicht funktionsfähig, wenn aus ihr kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist.
+B)	Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft.
+EOF
+  branches = [
+    "Wartestall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Funktionsfähigkeit"
+        Var "A" {
+          name = "funktionsfähig"
+          short-description = "Tränke funktionsfähig"
+          long-description = "Tränke funktionsfähig"
+          images = [ ]
+        }
+        Var "B" {
+          name = "nicht funktionsfähig"
+          short-description = "Tränke nicht funktionsfähig"
+          long-description = "Eine Tränke ist nicht funktionsfähig, wenn aus ihr kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist."
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+      Group {
+        name = "Durchflussrate von funktionsfähigen Tränken"
+        Var "C" {
+          name = "ausreichend"
+          short-description = "1,5 bis 2,2 l/min"
+          long-description = "Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft."
+          images = [ ]
+        }
+        Var "D" {
+          name = "nicht ausreichend"
+          short-description = " < 1,5 l/min"
+          long-description = "Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft."
+          images = [ ]
+        }
+      }
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Funktionsfähigkeit"
+      description = "Anteil nicht funktionsfähiger Tränken."
+      expression = "(A / (A + B)) * 100"
+    }
+    Formula {
+      name = "Durchflussrate"
+      description = "Anteil funktionsfähiger Tränken mit unzureichender Durchflussrate."
+      expression = "(D / A) * 100"
+    }
+    // End-Formula
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Wasserversorgung - Deckstall"
+  description = "Wasser ist ein wichtiger Nährstoff, der viele Funktionen im Tier erfüllt."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Wasser ist ein wichtiger Bestandteil der Ernährung und erfüllt viele Funktionen im Tier. Es unterstützt die Erhaltung des Zelldrucks, den Nährstofftransport, die Stoffwechselreaktionen und ist Bestandteil von Körperflüssigkeiten. In einer thermoneutralen Haltungsumwelt ist die tägliche Wasseraufnahme abhängig vom Alter, der Lebendmasse, der Fütterungstechnik (trocken oder flüssig), der Futteraufnahme und -zusammensetzung, der Wasserqualität, der Tränketechnik, dem Reproduktionsstatus und der Wurfgröße bei säugenden Sauen. Für die Versorgung mit Wasser spielt auch die Durchflussrate der Tränkeeinrichtungen eine  bedeutende  Rolle. Zu kleine Leitungsquerschnitte, sehr lange Wasserleitungen sowie Korrosion und Ablagerungen in Leitungen und Ventilen können die Durchflussrate vermindern, sodass keine ausreichende Wasseraufnahme möglich ist. Aber auch zu hohe Durchflussraten können die Wasseraufnahme erschweren."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Alle Tränken in den Buchten des Deck-, Warte- und Abferkelstalls, die für die Erhebungen betreten werden. Becken- und Trogtränken mit Aqualevel können nicht ausgelitert werden, hier ist die Wassefüllhöhe der Tränken und deren Sauberkeit zu prüfen."
+  how = <<EOF
+Prüfung der Tränkeeinrichtungen auf A) Funktionsfähigkeit und B) Durchflussrate.
+A)	Eine Tränke ist nicht funktionsfähig, wenn aus ihr kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist.
+B)	Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft.
+EOF
+  branches = [
+    "Deckstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Funktionsfähigkeit"
+        Var "A" {
+          name = "funktionsfähig"
+          short-description = "Tränke funktionsfähig"
+          long-description = "Tränke funktionsfähig"
+          images = [ ]
+        }
+        Var "B" {
+          name = "nicht funktionsfähig"
+          short-description = "Tränke nicht funktionsfähig"
+          long-description = "Eine Tränke ist nicht funktionsfähig, wenn aus ihr kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist."
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+      Group {
+        name = "Durchflussrate von funktionsfähigen Tränken"
+        Var "C" {
+          name = "ausreichend"
+          short-description = "1,5 bis 2,2 l/min"
+          long-description = "Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft."
+          images = [ ]
+        }
+        Var "D" {
+          name = "nicht ausreichend"
+          short-description = "< 1,5 l/min"
+          long-description = "Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft."
+          images = [ ]
+        }
+      }
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Funktionsfähigkeit"
+      description = "Anteil nicht funktionsfähiger Tränken."
+      expression = (A / (A + B)) * 100
+    }
+    Formula {
+      name = "Durchflussrate"
+      description = "Anteil funktionsfähiger Tränken mit unzureichender Durchflussrate."
+      expression = (D / A) * 100
+      Ranges {
+      }
+    }
+    // End-Formula
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Wasserversorgung - Abferkelstall"
+  description = "Wasser ist ein wichtiger Nährstoff, der viele Funktionen im Tier erfüllt."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Wasser ist ein wichtiger Bestandteil der Ernährung und erfüllt viele Funktionen im Tier. Es unterstützt die Erhaltung des Zelldrucks, den Nährstofftransport, die Stoffwechselreaktionen und ist Bestandteil von Körperflüssigkeiten. In einer thermoneutralen Haltungsumwelt ist die tägliche Wasseraufnahme abhängig vom Alter, der Lebendmasse, der Fütterungstechnik (trocken oder flüssig), der Futteraufnahme und -zusammensetzung, der Wasserqualität, der Tränketechnik, dem Reproduktionsstatus und der Wurfgröße bei säugenden Sauen. Für die Versorgung mit Wasser spielt auch die Durchflussrate der Tränkeeinrichtungen eine  bedeutende  Rolle. Zu kleine Leitungsquerschnitte, sehr lange Wasserleitungen sowie Korrosion und Ablagerungen in Leitungen und Ventilen können die Durchflussrate vermindern, sodass keine ausreichende Wasseraufnahme möglich ist. Aber auch zu hohe Durchflussraten können die Wasseraufnahme erschweren."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Alle Tränken in den Buchten des Deck-, Warte- und Abferkelstalls, die für die Erhebungen betreten werden. Becken- und Trogtränken mit Aqualevel können nicht ausgelitert werden, hier ist die Wassefüllhöhe der Tränken und deren Sauberkeit zu prüfen."
+  how = <<EOF
+Prüfung der Tränkeeinrichtungen auf A) Funktionsfähigkeit und B) Durchflussrate.
+A)	Eine Tränke ist nicht funktionsfähig, wenn aus ihr kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist.
+B)	Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft.
+EOF
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Funktionsfähigkeit"
+        Var "A" {
+          name = "funktionsfähig"
+          short-description = "Tränke funktionsfähig"
+          long-description = "Tränke funktionsfähig"
+          images = [ ]
+        }
+        Var "B" {
+          name = "nicht funktionsfähig"
+          short-description = "Tränke nicht funktionsfähig"
+          long-description = "Eine Tränke ist nicht funktionsfähig, wenn aus ihr kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist."
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+      Group {
+        name = "Durchflussrate von funktionsfähigen Tränken"
+        Var "C" {
+          name = "ausreichend"
+          short-description = "2,0 bis 4,0 l/min."
+          long-description = "Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft."
+          images = [ ]
+        }
+        Var "D" {
+          name = "nicht ausreichend"
+          short-description = "Säugende Sau: < 2,0 l/min. "
+          long-description = "Durch Öffnen und Fixieren des Tränkeventils (zum Beispiel durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft."
+          images = [ ]
+        }
+      }
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Funktionsfähigkeit"
+      description = "Anteil nicht funktionsfähiger Tränken."
+      expression = "(A / (A + B)) * 100"
+    }
+    Formula {
+      name = "Durchflussrate"
+      description = "Anteil funktionsfähiger Tränken mit unzureichender Durchflussrate."
+      expression = "(D / A) * 100"
+    }
+  }
+  // End-Formula
+}
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Tierverluste - Ferkel"
+  description = "Totgeborene, verendete und euthanasierte Ferkel werden als Tierverluste bezeichnet und sind Tierschutzrechtlich und wirtschaflich von Bedeutung."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Totgeborene, verendete und euthanasierte Ferkel werden als Tierverluste bezeichnet. Sie sind vom betriebsindividuellen Management abhängig und – neben ihrer Tierschutzrelevanz – auch aus ökonomischer Sicht von großer Bedeutung. Zu den Ursachen für verendete und euthanasierte Ferkel zählen unter anderem Unfälle (z. B. Erdrückung), infektiöse Erkrankungen und unzureichende Wärmequellen. Ursache für totgeborene Ferkel können unter anderem eine lange Geburtsdauer, Erkrankungen (z. B. PRRS, Parvo) und Mangelernährung der Sau sein."
+  when-and-how-often = "Fortlaufend erheben, halbjährlich auswerten."
+  which-and-how-many = "Alle Saugferkel."
+  how = <<EOF
+Die Tierverluste werden von Sauenplanern standardmäßig berechnet. Für die Auswertung innerhalb eines Erhebungshalbjahres können Sie sich die Tierverluste als Mittelwert aus allen Würfen des betrachteten Zeitraums nach Echtzeit (Berichtszeitraum „„von … bis““) auslesen lassen. Bei der Datenerfassung sollte neben der Zahl der Todesfälle und Tötungen auch deren Ursache miterfasst werden, um bei Problemen die Auswahl von Gegenmaßnahmen zu vereinfachen.
+Berechnung der Ferkelverluste folgendermaßen getrennt:
+A)	Totgeborene
+B)	Verendete und Euthanasierte (Verluste bis zum Absetzen)
+Jeweils Berechnung des Mittelwertes aus allen Würfen des betrachteten Zeitraums:
+EOF
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = "herd_size"
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "Totgeborene Ferkel"
+          short-description = "Totgeborene Ferkel"
+          long-description = "Totgeborene Ferkel"
+          images = [ ]
+        }
+        Var "B" {
+          name = "Verendete und Euthanasierte Ferkel"
+          short-description = "Verendete und Euthanasierte Ferkel"
+          long-description = "Verendete und Euthanasierte Ferkel (Verluste bis zum Absetzen)"
+          images = [ ]
+        }
+        Var "C" {
+          name = "Alle Ferkel"
+          short-description = "Alle Ferkel des Wurfes"
+          long-description = "Alle Ferkel des Wurfes, inklusive totgeborener Ferkel"
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Totgeborene Ferkel"
+      description = "Anteil Totgeborene Ferkel je Wurf"
+      expression = (A / C) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 20
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier wurde totgeboren."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere sind totgeboren, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 10
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+        Formula {
+          name = "Verendete oder euthanisierte Ferkel"
+          description = "Anteil innerhalb der Säugephase verendeter oder euthanasierter Ferkel je Wurf"
+          expression = (B / (C - A)) * 100
+          Ranges {
+            unit = "%"
+            visual-lowerbound = 5
+            visual-upperbound = 25
+            Targetrange {
+              tag = "Zielbereich"
+              description = "Kaum ein Tier ist verendet oder euthanisiert."
+              lowerbound = 0
+              //Dezimalzahlen wären hier genauso möglich
+              upperbound = 12
+            }
+            Alertrange {
+              tag = "Alarmbereich"
+              description = "Zu viele Tiere sind verendet oder euthanisiert, sofortiger Handlungsbedarf ist nötig!"
+              lowerbound = 17
+              upperbound = 100
+            }
+            Warningrange {
+              tag = "Frühwarnbereich"
+              description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+            }
+          }
+          // End-Ranges
+        }
+        // End-Formula
+
+      }
+      // End-Evaluation
+    }
+    // End-Indicator indicatorLabel
+
+    Indicator "indicatorLabel" {
+      last-modified = "timestamp der letzten Änderung"
+      name = "Antibiotikaeinsatz - Ferkel"
+      description = "Antibiotioka sind im Bedarfsfall sind aus Tierschutzsicht geboten, ein hoher Einsatz weißt auf eine hohe Erkrankungsrate und mögliche Probleme in Haltung oder Management hin."
+      animal-category = "Sauen"
+      video-ref = {
+        "title1" = "link to video"
+      }
+      what-and-why = "Die Verabreichung von Antibiotika zur Behandlung von bakteriellen Infektionen ist im Bedarfsfall aus Tierschutzsicht geboten. Ein hoher Antibiotikaeinsatz weist auf eine hohe Erkrankungsrate und damit möglicherweise auf Probleme in Haltung oder Management hin. Relevant sind die Behandlungsdauer, die Anzahl der eingesetzten Wirkstoffe und die Anzahl der behandelten Tiere. Risikofaktoren für bakterielle Infektionen sind z. B. Defizite in der Hygiene oder dem Stallklima, aber auch eine chronische Stressbelastung der Tiere, die eine erhöhte Infektionsanfälligkeit zur Folge haben kann."
+      when-and-how-often = "Fortlaufend erheben; halbjährlich auswerten."
+      which-and-how-many = "Alle Saugferkel."
+      how = <<EOF
+Der Antibiotikaeinsatz kann über 1) den Therapieindex bzw. alternativ 2) die Therapiehäufigkeit ermittelt werden:
+1)	Für am QS-System (Qualität und Sicherheit GmbH) teilnehmende Tierhalter nimmt der Tierarzt die Meldung des Antibiotikaeinsatzes vor. Tierhalter werden daraufhin halbjährlich über ihren Therapieindex und die Einstu-fung im Vergleich zu allen teilnehmenden Betrieben sowie über die betriebsinterne zeitliche Entwicklung informiert.
+2)	Alternativ kann die betriebliche halbjährliche Therapiehäufigkeit gemäß § 58c Arzneimittelgesetz (AMG 2005) ermittelt werden, indem der Antibiotikaeinsatz vom Schweinehalter oder Tierarzt in die Datenbank des HIT (Herkunftssicherungs- und Informationssystem für Tiere) eingetragen wird.
+EOF
+      branches = [
+        "Abferkelstall"]
+      sorting = 10
+      Assessment {
+        sample = "herd_size"
+        default_type = "By_Indicator"
+        type_changeable = false
+        presentation = "counter"
+        presentation_changeable = false
+        Options {
+          // Options is only used if the type is "classification"
+          Group {
+            name = "Bonituren Gruppe 1"
+            Var "A" {
+              name = "Antibiotikanwendung"
+              short-description = "Anwendungsdauer inkl. Wirktage · Anzahl Wirkstoffe · Anzahl behandelter Tiere"
+              long-description = "Anwendungsdauer inkl. Wirktage · Anzahl Wirkstoffe · Anzahl behandelter Tiere"
+              images = [ ]
+            }
+          }
+        }
+        //End-Options
+      }
+      //End-Assessment
+      Evaluation {
+        Formula {
+          name = "Therapieindex"
+          description = "Summe aller Antiobiotikanwendungen geteilt druch die Tiere im Bestand"
+          expression = "A / herd_size"
+        }
+        Formula {
+          name = "Therapiehäufigkeit"
+          description = "Beschreibung der Formel"
+          expression = ""
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Kümmerer - Ferkel"
+  description = "Kümmerer sind untergewichtige Ferkel in schlechter körperlicher Verfassung."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Kümmerer sind untergewichtige Ferkel in schlechter körperlicher Verfassung. Eine erhöhte Anzahl Kümmerer im Abferkelstall kann auf zu große Würfe im Zusammenhang mit einer unzureichenden Milchleistung der Sau hindeuten. Kümmerer leiden, da sie hungern, und sind anfälliger für Infektionskrankheiten (z. B. Durchfall). Außerdem besteht das Risiko, dass diese Tiere das Absetzen von der Mutter nicht überleben oder im weiteren Verlauf eine Quelle für Krankheitserreger sind."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Würfe im Abferkelstall"
+  how = "Beurteilung des Gesamterscheinungsbilds anhand von Körpergröße, Sichtbarkeit der Wirbelsäule, eingesunkener Flanken sowie des Borstenkleids. Es wird die Anzahl der Tiere erhoben, die mindestens zwei der vier genannten Zeichen zeigen."
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Größe"
+        Var "A" {
+          name = "kleiner"
+          short-description = "Deutlich kleiner als die übrigen Tiere der Gruppe"
+          long-description = "Deutlich kleiner als die übrigen Tiere der Gruppe"
+          images = [
+            "Kuemmerer1"]
+          thumbail = "Kuemmerer1"
+        }
+        Var "B" {
+          name = "normal"
+          short-description = "normal"
+          long-description = "normal"
+          images = [ ]
+        }
+        //End-Var labelClass3
+      }
+      Group {
+        name = "Wirbelsäule"
+        Var "C" {
+          name = "hervorstehend"
+          short-description = "Deutlich hervorstehende Wirbelsäule"
+          long-description = "Deutlich hervorstehende Wirbelsäule"
+          images = [
+            "Kuemmerer2"]
+          thumbail = "Kuemmerer2"
+        }
+        Var "D" {
+          name = "nicht hervorstehend"
+          short-description = "nicht hervorstehend"
+          long-description = "nicht hervorstehend"
+          images = [ ]
+        }
+      }
+      Group {
+        name = "Flanke"
+        Var "E" {
+          name = "eingesunken"
+          short-description = "Eingesunkene Flanke"
+          long-description = "Eingesunkene Flanke"
+          images = [
+            "Kuemmerer3"]
+          thumbail = "Kuemmerer3"
+        }
+        Var "F" {
+          name = "nicht eingesunken"
+          short-description = "nicht eingesunken"
+          long-description = "nicht eingesunken"
+          images = [ ]
+        }
+      }
+      Group {
+        name = "Borsten"
+        Var "G" {
+          name = "lang"
+          short-description = "Lange Borsten"
+          long-description = "Lange Borsten"
+          images = [
+            "Kuemmerer4"]
+          thumbail = "Kuemmerer4"
+        }
+        Var "H" {
+          name = "normal"
+          short-description = "normal"
+          long-description = "normal"
+          images = [ ]
+        }
+      }
+      ComposedVar "Kuemmerer" {
+        expression = "(A + C + E + G) / 2"
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Kümmerer"
+      description = "Anteil der Kümmerer je Wurf"
+      expression = "(Kuemmerer / (sample_size)) * 100"
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 15
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier ist ein Kümmerer."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 3
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere sind Kümmerer, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 8
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Hautverletzungen am Kopf - Ferkel"
+  description = "Verletzungen am Kopf zeigen, dass es ein unpassendes Verhältnis von funktionsfähigen Zitzen und Ferkeln gibt oder die Milchleistung der Sau zu gering ist."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Verletzungen am Kopf werden vor allem durch andere Ferkel verursacht und deuten auf ein unpassendes Verhältnis von Ferkeln zu funktionsfähigen Zitzen oder eine zu geringe Milchleistung der Sau hin. Diese Verletzungen sind schmerzhaft und stellen mögliche Eintrittspforten für Keime dar, z. B. für Streptokokken."
+  which-and-how-many = "Würfe im Abferkelstall"
+  how = "Beurteilung eines Wurfes hinsichtlich der Anzahl Tiere mit Hautverletzungen am Kopf. Dabei wird jede deutliche Hautverletzung (strichförmig und flächig) mit Kruste oder Blutung berücksichtigt."
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = "herd_size"
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "0"
+          short-description = "Höchstens ein Ferkel hat Verletzungen"
+          long-description = <<EOF
+Höchstens ein Ferkel des Wurfes hat ≥ 3 strichförmige/blutige oder verkrustete Verletzungen
+oder
+eine flächige frische/blutige oder verkrustete Verletzung am Kopf
+EOF
+          images = [
+            "Kopf1",
+            "Kopf2"]
+          thumbail = "Kopf2"
+        }
+        Var "B" {
+          name = "1"
+          short-description = "Zwei oder mehr Ferkel haben Verletzungen"
+          long-description = <<EOF
+Zwei oder mehr Ferkel des Wurfes haben ≥ 3 strichförmige/blutige oder verkrustete Verletzungen
+oder
+eine flächige frische/blutige oder ver-krustete Verletzung am Kopf
+EOF
+          images = [
+            "Kopf3",
+            "Kopf4"]
+          thumbail = "Kopf4"
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Würfe mit Bonitur 1"
+      description = "Anteil der Würfe, in denen zwei oder mehrere Ferkel Verletzungen haben."
+      expression = (B / (A + B)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 30
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Wurf hat Bonitur 1."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Würfe haben Bonitur 1, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 15
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Hautverletzungen an den Karpalgelenken - Ferkel"
+  description = "Verletzungen an den Karpalgelenken zeigen, dass es ein unpassendes Verhältnis von funktionsfähigen Zitzen und Ferkeln gibt oder die Milchleistung der Sau zu gering ist."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Verletzungen an den Karpalgelenken (Vorderbein) können auf ein unpassendes Verhältnis von Ferkeln und funktionsfähigen Zitzen oder eine zu geringe Milchleistung der Sau hindeuten. Durch das intensive Bearbeiten des Gesäuges entstehen bei gleichzeitig rauem Boden Abschürfungen am Karpalgelenk. Diese Verletzungen sind schmerzhaft und stellen mögliche Eintrittspforten für Keime dar, z. B. für Streptokokken."
+  when-and-how-often = "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Würfe im Abferkelstall "
+  how = "Beurteilung eines Wurfes hinsichtlich der Anzahl Tiere mit Hautverletzungen an mindestens einem der beiden Karpalgelenke. Dabei werden sowohl deutliche Blutungen und braune Krusten berücksichtigt als auch abheilende Hautverletzungen (hellbraune Krusten)."
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Bonituren Gruppe 1"
+        Var "A" {
+          name = "0"
+          short-description = "Höchstens zwei Ferkel haben eine Verletzung"
+          long-description = "Höchstens zwei Ferkel des Wurfes haben frische, blutige oder verkrustete Verletzungen an mindestens einem der beiden Karpalgelenke"
+          images = [
+            "Karpalgelenk1",
+            "Karpalgelenk2"]
+          thumbail = "Karpalgelenk1"
+        }
+        Var "B" {
+          name = "1"
+          short-description = "Drei oder mehr Ferkel haben Verletzungen"
+          long-description = "Drei oder mehr Ferkel des Wurfes haben frische, blutige oder verkrustete Verletzungen an mindestens einem der beiden Karpalgelenke"
+          images = [
+            "Karpalgelenk3",
+            "Karpalgelenk4"]
+          thumbail = "Karpalgelenk1"
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Karpalgelenken"
+      description = "Anteil der Würde in denen zwei oder mehr Ferkel Verletzungen an mindestens einem der beiden Karpalgelenken haben."
+      expression = (B / (A + B)) * 100
+      Ranges {
+        unit = "%"
+        visual-lowerbound = 0
+        visual-upperbound = 20
+        Targetrange {
+          tag = "Zielbereich"
+          description = "Kaum ein Tier hat Verletzungen an den Karpalgelenken."
+          lowerbound = 0
+          //Dezimalzahlen wären hier genauso möglich
+          upperbound = 5
+        }
+        Alertrange {
+          tag = "Alarmbereich"
+          description = "Zu viele Tiere haben Verletzungen an den Karpalgelenken, sofortiger Handlungsbedarf ist nötig!"
+          lowerbound = 15
+          upperbound = 100
+        }
+        Warningrange {
+          tag = "Frühwarnbereich"
+          description = "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+        }
+      }
+      // End-Ranges
+    }
+    // End-Formula
+
+  }
+  // End-Evaluation
+}
+// End-Indicator indicatorLabel
+
+Indicator "indicatorLabel" {
+  last-modified = "timestamp der letzten Änderung"
+  name = "Wasserversorgung - Ferkel"
+  description = "Wasser ist sehr wichtig für die Entwicklung der Tiere und die Durchflussrate spielt eine wichtige Rolle."
+  animal-category = "Sauen"
+  video-ref = {
+    "title1" = "link to video"
+  }
+  what-and-why = "Wasser ist ein wichtiger Bestandteil der Ernährung und erfüllt viele Funktionen im Tier. Saugferkel nehmen bereits in den ersten Lebenstagen Wasser auf. Der Wasserbedarf ist dabei abhängig von der Umgebungstemperatur, dem Geburtsgewicht sowie der Milchaufnahme. Idealerweise lernen Ferkel von der Mutter die Wasseraufnahme. Dafür eignen sich besonders offene Wasserflächen, wie z. B. bei einer Mutter-Kind-Tränke. Für die Versorgung mit Wasser spielt neben der Wasserqualität die Durchflussrate der Tränkeeinrichtungen eine bedeutende Rolle. Zu kleine Leitungsquerschnitte, sehr lange Wasserleitungen sowie Korrosion und Ablagerungen in Leitungen und Ventilen können die Durchflussrate vermindern. Aber auch zu hohe Durchflussraten können die Wasseraufnahme erschweren."
+  when-and-how-often = "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten."
+  which-and-how-many = "Alle Saugferkeltränken in den Buchten des Abferkelstalls, die für die Erhebungen betreten werden. Bei Mutter-Kind-Tränken gilt als erforderliche Mindestdurchflussrate die für säugende Sauen."
+  how = <<EOF
+Prüfung der Tränkeeinrichtungen auf A) Funktionsfähigkeit und B) Durchflussrate.
+A)	Eine Tränke ist nicht funktionsfähig, wenn kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist.
+B)	Die Durchflussrate wird an allen funktionsfähigen Tränken ermittelt. Durch Öffnen und Fixieren des Tränkeventils (z. B. durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann dann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft.
+EOF
+  branches = [
+    "Abferkelstall"]
+  sorting = 10
+  Assessment {
+    sample = ""
+    default_type = "By_Indicator"
+    type_changeable = false
+    presentation = "counter"
+    presentation_changeable = false
+    Options {
+      // Options is only used if the type is "classification"
+      Group {
+        name = "Funktionsfähigkeit"
+        Var "A" {
+          name = "funktionsfähig"
+          short-description = "Tränke ist funktionsfähig"
+          long-description = "Tränke ist funktionsfähig"
+          images = [ ]
+        }
+        Var "B" {
+          name = "nicht funktionsfähig"
+          short-description = "Tränke ist nicht funktionsfähig"
+          long-description = "Tränke ist nicht funktionsfähig. Eine Tränke ist nicht funktionsfähig, wenn kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist."
+          images = [ ]
+        }
+        //End-Var labelClass1
+      }
+      // End-Group Bonituren Gruppe 1
+      Group {
+        name = "Durchflussrate von funktionsfähigen Tränken"
+        Var "C" {
+          name = "ausreichend"
+          short-description = "0,4 bis 0,6 l/min"
+          long-description = "Die Durchflussrate wird an allen funktionsfähigen Tränken ermittelt. Durch Öffnen und Fixieren des Tränkeventils (z. B. durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann dann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft."
+          images = [ ]
+        }
+        Var "D" {
+          name = "zu wenig"
+          short-description = "weniger als 0,4 l/min"
+          long-description = "Die Durchflussrate wird an allen funktionsfähigen Tränken ermittelt. Durch Öffnen und Fixieren des Tränkeventils (z. B. durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann dann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft."
+          images = [ ]
+        }
+      }
+    }
+    //End-Options
+  }
+  //End-Assessment
+  Evaluation {
+    Formula {
+      name = "Fuktionsfähige Tränken"
+      description = "Anteil der Tränken, die nicht funktionsfähig sind"
+      expression = "(B / (A + B)) * 100"
+    }
+    Formula {
+      name = "Funktionsfähige Tränken mit unzureichender Durchflussrate"
+      description = "Anteil der funktionsfähigen Tränken, deren Durchflussrate zu gering ist."
+      expression = "(D / A ) * 100"
+    }
+  }
+  // End-Formula
+}

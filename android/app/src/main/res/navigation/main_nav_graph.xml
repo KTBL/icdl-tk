@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/indicatorInfoFragmentOverview"
+        android:name="de.ktbl.eikotiger.view.fragment.indicator.IndicatorInfoFragment"
+        android:label="fragment_indicator_info"
+        tools:layout="@layout/fragment_indicator_information">
+
+        <argument
+            android:name="indicatorID"
+            app:argType="long" />
+        <argument
+            android:name="mock"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="mode"
+            app:argType="de.ktbl.eikotiger.view.fragment.indicator.IndicatorInfoFragmentModes" />
+        <action
+            android:id="@+id/action_indicatorInfoFragment_to_indicatorOptionList"
+            app:destination="@id/indicatorOptionList" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupDetailFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.productiondirection.group.GroupDetailFragment"
+        android:label="fragment_group_details"
+        tools:layout="@layout/fragment_group_details">
+        <argument
+            android:name="groupId"
+            app:argType="long" />
+        <argument
+            android:name="sectionId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullscreenImageDialog"
+        android:name="de.ktbl.eikotiger.view.fragment.FullscreenImageDialog"
+        android:label="FullscreenImageDialog"
+        tools:layout="@layout/dialog_image_fullscreen">
+        <argument
+            android:name="imagePath"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/prodDirDetailsFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.productiondirection.ProductionDirectionDetailFragment"
+        android:label="fragment_prod_dir_details"
+        tools:layout="@layout/fragment_prod_dir_details">
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_prodDirDetails_to_indicatorList"
+            app:destination="@+id/indicatorListFragment" />
+        <action
+            android:id="@+id/action_prodDirDetailsFragment_to_groupList"
+            app:destination="@id/groupListFragment" />
+        <argument
+            android:name="create"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/indicatorOptionDetailsFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.indicator.IndicatorOptionDetailsFragment"
+        android:label="IndicatorOptionDetailsFragment"
+        tools:layout="@layout/fragment_indicator_option_details">
+        <action
+            android:id="@+id/action_indicatorOptionDetailsFragment_to_fullscreenImageDialog"
+            app:destination="@id/fullscreenImageDialog" />
+        <argument
+            android:name="optionId"
+            app:argType="long" />
+        <argument
+            android:name="mock"
+            android:defaultValue="false"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/prodDirListFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.productiondirection.ProductionDirectionsOverviewFragment"
+        android:label="fragment_directions_list"
+        tools:layout="@layout/fragment_directions_list">
+        <action
+            android:id="@+id/actionProdDirListToDetails"
+            app:destination="@id/prodDirDetailsFragment">
+
+        </action>
+        <action
+            android:id="@+id/action_ProdDirListAddingMode"
+            app:destination="@id/prodDirListFragment" />
+        <argument
+            android:name="mock"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="mode"
+            app:argType="de.ktbl.eikotiger.view.fragment.productiondirection.ProductionDirectionsOverviewFragmentMode" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupListFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.productiondirection.group.GroupListFragment"
+        android:label="fragment_group_list"
+        tools:layout="@layout/fragment_group_list">
+        <action
+            android:id="@+id/actionShowGroupDetails"
+            app:destination="@id/groupDetailFragment" />
+        <argument
+            android:name="sectionId"
+            app:argType="long" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/indicatorOptionList"
+        android:name="de.ktbl.eikotiger.view.fragment.indicator.IndicatorOptionListFragment"
+        android:label="IndicatorOptionList"
+        tools:layout="@layout/fragment_indicator_option_list">
+        <action
+            android:id="@+id/action_indicatorOptionList_to_fullscreenImageDialog"
+            app:destination="@id/fullscreenImageDialog"
+            app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_indicatorOptionList_to_indicatorOptionDetailsFragment"
+            app:destination="@id/indicatorOptionDetailsFragment" />
+        <argument
+            android:name="mode"
+            app:argType="de.ktbl.eikotiger.view.fragment.indicator.IndicatorOptionListFragmentMode" />
+        <argument
+            android:name="indicatorId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/indicatorListFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.indicator.IndicatorListFragment"
+        android:label="fragment_indicator_list"
+        tools:layout="@layout/fragment_indicator_list">
+        <action
+            android:id="@+id/actionShowIndicatorInfo"
+            app:destination="@id/indicatorInfoFragmentOverview" />
+        <argument
+            android:name="mock"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <argument
+            android:name="branchID"
+            app:argType="long" />
+    </fragment>
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="de.ktbl.eikotiger.view.activity.SettingsActivity"
+        android:label="activity_settings"
+        tools:layout="@layout/activity_settings" />
+    <action
+        android:id="@+id/action_global_settingsActivity"
+        app:destination="@id/settingsActivity" />
+    <activity
+        android:id="@+id/infoActivity"
+        android:name="de.ktbl.eikotiger.view.activity.InfoActivity"
+        android:label="activity_info"
+        tools:layout="@layout/activity_info">
+        <argument
+            android:name="infoUUID"
+            app:argType="string"
+            app:nullable="true" />
+    </activity>
+    <action
+        android:id="@+id/action_global_infoActivity"
+        app:destination="@id/infoActivity" />
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.home.SplashScreenFragment"
+        android:label="@string/lbl_fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" />
+    <action
+        android:id="@+id/action_global_splashScreenFragment"
+        app:destination="@id/splashScreenFragment"
+        app:launchSingleTop="false" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/main_nav_graph" />
+    <fragment
+        android:id="@+id/recordingSetupFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.recording.setup.RecordingSetupFragment"
+        android:label="RecordingSetupFragment"
+        tools:layout="@layout/fragment_recording_setup">
+        <action
+            android:id="@+id/action_recordingSetupFragment_to_recordingSetupMenuFragment"
+            app:destination="@id/recordingSetupMenuFragment" />
+        <action
+            android:id="@+id/action_recordingSetupFragment_to_prodDirListFragment"
+            app:destination="@id/prodDirListFragment" />
+        <action
+            android:id="@+id/action_recordingSetupFragment_to_chooseAnimalCategoryBranchDialog"
+            app:destination="@id/chooseAnimalCategoryBranchDialog" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_recordingSetupFragment"
+        app:destination="@id/recordingSetupFragment" />
+    <fragment
+        android:id="@+id/recordingSetupMenuFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.recording.setup.RecordingSetupMenuFragment"
+        android:label="RecordingSetupMenuFragment"
+        tools:layout="@layout/fragment_recording_setup_menu">
+        <argument
+            android:name="prodDirInstanceID"
+            android:defaultValue="-1L"
+            app:argType="long" />
+        <argument
+            android:name="branchID"
+            android:defaultValue="-1L"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_recordingSetupMenuFragment_to_recordingOverviewFragment"
+            app:destination="@id/recordingOverviewFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_prodDirListFragment"
+        app:destination="@id/prodDirListFragment" />
+    <fragment
+        android:id="@+id/chooseAnimalCategoryBranchDialog"
+        android:name="de.ktbl.eikotiger.view.fragment.recording.setup.ChooseAnimalCategoryBranchDialog"
+        android:label="ChooseAnimalCategoryBranchDialog"
+        tools:layout="@layout/dialog_choose_branch" />
+    <fragment
+        android:id="@+id/impressFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.home.ImprintFragment"
+        android:label="ImpressFragment"
+        tools:layout="@layout/fragment_imprint" />
+    <action
+        android:id="@+id/action_global_impressFragment"
+        app:destination="@id/impressFragment" />
+    <fragment
+        android:id="@+id/recordingOverviewFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.recording.RecordingOverviewFragment"
+        android:label="RecordingOverviewFragment"
+        tools:layout="@layout/fragment_recording_overview">
+        <action
+            android:id="@+id/toIndicatorInfo"
+            app:destination="@id/indicatorInfoFragmentOverview" />
+        <action
+            android:id="@+id/toIndicatorInput"
+            app:destination="@id/indicatorOptionList" />
+        <action
+            android:id="@+id/action_recordingOverviewFragment_to_chooseAnimalGroupDialog"
+            app:destination="@id/chooseAnimalGroupDialog" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_recordingOverviewFragment"
+        app:destination="@id/recordingOverviewFragment" />
+    <action
+        android:id="@+id/action_global_indicatorOptionList"
+        app:destination="@id/indicatorOptionList" />
+    <action
+        android:id="@+id/action_global_indicatorInfoFragmentOverview"
+        app:destination="@id/indicatorInfoFragmentOverview" />
+    <fragment
+        android:id="@+id/chooseAnimalGroupDialog"
+        android:name="de.ktbl.eikotiger.view.fragment.recording.ChooseAnimalGroupDialog"
+        android:label="ChooseAnimalGroupDialog"
+        tools:layout="@layout/dialog_change_animal_location" />
+    <fragment
+        android:id="@+id/exportFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.ExportFragment"
+        android:label="ExportFragment"
+        tools:layout="@layout/fragment_export" />
+    <action
+        android:id="@+id/action_global_exportFragment"
+        app:destination="@id/exportFragment" />
+</navigation>

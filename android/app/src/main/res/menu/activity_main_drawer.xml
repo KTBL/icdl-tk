@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main_overview"
+            android:icon="@drawable/ic_home_black"
+            android:title="@string/overview" />
+        <item
+            android:id="@+id/nav_main_prod_dir"
+            android:icon="@drawable/ic_list_black"
+            android:title="@string/create_animal_menu_tmp" />
+        <item
+            android:id="@+id/nav_main_recording"
+            android:icon="@drawable/ic_fiber_smart_record_black"
+            android:title="@string/recording" />
+        <item
+            android:id="@+id/nav_main_end"
+            android:icon="@drawable/ic_insert_chart_black"
+            android:title="Auswertung" />
+        <item
+            android:id="@+id/nav_main_export"
+            android:icon="@drawable/ic_export_black"
+            android:title="Export" />
+        <item
+            android:id="@+id/nav_main_settings"
+            android:icon="@drawable/ic_settings_black"
+            android:title="@string/action_settings" />
+    </group>
+
+    <item android:title="@string/help">
+        <menu>
+            <item
+                android:id="@+id/nav_appintro_again"
+                android:icon="@drawable/ic_ondemand_video_black"
+                android:title="@string/play_intro" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/support_ticket" />
+            <item
+                android:id="@+id/nav_main_impressum"
+                android:icon="@drawable/ic_business_black"
+                android:title="@string/impressum" />
+
+            <item
+                android:id="@+id/nav_main_privacy"
+                android:icon="@drawable/ic_file_contract_solid"
+                android:title="@string/privacy" />
+        </menu>
+    </item>
+
+</menu>

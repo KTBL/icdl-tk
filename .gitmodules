@@ -1,0 +1,3 @@
+[submodule "android/Android-SharedLibrary"]
+	path = android/Android-SharedLibrary
+	url = https://github.com/KTBL/Android-SharedLibrary.git

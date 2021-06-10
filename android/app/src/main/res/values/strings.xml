@@ -1,0 +1,138 @@
+<resources>
+    <string name="app_name">EiKoTiGer</string>
+    <string name="indicators">Indikatoren</string>
+    <string name="current_indicator">Aktueller Indikator</string>
+    <string name="evaluation">Evaluation</string>
+    <string name="exit_recording">Eingabe Beenden</string>
+    <string name="exit">Beenden</string>
+    <string name="Input">Eingabe</string>
+    <string name="settings">Einstellungen</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">EiKoTiGer-Android</string>
+    <string name="nav_header_subtitle">Die Begleitapp zu den Leitfäden Eigenkontrolle Tiergerechtigkeit</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="production_directions">Produktionsrichtungen</string>
+    <string name="overview">Übersicht</string>
+    <string name="stoffwechselst_rungen_beeintr_chtigen_das_wohlbefinden_und_stellen_gerade_auch_in_ihrer_h_ufig_auftretenden_subklinischen_form_aufgrund_der_mit_ihnen_verbundenen_reduzierten_k_rperabwehr_risikofaktoren_f_r_das_auftreten_weiterer_krankheiten_dar_ndie_routinem_ig_in_der_milch_gemessenen_inhaltsstoffe_fett_und_eiwei_sowie_deren_quotient_werden_als_indikatoren_f_r_abweichungen_in_der_energie_bzw_rohfaserversorgung_von_milchk_hen_genutzt_dabei_ist_ein_fett_eiwei_quotient_1_5_als_indikator_f_r_den_verdacht_auf_energiemangel_subklinische_ketose_sowie_ein_fett_eiwei_quotient_1_0_als_hinweis_auf_abweichungen_in_der_rohfaserversorgung_subklinische_azidose_anzusehen_nzentrale_risikofaktoren_sind_eine_zu_geringe_futteraufnahme_eine_unzureichende_energie_und_n_hrstoffkonzentration_sowie_eine_mangelnde_rohfaserversorgung"><![CDATA[Stoffwechselstörungen beeinträchtigen das Wohlbefinden und stellen – gerade auch in ihrer häufig auftretenden subklinischen Form – aufgrund der mit ihnen verbundenen reduzierten Körperabwehr Risikofaktoren für das Auftreten weiterer Krankheiten dar. Die routinemäßig in der Milch gemessenen Inhaltsstoffe Fett und Eiweiß sowie deren Quotient werden als Indikatoren für Abweichungen in der Energie- bzw. Rohfaserversorgung von Milchkühen genutzt. Dabei ist ein Fett-EiweißQuotient ≥ 1,5 als Indikator für den Verdacht auf Energiemangel („subklinische Ketose“) sowie ein Fett-EiweißQuotient < 1,0 als Hinweis auf Abweichungen in der Rohfaserversorgung („subklinische Azidose“) anzusehen.  Zentrale Risikofaktoren sind eine zu geringe Futteraufnahme, eine unzureichende Energie- und Nährstoffkonzentration sowie eine mangelnde Rohfaserversorgung.]]></string>
+    <string name="indicator">Indikator</string>
+    <string name="production_direction">Produktionsrichtung</string>
+    <string name="animal_category">Tierkategorie</string>
+    <string name="create_animal_menu_tmp">Tierhaltung anlegen</string>
+    <string name="animal_catgory_pl">Tierkategorien</string>
+    <string name="all_indicators">Alle Indikatoren</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recording">Erfassung</string>
+    <string name="details">Details</string>
+    <string name="info">Info</string>
+    <string name="help">Hilfe</string>
+    <string name="play_intro">Intro abspielen</string>
+    <string name="support_ticket">Supportanfrage</string>
+    <string name="business_information">Betriebsinformationen</string>
+    <string name="settings_business_information_desc">Hier können Informationen über den zu erfassenden Betrieb festgelegt werden.</string>
+    <string name="app_settings">App Einstellungen</string>
+    <string name="settings_app_settings_desc">Einstellungen zur Benutzerführung können hier gefunden werden.</string>
+    <string name="todo">TODO</string>
+    <string name="connections_settings">Verbindungseinstellungen</string>
+    <string name="settings_connection_settings_desc">Einstellungen bezüglich der Datennutzung können hier festgelegt werden.</string>
+    <string name="lbl_business_name">Betriebsname:</string>
+    <string name="business_name_hint_example">Musterhof Max Muster</string>
+    <string name="lbl_name_of_editor">Name des Erfassers:</string>
+    <string name="name_of_editor_hint_example">Max Mustermann</string>
+    <string name="lbl_business_address">Addresse des Betriebs:</string>
+    <string name="business_address_hint_example">Musterstraße 1, 00000 Musterstadt</string>
+    <string name="lbl_phone_number">Telefonnummer:</string>
+    <string name="phone_number_hint_example">+49 9999 77777777</string>
+    <string name="lbl_additional_information">Zusätzliche Informationen:</string>
+    <string name="additional_information_hint_example">z.B. Informationen über die Größe des Betriebs</string>
+    <string name="save">Speichern</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="choose">Auswählen</string>
+    <string name="lorem_impsum_50w">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
+    <string name="lorem_ipsum_20w">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</string>
+    <string name="lorem_ipsum_3w">Lorem ipsum dolor</string>
+    <string name="impressum">Impressum</string>
+    <string name="privacy">Datenschutzerklärung</string>
+    <string name="chose_download_branch">Produktionsrichtung wählen</string>
+    <string name="download_fire">Herunterladen</string>
+    <string name="eikotiger">EiKoTiGer</string>
+    <string name="eikotiger_long">Eigenkontrolle Tiergerechtheit</string>
+    <string name="download_simple_description">Beim ersten Start der App müssen Indikator- und Produktionsrichtungsdaten heruntergeladen werden.</string>
+    <string name="start_download">Download starten</string>
+    <string name="ktbl_logo">KTBL Logo</string>
+    <string name="lbl_fragment_splash_screen">fragment_splash_screen</string>
+    <string name="splash_shown">splashScreenHasBeenShown</string>
+    <string name="db_initiated">DBInitiated</string>
+    <string name="description">Beschreibung</string>
+    <string name="indicator_list_heading_fmt">Indikatoren für %s</string>
+    <string name="bay">Buchten</string>
+    <string name="create_bay">Buchten anlegen</string>
+    <string name="prototyping_skin_injury">Beurteilung einer zufällig je Tier ausgewählten Körperseite hinsichtlich frischen oder verkrusteten Hautverletzungen außer am  Gesäuge und außer Schulterläsion.</string>
+    <string name="prototyping_liegeplatz">Jeweils Zählung aller Tiere, die 3 h nach Futtervorlage</string>
+    <string name="amount_animals">Anzahl Tiere:</string>
+    <string name="animals">Tiere</string>
+    <string name="eg_100">z.B. 100</string>
+    <string name="group_size">Gruppengröße</string>
+    <string name="title_picture">Titlebild</string>
+    <string name="custom_designation">Eigene Bezeichnung</string>
+    <string name="prod_dir_custom_designation_hint">z.B. blauer Stall</string>
+    <string name="production_section">Produktionsabschnitte</string>
+    <string name="grouplist">Gruppenliste</string>
+    <string name="illegal_value">Unzulässiger Wert</string>
+    <string name="notes">Notizen</string>
+    <string name="enclosure_area_mm">Buchtenfläche (in m²)</string>
+    <string name="width_m">Breite (in m)</string>
+    <string name="length_m">Länge (in m)</string>
+    <string name="name_of_group">Name der Gruppe</string>
+    <string name="groupdetails">Gruppendetails</string>
+    <string name="baydetails">Buchtendetails</string>
+    <string name="last_updated_on_fmt">aktualisiert am: %1$s</string>
+    <string name="amount_animal_sum_fmt">Tierzahl gesamt: %1$d</string>
+    <string name="amount_groups_sum_fmt">Anzahl Buchten: %1$d</string>
+    <string name="animal_count_fmt">Anzahl Tiere: %1$d</string>
+    <string name="area_size_fmt">Buchtengröße: %1$.2f m²</string>
+    <string name="choose_three_dots">Auswählen..</string>
+    <string name="baylist">Buchtenübersicht</string>
+    <string name="indicator_overview">Indikatorübersicht</string>
+    <string name="imprint_text">
+        <b>Kuratorium für Technik und Bauwesen in der Landwirtschaft e.V. (KTBL)</b>\n
+        Bartningstraße 49, 64289 Darmstadt\n
+        Tel.: +49 6151 7001-0, Fax: +49 6151 7001-123, E-Mail: ktbl@ktbl.de\n
+        eingetragen im Vereinsregister beim Amtsgericht Darmstadt, Aktenzeichen 8 VR 1351\n\n
+        EiKoTiGer ist ein Gemeinschaftsprojekt von:\n
+        <ul>
+            <li>KTBL</li>
+            <li>Uni Kassel</li>
+            <li>FLI</li>
+        </ul>
+    </string>
+    <string name="animalcategory_branch_fmt">Tierkategorie: %s \nProduktionsAbschnitt: %s</string>
+    <string name="please_choose_branch">Bitte wählen Sie den zu erhebenden Produktionsabschnitt.</string>
+    <string name="recording_overview_header">Erfassung der Produktions: %s \nProduktionsabschnitt: %s\nErfassungsdatum: %s</string>
+    <string name="change_animal_group">Tiergruppe Wechseln</string>
+    <string name="per_indicator_recording">Indikatorweise Erfassung</string>
+    <string name="per_animal_recording">Tierweise Erfassung</string>
+    <string name="office_indicators">Büroindikatoren</string>
+    <string name="desc_per_animal_recording">Bei der tierweisen Erfassung werden alle Indikatoren nacheinander an einem einzelnen Tier betrachtet.</string>
+    <string name="desc_per_indicator_recording">Bei der indikatorweisen Erfassung werden nacheinander alle Tiere je Indikator betrachtet.</string>
+    <string name="desc_office_recording">Die Eingabe von Büroindikatoren erfolgt typischerweise auf Basis von Berichten aus verschiedenen Quellen.</string>
+    <string name="choose_animal_location">Wählen Sie eine Tiergruppe:</string>
+    <string name="start_export">Export Starten</string>
+    <string name="database_export">Export der Datenbank</string>
+    <string name="fastforward">fastforward</string>
+    <string name="forward">forward</string>
+    <plurals name="group_count_selected">
+        <item quantity="zero">Keine Gruppe ausgewählt</item>
+        <item quantity="one">%d Gruppe ausgewählt</item>
+        <item quantity="other">%d Gruppen ausgewählt</item>
+    </plurals>
+    <plurals name="proddir_count_selected">
+        <item quantity="zero">Keine Produktion ausgewählt</item>
+        <item quantity="one">%d Produktion ausgewählt</item>
+        <item quantity="other">%d Produktionen ausgewählt</item>
+    </plurals>
+</resources>

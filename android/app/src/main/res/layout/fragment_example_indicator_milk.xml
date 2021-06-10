@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/surrounding_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/milk_title"
+            style="@style/TitleH1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Fett-Eiweiß-Quotient der Milch" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/milk_title"
+            android:fillViewport="false"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TitleH2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Was und Warum?" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stoffwechselst_rungen_beeintr_chtigen_das_wohlbefinden_und_stellen_gerade_auch_in_ihrer_h_ufig_auftretenden_subklinischen_form_aufgrund_der_mit_ihnen_verbundenen_reduzierten_k_rperabwehr_risikofaktoren_f_r_das_auftreten_weiterer_krankheiten_dar_ndie_routinem_ig_in_der_milch_gemessenen_inhaltsstoffe_fett_und_eiwei_sowie_deren_quotient_werden_als_indikatoren_f_r_abweichungen_in_der_energie_bzw_rohfaserversorgung_von_milchk_hen_genutzt_dabei_ist_ein_fett_eiwei_quotient_1_5_als_indikator_f_r_den_verdacht_auf_energiemangel_subklinische_ketose_sowie_ein_fett_eiwei_quotient_1_0_als_hinweis_auf_abweichungen_in_der_rohfaserversorgung_subklinische_azidose_anzusehen_nzentrale_risikofaktoren_sind_eine_zu_geringe_futteraufnahme_eine_unzureichende_energie_und_n_hrstoffkonzentration_sowie_eine_mangelnde_rohfaserversorgung" />
+
+                <include layout="@layout/hline" />
+
+                <TextView
+                    style="@style/TitleH2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Wann und wie oft?" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Den jeweils aktuellen MLP-Bericht monatlich auswerten, mindestens aber einmal jährlich die Ergebnisse der 11 MLP-Berichte eines Jahres auswerten." />
+
+                <include layout="@layout/hline" />
+
+                <TextView
+                    style="@style/TitleH2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Welche und wie viele?" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alle laktierenden, milchleistungsgeprüften Kühe eines Betriebes in den ersten 100 Laktationstagen (Frühlaktation)." />
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

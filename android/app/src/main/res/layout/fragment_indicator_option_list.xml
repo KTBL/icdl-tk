@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="de.ktbl.eikotiger.view.viewmodel.indicator.IndicatorOptionListBaseVM" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:showIn="@layout/activity_main">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/fragment_vertical_padding"
+            android:paddingVertical="@dimen/fragment_vertical_padding">
+
+            <TextView
+                style="TextAppearance.MaterialComponents.Body1"
+                android:id="@+id/cl_indicator_desc"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@{vm.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_default="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_indicator_title"
+                app:layout_constraintWidth_default="spread"
+                tools:text="@string/prototyping_skin_injury" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/indicatorOptionList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:keepScreenOn="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/button10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_indicator_desc"
+                tools:itemCount="3"
+                tools:listitem="@layout/adapter_classification_option_alt" />
+            <!--    tools:listitem="@layout/adapter_direct_input" /> -->
+            <!--             tools:listitem="@layout/adapter_direct_input_alt" />-->
+
+            <!-- tools:listitem="@layout/adapter_classification_option_alt" />-->
+
+
+            <TextView
+                android:id="@+id/cl_indicator_title"
+                style="@style/TitleH1.CAPS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.name}"
+                app:layout_constraintEnd_toEndOf="@+id/cl_indicator_desc"
+                app:layout_constraintStart_toStartOf="@+id/cl_indicator_desc"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Hautverletzungen" />
+
+            <ImageButton
+                android:id="@+id/button10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/forward"
+                android:enabled="@{!vm.isProcessing}"
+                android:onClick="@{v -> vm.onForward()}"
+                android:src="@drawable/ic_baseline_play_arrow_white"
+                android:visibility="@{vm.showForwardButtons ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageButton
+                android:id="@+id/button11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="@string/fastforward"
+                android:enabled="@{!vm.isProcessing}"
+                android:onClick="@{v -> vm.onFastForward()}"
+                android:src="@drawable/ic_baseline_fast_forward_white"
+                android:visibility="@{vm.showForwardButtons ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@+id/button10"
+                app:layout_constraintEnd_toStartOf="@+id/button10" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

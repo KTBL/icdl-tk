@@ -1,0 +1,1325 @@
+{
+  "AnimalCategory": [
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "species": "Schweine",
+      "name": "Aufzuchtferkel",
+      "description": "Mästen von Schweinen bis zu einem Endgewicht von um die 120 kg",
+      "thumbnail": "",
+      "Branch": [
+        {
+          "name": "Ferkel im Aufzuchtstall",
+          "description": "Ferkel im Aufzuchtstall",
+          "__key": "Aufzuchtferkel"
+        }
+      ],
+      "__key": "Aufzuchtferkel"
+    }
+  ],
+  "Indicator": [
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Tierverluste",
+      "description": "Tierverluste setzen sich aus verendeten und euthanasierten Tieren zusammen.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Tierverluste setzen sich aus verendeten und euthanasierten Tieren zusammen. Da diesen in der Regel starke Beeinträchtigungen des Wohlergehens vorausgehen, ist die Höhe der Tierverluste ein wichtiger Tierschutzindikator. Tierverluste sind zudem in wirtschaftlicher Hinsicht relevant; sie können vielfältige Ursachen haben (z. B. Krankheiten, Fütterungsfehler).",
+      "when-and-how-often": "Fortlaufend erheben, halbjährlich auswerten.",
+      "which-and-how-many": "Alle Tiere",
+      "how": "Die Tierverluste (verendete und euthanasierte Tiere) werden von Mastplanern standardmäßig berechnet. Um bei Problemen die Planung von Gegenmaßnahmen zu vereinfachen, sollte bei der Datenerfassung im Mastplaner stets auch die (vermutete) Ursache miterfasst werden. Für die Auswertung innerhalb eines Erhebungshalbjahres können Sie sich die Tierverluste nach Echtzeit (Berichtszeitraum „von … bis“) im Mastplaner auslesen lassen.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "verendete und euthanasierte Tiere",
+                  "short-description": "verendete und euthanasierte Tiere",
+                  "long-description": "verendete und euthanasierte Tiere",
+                  "images": [],
+                  "__key": "A"
+                },
+                {
+                  "name": "Tiere im Anfangsbestand",
+                  "short-description": "Tiere im Anfangsbestand",
+                  "long-description": "Tiere im Anfangsbestand",
+                  "images": [],
+                  "__key": "B"
+                },
+                {
+                  "name": "Zugänge",
+                  "short-description": "Zugänge",
+                  "long-description": "Zugänge",
+                  "images": [],
+                  "__key": "C"
+                },
+                {
+                  "name": "Abgänge",
+                  "short-description": "Verkauf, Schlachtung",
+                  "long-description": "Verkauf, Schlachtung",
+                  "images": [],
+                  "__key": "D"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Tierverluste",
+            "description": "Anteil der verendeten und euthanasierten Tiere.",
+            "expression": "(A / (B + C - D) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 8,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist verendet oder wurde euthanasiert."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind verendet oder wurden euthanasiert, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    4
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Antibiotikaeinsatz",
+      "description": "Verabreichung von Antibiotika zur Behandlung von bakteriellen Infektionen ist im Bedarfsfall aus Tierschutzsicht geboten, weißt aber auf eine hohe Erkrankungsrate hin und auf Probleme in Haltung und Management.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Die Verabreichung von Antibiotika zur Behandlung von bakteriellen Infektionen ist im Bedarfsfall aus Tierschutzsicht geboten. Ein hoher Antibiotikaeinsatz weist auf eine hohe Erkrankungsrate und damit möglicherweise auf Probleme in Haltung oder Management hin. Relevant sind die Behandlungsdauer, die Anzahl der eingesetzten Wirkstoffe und die Anzahl der behandelten Tiere. Risikofaktoren für bakterielle Infektionen sind z. B. Defizite in der Hygiene oder dem Stallklima, aber auch eine chronische Stressbelastung der Tiere, die eine erhöhte Infektionsanfälligkeit zur Folge haben kann.",
+      "when-and-how-often": "Fortlaufend erheben; halbjährlich auswerten.",
+      "which-and-how-many": "Alle Tiere",
+      "how": "Der Antibiotikaeinsatz kann über 1) den Therapieindex bzw. alternativ 2) die Therapiehäufigkeit ermittelt werden.\n\t1)\tFür am QS-System (Qualität und Sicherheit GmbH) teilnehmende Tierhalter nimmt der Tierarzt die Meldung des Antibiotikaeinsatzes vor. Tierhalter werden daraufhin halbjährlich über ihren Therapieindex und die Einstufung im Vergleich zu allen teilnehmenden Betrieben bzw. über die betriebsinterne zeitliche Entwicklung informiert.\n\t2)\tAlternativ kann die betriebliche halbjährliche Therapiehäufigkeit gemäß § 58c Arzneimittelgesetz (AMG 2019) ermittelt werden, indem der Antibiotikaeinsatz vom Schweinehalter oder Tierarzt in die Datenbank des HIT (Herkunftssicherungs- und Informationssystem für Tiere) eingetragen wird.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Antibiotikaanwendung",
+                  "short-description": "Anwendungsdauer inkl. Wirktage, Anzahl Wirkstoffe",
+                  "long-description": "Anwendungsdauer inkl. Wirktage, Anzahl Wirkstoffe",
+                  "images": [],
+                  "__key": "A"
+                },
+                {
+                  "name": "Name der zweiten Option",
+                  "short-description": "Beschreibung der zweiten Option",
+                  "long-description": "\tZiemlich lange Beschreibung\n\tAuch über mehrere Zeilen Hinweg",
+                  "images": [
+                    "<image-id-3>",
+                    "<image-id-4>"
+                  ],
+                  "__key": "labelClass1"
+                }
+              ]
+            },
+            {
+              "name": "Bonituren Gruppe 2",
+              "Var": [
+                {
+                  "name": "Name der dritten Option",
+                  "short-description": "...",
+                  "long-description": "...",
+                  "images": [],
+                  "__key": "labelclass2"
+                },
+                {
+                  "name": "Name der vierten Option",
+                  "short-description": "...",
+                  "long-description": "...",
+                  "images": [],
+                  "__key": "labelclass3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Therapieindex",
+            "description": "Beschreibung der Formel",
+            "expression": "(A / )",
+            "Ranges": [
+              {
+                "unit": "%|m²|kg|...",
+                "visual-lowerbound": 15.5,
+                "visual-upperbound": 75.0,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat xy."
+                  ],
+                  "lowerbound": [
+                    60
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    30
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Therapiehäufigkeit",
+            "description": "Beschreibung der Formel",
+            "Ranges": [
+              {
+                "unit": "%|m²|kg|...",
+                "visual-lowerbound": 15.5,
+                "visual-upperbound": 75.0,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat xy."
+                  ],
+                  "lowerbound": [
+                    60
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    30
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Kümmerer",
+      "description": "Kümmerer sind untergewichtige Tiere in schlechter körperlicher Verfassung.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Kümmerer sind untergewichtige Tiere in schlechter körperlicher Verfassung. Sie weisen auf Defizite in der Fütterung oder Krankheitsgeschehen hin. Diese Tiere leiden, können hungern, wenn sie vom Futter verdrängt werden und sind anfällig für Infektionskrankheiten (z. B. Durchfall). Außerdem besteht das Risiko, dass diese Tiere im weiteren Verlauf eine Quelle für Krankheitserreger sind. Im Aufzuchtstall deuten Kümmerer auf Infektionskrankheiten, wie z. B. Circovirose, hin.",
+      "when-and-how-often": "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "In den zufällig ausgewählten Buchten wird der Indikator „Kümmerer“ an allen Tieren in der Bucht erhoben und die Anzahl Kümmerer bezogen auf die Gesamtzahl der Tiere in der Bucht ermittelt.",
+      "how": "Beurteilung des Gesamterscheinungsbilds anhand von Körpergröße, Sichtbarkeit der Wirbelsäule, eingesunkener Flanken sowie des Borstenkleids. Es wird die Anzahl der Tiere erhoben, die mindestens zwei der vier genannten Zeichen zeigen.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Größe",
+              "Var": [
+                {
+                  "name": "kleiner",
+                  "short-description": "Deutlich kleiner als die übrigen Tiere der Gruppe",
+                  "long-description": "Deutlich kleiner als die übrigen Tiere der Gruppe",
+                  "images": [
+                    "Kuemmerer1"
+                  ],
+                  "thumbail": "Kuemmerer1",
+                  "__key": "A"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "normal",
+                  "long-description": "normal",
+                  "images": [],
+                  "__key": "B"
+                }
+              ]
+            },
+            {
+              "name": "Wirbelsäule",
+              "Var": [
+                {
+                  "name": "hervorstehend",
+                  "short-description": "Offensichtlich hervorstehende Wirbelsäule",
+                  "long-description": "Deutlich hervorstehende Wirbelsäule",
+                  "images": [
+                    "Kuemmerer2"
+                  ],
+                  "thumbail": "Kuemmerer2",
+                  "__key": "C"
+                },
+                {
+                  "name": "nicht hervorstehend",
+                  "short-description": "nicht hervorstehend",
+                  "long-description": "nicht hervorstehend",
+                  "images": [],
+                  "__key": "D"
+                }
+              ]
+            },
+            {
+              "name": "Flanke",
+              "Var": [
+                {
+                  "name": "eingesunken",
+                  "short-description": "Eingesunkene Flanke",
+                  "long-description": "Eingesunkene Flanke",
+                  "images": [
+                    "Kuemmerer3"
+                  ],
+                  "thumbail": "Kuemmerer3",
+                  "__key": "E"
+                },
+                {
+                  "name": "nicht eingesunken",
+                  "short-description": "nicht eingesunken",
+                  "long-description": "nicht eingesunken",
+                  "images": [],
+                  "__key": "F"
+                }
+              ]
+            },
+            {
+              "name": "Borsten",
+              "Var": [
+                {
+                  "name": "lang",
+                  "short-description": "Lange Borsten",
+                  "long-description": "Lange Borsten",
+                  "images": [
+                    "Kuemmerer4"
+                  ],
+                  "thumbail": "Kuemmerer4",
+                  "__key": "G"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "normal",
+                  "long-description": "normal",
+                  "images": [],
+                  "__key": "H"
+                }
+              ]
+            }
+          ],
+          "ComposedVar": [
+            {
+              "Kuemmerer": {
+                "expression": [
+                  "(A + C + E + G) / 2"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Kümmerer",
+            "description": "Anteil der Kümmerer je Wurf",
+            "expression": "(Kuemmerer / (sample_size)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 8,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist ein Kümmerer."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind Kümmerer, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    4
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Kotverschmutzung der Tiere",
+      "description": "Starke Verschmutzungen der Tiere mit Kot sind ein Indikator für unpassende Haltungsbedingungen und können durch Schmutzkeime zu Infektionen führen.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Starke Verschmutzungen der Tiere mit Kot sind ein Indikator für unpassende Haltungsbedingungen und können durch Schmutzkeime zu Infektionen führen. Verschmutzungen von Schweinen mit Kot deuten bei optimalen Stalllufttemperaturen auf zu kleine oder verschmutzte Liegeflächen hin. Kranke Tiere werden häufig aus dem Liegebereich verdrängt und legen sich in verkoteten Bereichen ab. Bei hohen Temperaturen oder bei Hitzestress kann Verschmutzung zusätzlich durch Suhlen im Kot entstehen, wenn die Tiere Abkühlungsmöglichkeiten suchen.",
+      "when-and-how-often": "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Alle Tiere",
+      "how": "Beurteilung einer je Tier zufällig ausgewählten Körperseite hinsichtlich Kotverschmutzungen. Verschmutzungen sind nur dann als solche zu beurteilen, wenn eine Kotauflagerung (frisch oder getrocknet) zu sehen ist. Verfärbungen der Haut bzw. des Borstenkleids alleine sind nicht zu werten.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Bonitur 0",
+                  "short-description": "Sauber bis leicht verschmutzt",
+                  "long-description": "maximal 30 % der Oberfläche mit Kotauflagerung",
+                  "images": [
+                    "Kotverschmutzung1",
+                    "Kotverschmutzung2"
+                  ],
+                  "thumbail": "Kotverschmutzung1",
+                  "__key": "A"
+                },
+                {
+                  "name": "Bonitur 1",
+                  "short-description": "Stark verschmutzt",
+                  "long-description": "mehr als 30 % der Oberfläche mit Kotauflagerung",
+                  "images": [
+                    "Kotverschmutzung3",
+                    "Kotverschmutzung4"
+                  ],
+                  "thumbail": "Kotverschmutzung4",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Kotverschmutzung",
+            "description": "Anteil der Tiere, die stark verschmutz sind",
+            "expression": "${B / A + B * 100}",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 20,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist stark verschmutzt."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind stark verschmutzt, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Hautverletzungen (ohne Schwanz und Ohren)",
+      "description": "Verletzungen der Haut sind schmerzhaft und mögliche Eintrittspforten für Keime und entstehen durch soziale Auseinandersetzungen.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Verletzungen der Haut sind schmerzhaft und mögliche Eintrittspforten für Keime wie z. B. Streptokokken. Sie entstehen durch soziale Auseinandersetzungen beim Gruppieren der Tiere (meist an Hals, Schulter oder Flanke) oder durch gegenseitiges Verdrängen, z. B. vom Futterplatz (meist an der Hinterhand). Auch hervorstehende Kanten der Aufstallung bzw. am Boden können zu Verletzungen führen. Wenn eine Woche oder länger nach der Neugruppierung sowohl frische als auch abheilende Verletzungen vorhanden sind, sind diese ein Hinweis auf andauernden sozialen Stress.",
+      "when-and-how-often": "Halbjährlich, jeweils zur Mitte Sommer- und Winterhalbjahr, aber frühestens eine Woche nach der Neugruppierung erheben und auswerten.",
+      "which-and-how-many": "Aufzuchtferkel",
+      "how": "Beurteilung einer je Tier zufällig ausgewählten Körperseite hinsichtlich frischer und verkrusteter Hautverletzungen. Ausgenommen sind Verletzungen an Schwanz und Ohren. Strichförmige und flächige Hautverletzungen können sowohl oberflächliche Kratzer als auch tiefergehende Wunden sein. Abheilende Verletzungen werden als eine durchgängige Verletzung gezählt, wenn die abgeheilten Zwischenräume jeweils nicht länger als 0,5 cm sind.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Bonitur 0",
+                  "short-description": "Keine bis leichte Hautverletzungen",
+                  "long-description": "< 4 strichförmige Verletzungen mit ≥ 5 cm Länge und keine flächige Verletzung mit ≥ 2,5 cm Ø (2-Euro-Münze)",
+                  "images": [
+                    "Hautverletzung1"
+                  ],
+                  "thumbail": "Hautverletzung1",
+                  "__key": "A"
+                },
+                {
+                  "name": "Bonitur 1",
+                  "short-description": "Mäßige Hautverletzungen",
+                  "long-description": "4–15 strichförmige Verletzungen mit ≥ 5 cm Länge und keine flächige Verletzung mit ≥ 2,5 cm (2-Euro-Münze)",
+                  "images": [
+                    "Hautverletzung2"
+                  ],
+                  "thumbail": "Hautverletzung2",
+                  "__key": "B"
+                },
+                {
+                  "name": "Bonitur 2",
+                  "short-description": "Starke Hautverletzungen",
+                  "long-description": "> 15 strichförmige Verletzungen mit ≥ 5 cm Länge",
+                  "images": [
+                    "Hautverletzung3",
+                    "Hautverletzung4"
+                  ],
+                  "thumbail": "Hautverletzung4",
+                  "__key": "C"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Hautverletzungen",
+            "description": "Anteil der Tiere mit starken Hautverletzungen",
+            "expression": "${C / A + B + C * 100}",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat starke Hautverletzungen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben starke Hautverletzungen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Ohrverletzungen",
+      "description": "Verletzungen der Ohren deuten auf ein akutes Problem mit Ohrbeißen und/oder auf Ohrnekrosen hin und kann auf Fütterungsfehler, Haltungsprobleme und Stress hinweisen.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Verletzungen der Ohren (frisch und verkrustet) deuten auf ein akutes Problem mit Ohrbeißen und/oder auf Ohrnekrosen hin. Dies ist nicht nur für das verletzte Tier schmerzhaft und kann zu Infektionen führen, es deutet auch auf Beeinträchtigungen des beißenden Tieres bzw. der ganzen Gruppe hin. Die Ursachen sind vielfältig und können auf Fütterungsfehler, Haltungsprobleme und Stress hinweisen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Alle Tiere",
+      "how": "Beurteilung der Verletzungen an beiden Ohren aus circa 1 m Entfernung. Der schwerere Befund wird notiert. Fehlende Ohrteile mit abgeheiltem Wundrand werden nicht als Verletzung gewertet, da sie zu einem früheren Zeitpunkt entstanden sind.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Bonitur 0",
+                  "short-description": "ohne deutliche Verletzungen",
+                  "long-description": "Ohr ohne deutlich sichtbare, blutende Wunden und Krusten oder Ohr mit ausschließlich strichförmigen Kratzern an der Außenseite",
+                  "images": [
+                    "Ohrenverletzung1",
+                    "Ohrenverletzung2"
+                  ],
+                  "thumbail": "Ohrenverletzung2",
+                  "__key": "A"
+                },
+                {
+                  "name": "Bonitur 1",
+                  "short-description": "deutliche Verletzungen",
+                  "long-description": "Deutlich sichtbare, meist blutende Wunden und Krusten am Ohr (besonders an Ohrspitze, Ohrrand oder Ohrgrund auftretend)",
+                  "images": [
+                    "Ohrenverletzung3",
+                    "Ohrenverletzung4",
+                    "Ohrenverletzung5"
+                  ],
+                  "thumbail": "Ohrenverletzung3",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Ohrverletzungen",
+            "description": "Anteil der Tiere mit deutlichen Ohrverletzungen",
+            "expression": "${B / A + B * 100}",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Ohrenverletzungen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Ohrenverletzungen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Schwanzverletzungen",
+      "description": "Verletzungen am Schwanz deuten auf ein akutes Problem mit Schwanzbeißen und/oder Schwanznekrosen hin und können auf Fütterungsfehler, Haltungsprobleme und Stress hinweisen.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Verletzungen am Schwanz (blutend, verkrustet und/oder deutlich geschwollen) deuten auf ein akutes Problem mit Schwanzbeißen und/oder Schwanznekrosen hin. Schwanzbeißen ist nicht nur für das verletzte Tier schmerzhaft und kann zu Infektionen führen, es deutet auch auf Beeinträchtigungen des beißenden Tieres bzw. der ganzen Gruppe hin. Die Ursachen für Schwanzverletzungen sind vielfältig und können auf Fütterungsfehler, Haltungsprobleme und Stress hinweisen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Aufzuchtferkel",
+      "how": "Beurteilung der Verletzungen am Schwanz aus circa 1 m Entfernung.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Bonitur 0",
+                  "short-description": "keine deutliche Verletzung",
+                  "long-description": "Schwanz ohne deutlich sichtbare, blutende Wunde, Kruste oder Schwellung",
+                  "images": [
+                    "Schwanzverletzung1"
+                  ],
+                  "thumbail": "Schwanzverletzung1",
+                  "__key": "A"
+                },
+                {
+                  "name": "Bonitur 1",
+                  "short-description": "deutliche Verletzung",
+                  "long-description": "Deutlich sichtbare, blutende Wunde, Kruste oder Schwellung am Schwanz",
+                  "images": [
+                    "Schwanzverletzung2",
+                    "Schwanzverletzung3",
+                    "Schwanzverletzung4"
+                  ],
+                  "thumbail": "Schwanzverletzung2",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Schwanzverletzung",
+            "description": "Anteil der Tiere mit deutlichen Schwanzverletzungen",
+            "expression": "${B / A + B * 100}",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 20,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Schwanzverletzungen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Schwanzverletzungen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Anzeichen von Ektoparasiten",
+      "description": "Eine Allgemeine Beschreibung zusätzlich zu der detaillierten unten",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Ektoparasiten sind Parasiten, die auf oder in der Haut der Schweine leben; insbesondere sind Räudemilben (Sarcoptes suis) und Läuse (Hämatopinus suis) relevant. Läuse und deren Eier sind direkt am Tier (Hinterhand bzw. Nacken) mit bloßem Auge erkennbar. Eine Infektion mit Räudemilben führt zunächst zu roten Punkten am ganzen Körper; chronische Infektionen äußern sich in graubraunen Krusten an den Unterbeinen, Schwanzansatz, Nacken und an den Ohren. In jedem Fall ist auffälliger Juckreiz zu beobachten. Ektoparasiten sind für die Tiere nicht nur irritierend, sondern können auch schmerzhaft sein und zu erhöhter Unruhe sowie verminderten Zunahmen führen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Aufzuchtferkel",
+      "how": "Beurteilung der Tiere aus circa 1 m Entfernung hinsichtlich sichtbarer Parasiten wie Läuse, Läuseeier und Räude.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Läuse oder deren Eier",
+                  "short-description": "sichtbare Parasiten und intensives Scheuern",
+                  "long-description": "Mit bloßem Auge sichtbare Parasiten wie Läuse und/oder deren Eier an den Borsten klebend, zusätzlich oft intensives Scheuern an Gegenständen oder Kratzen mit Beinen",
+                  "images": [
+                    "Ektoparasit1"
+                  ],
+                  "thumbail": "Ektoparasit1",
+                  "__key": "A"
+                },
+                {
+                  "name": "Beginnende Räude",
+                  "short-description": "Hautirritationen",
+                  "long-description": "Hautirritationen sind wie viele rote Punkte über den Körper verteilt, zusätzlich intensives Scheuern an Gegenständen oder Kratzen mit Beinen",
+                  "images": [
+                    "Ektoparasit2"
+                  ],
+                  "thumbail": "Ektoparasit2",
+                  "__key": "B"
+                },
+                {
+                  "name": "Räude",
+                  "short-description": "Graubraune Krusten",
+                  "long-description": "Graubraune Krusten an Ohren, Nacken, Schwanzbasis bzw. Mittelfußbereich, zusätzlich intensives Scheuern an Gegenständen oder Kratzen mit Beinen",
+                  "images": [
+                    "Ektoparasit3"
+                  ],
+                  "thumbail": "Ektoparasit3",
+                  "Var": [
+                    {
+                      "name": "ohne Befund",
+                      "short-description": "ohne Befund",
+                      "long-description": "ohne Befund",
+                      "images": [],
+                      "__key": "D"
+                    }
+                  ],
+                  "__key": "C"
+                }
+              ],
+              "ComposedVar": [
+                {
+                  "Ektoparasit": {
+                    "expression": [
+                      "(A + B + C + D) / 3"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Verdacht auf Ektoparasiten",
+            "description": "Es besteht Verdacht auf Ektoparasiten",
+            "expression": "Ektoparasit",
+            "Ranges": [
+              {
+                "unit": "Tier",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 3,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kein Tier hat Verdacht auf Ektoparasitenbefall."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    0
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Verdacht auf Ektoparasitenbefall, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    1
+                  ],
+                  "upperbound": [
+                    1000
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Lahmheit",
+      "description": "Lahmheit beschreibt Störungen des Gangbildes, die schmerzbedingt sind und hat gesundheitliche und wirtschafltiche Folgen.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Der Begriff Lahmheit beschreibt Störungen des Gangbildes, die schmerzbedingt sind. Lahme Schweine empfinden aber nicht nur Schmerzen, sondern haben auch  eingeschränkten Zugang zu Futter und Wasser oder anderen Ressourcen. Lahmheiten ziehen neben erhöhten Behandlungskosten und Arbeitsaufwand Leistungseinbußen bis hin zu vermehrten Abgängen nach sich. Lahmheiten können unter anderem durch eine mangelhafte Bodengestaltung im Liegebereich (zu hart, nicht sauber) oder im Aktivitätsbereich (inadäquate Spaltenböden, verschmutzt, rutschig) entstehen. Sie können auch durch Infektionskrankheiten, z. B. Streptokokken, verursacht werden. Außerdem sind schnellwachsende Schweine häufig von Knorpelschäden betroffen. Die frühe Erkennung lahmer Tiere sowie die Diagnose und Behandlung der Ursache sind wesentlich, um Schmerzen zu reduzieren und vorbeugende Maßnahmen treffen zu können.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Aufzuchtferkel",
+      "how": "Beurteilung von Tieren hinsichtlich Lahmheit auf möglichst trittsicherem Boden.",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Bonitur 0",
+                  "short-description": "Keine oder leichte Lahmheit",
+                  "long-description": "Normaler Gang (flüssige Bewegung, alle Schritte gleich lang, alle Gliedmaßen gleichmäßig belastet) oderleichte Lahmheit (steifer Gang, Verkürzung der Schrittlänge, schlangenartige Bewegung der Wirbelsäule)",
+                  "images": [],
+                  "__key": "A"
+                },
+                {
+                  "name": "Bonitur 1",
+                  "short-description": "Deutliche Lahmheit",
+                  "long-description": "Deutlich verminderte Belastung einer Gliedmaße, schnelles Be- und Entlasten des betroffenen Beines („Tippen“) bis hin zu ausgeprägter Entlastung der betroffenen Gliedmaße",
+                  "images": [],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Lahmheit",
+            "description": "Anteil der Tiere, die eine deutliche Lahmheit zeigen.",
+            "expression": "${B / A + B * 100}",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier zeigt deutliche Lahmheit."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    1
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere zeigen deutliche Lahmheit, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    3
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Wasserversorgung",
+      "description": "Wasser ist sehr wichtig für die Entwicklung der Tiere und die Durchflussrate spielt eine wichtige Rolle.",
+      "animal-category": "Aufzuchtferkel",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Wasser ist ein wichtiger Nährstoff, der viele Funktionen im Tier erfüllt. Es unterstützt die Erhaltung des Zelldrucks, den Nährstofftransport, die Stoffwechselreaktionen und ist Bestandteil von Körperflüssigkeiten. In einer thermoneutralen Haltungsumwelt ist die tägliche Wasseraufnahme abhängig vom Alter, der Lebendmasse, der Fütterungstechnik (trocken oder flüssig), der Futteraufnahme und -zusammensetzung, der Wasserqualität und der Tränketechnik. Für die Versorgung mit Wasser spielt auch die Durchflussrate der Tränkeeinrichtungen eine bedeutende Rolle. Zu kleine Leitungsquerschnitte, sehr lange Wasserleitungen sowie Korrosion und Ablagerungen in Leitungen und Ventilen können die Durchflussrate vermindern, so dass keine ausreichende Wasseraufnahme möglich ist. Aber auch zu hohe Durchflussraten können die Wasseraufnahme erschweren.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Alle Tränken in den Buchten, die für die Erhebungen betreten werden ",
+      "how": "Prüfung der Tränkeeinrichtungen auf A) Funktionsfähigkeit und B) Durchflussrate.\nA)\tEine Tränke ist nicht funktionsfähig, wenn kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist.\nB)\tDurch Öffnen und Fixieren des Tränkeventils (z. B. durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann dann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft. ",
+      "branches": [
+        "Aufzuchtferkel"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "sample": "",
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Funktionsfähigkeit",
+              "Var": [
+                {
+                  "name": "funktionsfähig",
+                  "short-description": "Tränke ist funktionsfähig",
+                  "long-description": "Tränke ist funktionsfähig",
+                  "images": [],
+                  "__key": "A"
+                },
+                {
+                  "name": "nicht funktionsfähig",
+                  "short-description": "Tränke ist nicht funktionsfähig",
+                  "long-description": "Eine Tränke ist nicht funktionsfähig, wenn kein Wasser kommt oder der Wasserdruck aufgrund defekter Druckminderungsventile zu hoch ist, sodass ein Auslitern nicht möglich ist.",
+                  "images": [],
+                  "__key": "B"
+                }
+              ]
+            },
+            {
+              "name": "Durchflussrate von funktionsfähigen Tränken",
+              "Var": [
+                {
+                  "name": "ausreichend",
+                  "short-description": "0,5 bis 1,0 l/min",
+                  "long-description": "Durch Öffnen und Fixieren des Tränkeventils (z. B. durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann dann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft. ",
+                  "images": [],
+                  "__key": "C"
+                },
+                {
+                  "name": "zu wenig",
+                  "short-description": "weniger als 0,5 l/min",
+                  "long-description": "Durch Öffnen und Fixieren des Tränkeventils (z. B. durch eine Federklemme) kann über einen definierten Zeitraum (z. B. 15 Sekunden) das ausströmende Wasser aufgefangen werden. Bei Schalentränken wird die Tränke vorab vollständig mit Wasser befüllt und das überströmende Wasser ab dem Start des definierten Zeitraumes aufgefangen. Aus der Zeit und der aufgefangenen Wassermenge kann dann die Durchflussrate berechnet werden. Liegt sie außerhalb der angegebenen Spanne der empfohlenen Durchflussrate, wird sie als unzureichend eingestuft. ",
+                  "images": [],
+                  "__key": "D"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Fuktionsfähige Tränken",
+            "description": "Anteil der Tränken, die nicht funktionsfähig sind",
+            "expression": "${B / A + B * 100}",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 15.5,
+                "visual-upperbound": 75.0,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Genügend Tränken sind funktionsfähig."
+                  ],
+                  "lowerbound": [
+                    60
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tränken sind nicht funktionsfähig, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    30
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Funktionsfähige Tränken mit unzureichender Durchflussrate",
+            "description": "Anteil der funktionsfähigen Tränken, deren Durchflussrate zu gering ist.",
+            "expression": "${D / A * 100}",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 15.5,
+                "visual-upperbound": 75.0,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Die Durchflussrate ist ausreichend."
+                  ],
+                  "lowerbound": [
+                    60
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Die Durchflussrate ist unzureichend, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    30
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    }
+  ]
+}

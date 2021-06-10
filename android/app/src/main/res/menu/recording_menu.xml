@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  <item
+          android:id="@+id/recording_exit"
+          android:icon="@drawable/ic_exit_to_white"
+          android:title="@string/exit" />-->
+
+    <item
+        android:id="@+id/recording_exit"
+        android:icon="@drawable/ic_exit_to_white"
+        android:title="Beenden" />
+
+    <item
+        android:id="@+id/recording_indicator_list"
+        android:icon="@drawable/ic_list_white"
+        android:title="@string/overview" />
+
+    <item
+        android:id="@+id/recording_current_indicator_info"
+        android:icon="@drawable/ic_info_outline_white"
+        android:title="@string/indicator" />
+
+    <item
+        android:id="@+id/recording_current_indicator_input"
+        android:icon="@drawable/ic_mode_edit_white"
+        android:title="@string/Input" />
+</menu>

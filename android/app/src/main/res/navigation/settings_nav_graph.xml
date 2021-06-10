@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings_nav_graph"
+    app:startDestination="@id/settingsOverviewFragment">
+
+    <fragment
+        android:id="@+id/businessInfoFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.settings.BusinessInfoFragment"
+        android:label="fragment_business_info"
+        tools:layout="@layout/fragment_business_info" />
+    <fragment
+        android:id="@+id/settingsOverviewFragment"
+        android:name="de.ktbl.eikotiger.view.fragment.settings.SettingsOverviewFragment"
+        android:label="fragment_settings_overview"
+        tools:layout="@layout/fragment_settings_overview">
+        <action
+            android:id="@+id/actionSettingsToBusinessInfo"
+            app:destination="@id/businessInfoFragment" />
+    </fragment>
+</navigation>

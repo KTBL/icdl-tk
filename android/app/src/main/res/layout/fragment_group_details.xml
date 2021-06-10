@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="de.ktbl.eikotiger.view.viewmodel.productiondirection.group.GroupDetailVM" />
+
+        <import type="de.ktbl.eikotiger.view.viewmodel.Converter" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/fragment_vertical_padding"
+        android:paddingVertical="@dimen/fragment_vertical_padding">
+        <!--
+                <TextView
+                    style="@style/TitleH1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/baydetails" />
+                -->
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elegantTextHeight="true"
+            android:textAlignment="textEnd"
+            android:text="@{@string/last_updated_on_fmt(Converter.dateToString(vm.latestLocationUpdate))}"
+            android:visibility="@{vm.latestLocationUpdate != null ? View.VISIBLE : View.GONE}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            tools:text="Zuletzt aktualisiert am: 04. Mai 2020 um 11:40 Uhr" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    app:helperText="Eindeutiger Name zur Identifizierung der Gruppe">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/name_of_group"
+                        android:inputType="textNoSuggestions"
+                        android:text="@={vm.location.editLabel}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/amount_animal_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/amount_animals"
+                        android:inputType="number"
+                        android:text="@={Converter.integerToString(amountAnimalInput, vm.groupSize, vm.groupSize)}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:animateLayoutChanges="true"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:visibility="@{vm.isCalculateAreaActive ? View.VISIBLE : View.GONE}">-->
+
+                <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:singleLine="true"-->
+                <!--                        app:helperText="Länge zur Berechnung der Buchtenfläche">-->
+
+                <!--                        <com.google.android.material.textfield.TextInputEditText-->
+                <!--                            android:id="@+id/length_input"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:hint="@string/length_m"-->
+                <!--                            android:inputType="numberDecimal"-->
+                <!--                            android:selectAllOnFocus="true"-->
+                <!--                            android:text="@={Converter.doubleToString(lengthInput, vm.length, vm.length)}" />-->
+                <!--                    </com.google.android.material.textfield.TextInputLayout>-->
+
+                <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:singleLine="true"-->
+                <!--                        app:helperText="Breite zur Berechnung der Buchtenfläche">-->
+
+                <!--                        <com.google.android.material.textfield.TextInputEditText-->
+                <!--                            android:id="@+id/width_input"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:hint="@string/width_m"-->
+                <!--                            android:inputType="numberDecimal"-->
+                <!--                            android:selectAllOnFocus="true"-->
+                <!--                            android:text="@={Converter.doubleToString(widthInput, vm.width, vm.width)}" />-->
+                <!--                    </com.google.android.material.textfield.TextInputLayout>-->
+                <!--                </LinearLayout>-->
+
+                <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:orientation="horizontal">-->
+
+                <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                <!--                        android:id="@+id/textInputLayout2"-->
+                <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+                <!--                        android:layout_width="0dp"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginEnd="10dp"-->
+                <!--                        android:singleLine="true"-->
+                <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                        app:layout_constraintEnd_toStartOf="@+id/checkBoxShowLB"-->
+                <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                <!--                        app:layout_constraintTop_toTopOf="parent">-->
+
+                <!--                        <com.google.android.material.textfield.TextInputEditText-->
+                <!--                            android:id="@+id/area_input"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:backgroundTint="@{vm.isCalculateAreaActive ? @color/android_grey_200 : @color/transparent}"-->
+                <!--                            android:backgroundTintMode="add"-->
+                <!--                            android:enabled="@{!vm.isCalculateAreaActive}"-->
+                <!--                            android:hint="@string/enclosure_area_mm"-->
+                <!--                            android:inputType="numberDecimal"-->
+                <!--                            android:selectAllOnFocus="true"-->
+                <!--                            android:singleLine="true"-->
+                <!--                            android:text="@={Converter.doubleToString(areaInput, vm.area, vm.area)}" />-->
+                <!--                    </com.google.android.material.textfield.TextInputLayout>-->
+
+                <!--                    <CheckBox-->
+                <!--                        android:id="@+id/checkBoxShowLB"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:button="@drawable/selector_calculator"-->
+                <!--                        app:layout_constraintBaseline_toBaselineOf="@id/textInputLayout2"-->
+                <!--                        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout2"-->
+                <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                        android:checked="@={vm.isCalculateAreaActive}"-->
+                <!--                        app:useMaterialThemeColors="false" />-->
+                <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/notes"
+                        android:inputType="textMultiLine"
+                        android:lines="3"
+                        android:text="@={vm.location.editDescription}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

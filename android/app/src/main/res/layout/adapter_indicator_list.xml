@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="vm"
+            type="de.ktbl.eikotiger.view.viewmodel.indicator.IndicatorListItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> vm.showDetails()}"
+        android:layout_margin="5dp"
+        style="@style/ListItemCardView"
+        tools:cardElevation="10dp">
+
+        <LinearLayout
+            android:background="@color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding">
+
+            <TextView
+                style="@style/TitleH2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.title}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{vm.description}" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

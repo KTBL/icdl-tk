@@ -1,0 +1,1560 @@
+{
+  "AnimalCategory": [
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "species": "Rinder",
+      "name": "Fleischproduktion",
+      "description": "Zu den Mastrindern zählen Masttiere ab 150 kg Lebendmasse. Die Indikatoren wurden für die Stallhaltung von Mastrindern und nicht für die Freilandhaltung entwickelt. ",
+      "thumbnail": "",
+      "Branch": [
+        {
+          "name": "Rinderhaltung zur Fleischproduktion",
+          "description": "Rinderhaltung zur Fleischproduktion",
+          "__key": "Mastrind"
+        }
+      ],
+      "__key": "Mastrind"
+    }
+  ],
+  "Indicator": [
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Tierverluste",
+      "description": "Tierverluste umfassen alle verendeten oder notgetöteten und euthanasierten Tiere und sind aus Tierschutz und ökonomischer Sicht von großer ",
+      "animal-category": "Mastrind",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Tierverluste umfassen alle verendeten sowie notgetöteten und euthanasierten („eingeschläferten“) Mastrinder. Sie sind – neben ihrer Tierschutzrelevanz – auch aus ökonomischer Sicht von großer Bedeutung und vom betriebsindividuellen Management abhängig. Zu den Risikofaktoren zählen Unfälle, Produktionskrankheiten wie Atemwegs- oder Klauen- und Gliedmaßenerkrankungen, aber auch Faktoren wie Liegeflächenbeschaffenheit oder zu geringes Flächenangebot.",
+      "when-and-how-often": "Fortlaufend erheben, jährlich auswerten.",
+      "which-and-how-many": "Gesamtbestand",
+      "how": "Berechnet wird die Mortalitätsrate. Erfasst werden alle Tiere des Gesamtbestandes, die in den zwölf Monaten eines Kalenderjahres auf dem Betrieb verendet sind bzw. notgetötet oder euthanasiert wurden. Die Berechnung der Tierverluste kann (a) mittels der Webseite von HI-Tier oder (b) mit Hilfe der Onlineanwendung www.tschindi.org erfolgen.\n (a) Nach der Benutzeranmeldung auf der Webseite https://www.hi-tier.de/HitCom/login.asp gelangt man bei „Rin-derdatenbank – Abfragen“ zum Menüpunkt \"Allgemeine Funktionen zur Tiergesundheit\". Dort befinden sich die Aus-wertungen zur \"Rindermortalität\". Den gewünschten Zeitraum/Jahr auswählen und zusätzlich Kalender- und/oder Wirtschaftsjahr sowie die anzuzeigenden Altersklassen/Geschlechter auswählen. Für die Ermittlung der Mortalität im Mastrinderbestand bei „Gruppen“ -> „alle“ anwählen, um sowohl männliche als auch weibliche Tiere mit einzubeziehen und die Altersklasse „6-24 Mon.“ auswählen. Unter dem Punkt „Anzeige“ „durchschn. lebende Tiere + tatsächlich & erwartete tote Tiere“ auswählen und mit einem Klick auf „Anzeigen“ werden die eigenen Betriebsdaten ausgewertet. Die Todesfälle werden in absoluten Zahlen dargestellt („∑ Leb.“, d.h. Summe Lebenstage bzw. dem durchschnittlichen Tierbestand in der jeweiligen Alters-/&Geschlechtsklasse sowie „Tote“, d.h. Anzahl verendeter Tiere im jeweiligen Altersabschnitt).In dem man nun „Tote“ durch „∑ Leb.“ dividiert und mit 100 multipliziert, erhält man die Mortalitätsrate (bezogen auf 100 Tiere je Altersschicht) und somit einen prozentähnlichen Wert zum überbetrieblichen Vergleich.Die eigenen (absoluten) Todesfälle werden auf der HI-Tier-Webseite bereits mithilfe von Ampelfarben mit Refe-renz-werten verglichen (den \"erwartbaren\" Todesfällen vergleichbarer Betriebe auf Basis langjähriger HIT-Auswertungen). Für den gesamten Tierbestand wird zudem die Mortalitätsrate/Sterblichkeit bereits unter der Spaltenüberschrift „Verhältnisse (ges.)“ angegeben, d.h. das Verhältnis „Tote“ (verendetete Tiere) / „∑ Leb.“ (Durch-schnittsbestand) bezogen auf alle Tiere im Betrieb im gewählten Zeitraum.\n (b) Unter www.tschindi.org „Rinderverluste“ anklicken, unter „1. HIT-Zugang“ die Betriebsnummer und das HI-Tier Passwort eintragen, unter „2. Zeitraum“ den gewünschten Zeitraum auswählen (z.B. ein Kalender- oder Wirtschafts-jahr) und unter „3. Tierbestand“ noch einmal die Betriebsnummer eintragen. Mit einem Klick auf „HIT-Abfrage starten“ werden die Tierverluste berechnet. Unter „weitere Tabellen“ werden der Durchschnittsbestand sowie die Todesfälle (in absoluten Zahlen) dargestellt sowie, in der Spalte „MR, real“, die Mortalitätsraten (Verhältniszahl) für die Altersklassen „6 Monate bis 2 Jahre“. Der jeweilige Wert in der Tabelle multipliziert mit 100 ergibt die Mortalitätsrate (bezogen auf 100 Tiere je Altersschicht) und somit einen prozentähnlichen Wert zum überbetrieblichen Vergleich. Als Vergleichswert für die eigene Bestandsgröße kann der Referenzwert in der Spalte links daneben (MR, Ref. wert) verwendet werden. In der Klammer werden männliche und weibliche Tiere getrennt voneinander dargestellt. Die errechnete Mortalitätsrate kann unter „Auswertung pdf“ als PDF heruntergeladen werden.\"",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "verendete Tiere",
+                  "short-description": "Innerhalb der letzten 12 Monate verendet bzw. notgetötet oder euthanasiert",
+                  "long-description": "Innerhalb der letzten 12 Monate verendet bzw. notgetötet oder euthanasiert ",
+                  "images": [ ],
+                  "__key": "A"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Mortalitätsrate",
+            "description": "Anteil der Tiere in der Gesamtherde, die in den letzten 12 Monaten verendet bzw. notgetötet oder euthanasiert worden sind.",
+            "expression": "(A / herd_size) * 100",
+            "Ranges": [
+              {
+                "unit": " je 100 Rinder",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 5,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist verendet."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    1
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind verendet, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    3
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Nasenausfluss",
+      "description": "Nasenausfluss ist ein Indiaktor für Atemwegserkrankungen und hat Auswirkungen auf das Wohlbefinden des Tieres und auf die Wirtschaftlichkeit.",
+      "animal-category": "Mastrind",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Nasenausfluss ist ein Indikator für Atemwegserkrankungen. Diese gehören zu den bedeutendsten Erkrankungskomplexen in der Mastrinderhaltung und gehen für das betroffene Tier in der Regel mit einer Störung des Allgemeinbefindens einher. Sie sind sowohl wegen der Behandlungskosten als auch wegen der negativen Auswirkungen auf die Gewichtszunahme auch von ökonomischer Bedeutung. Die Erfassung von Mastrindern mit Nasenausfluss stellt eine praktikable Möglichkeit dar, um das Auftreten von Atemwegserkrankungen im eigenen Bestand einschätzen zu können. Risikofaktoren sind Transportbelastung, Zukauf aus mehreren Beständen sowie fehlendes oder fehlerhaftes Hygienemanagement, hohe Belegdichte oder schlechtes Stallklima (zugig, schadgasbelastet, feucht).",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Stichprobe am Gesamtbestand",
+      "how": "Beurtelung des Tieres hinsichtlich deutlich sichtbaren Nasenausflusses?",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "normal",
+                  "long-description": "Normalfeuchtes Flotzmaul, keine deutliche Sekretbildung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "deutlich sichtbarer Nasenausfluss",
+                  "long-description": "Deutlich sichtbarer Nasenausfluss (Fäden ziehend oder zäh fließend, klar bis gelb-grün verfärbt)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Nasenausfluss",
+            "description": "Anteil der Tiere mit deutlich sichtbarem Nasenausfluss",
+            "expression": "(B / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 20,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Nasenausfluss."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Nasenausfluss, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Unterentwickelte Tiere/Kümmerer",
+      "description": "Unterentwickelte Tiere geben Hinweise auf chronisch kranke Tiere und soziale Konkurrenz.",
+      "animal-category": "Mastrind",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "In der Mastrinderhaltung sind Abweichungen von der Köperkondition nur bei zu mageren, im Sinne von unterentwickelten Tieren („Kümmerer“) relevant. Diese geben Hinweise auf chronisch kranke Tiere (z. B. Atemwegserkrankungen, Parasitosen, chronische oder intermittierende Pansenazidose) oder Tiere, die durch zu große soziale Konkurrenz (hohe Besatzdichte, stark inhomogene Gruppen oder andauerndes Aufreiten durch andere Tiere) über längere Zeiträume nicht ausreichend Futter aufnehmen konnten.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und bewerten.",
+      "which-and-how-many": "Stichprobe am Gesamtbestand",
+      "how": "Beurteilen Sie das Gesamterscheinungsbild des Tieres anhand der subkutanen Fettauflage bei den in der Tabelle beschriebenen vier Körperregionen.",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Schwanzgrube",
+              "Var": [
+                {
+                  "name": "unterentwickelt",
+                  "short-description": "Tiefe Grube unter dem Schwanzansatz",
+                  "long-description": "Tiefe Grube unter dem Schwanzansatz",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "normal",
+                  "long-description": "normal",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                }
+              ]
+            },
+            {
+              "name": "Lendenbereich",
+              "Var": [
+                {
+                  "name": "unterentwickelt",
+                  "short-description": "Tiefe Einbuchtung zwischen Wirbelsäule und Hüfthöcker",
+                  "long-description": "Tiefe Einbuchtung zwischen Wirbelsäule und Hüfthöcker",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "C"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "normal",
+                  "long-description": "normal",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "D"
+                }
+              ]
+            },
+            {
+              "name": "Querfortsätze",
+              "Var": [
+                {
+                  "name": "unterentwickelt",
+                  "short-description": "Scharfe Enden der Querfortsätze",
+                  "long-description": "Scharfe Enden der Querfortsätze",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "E"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "normal",
+                  "long-description": "normal",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "F"
+                }
+              ]
+            },
+            {
+              "name": "Sitz- und Hüftbeinhöcker, Rippen, Dornfortsätze",
+              "Var": [
+                {
+                  "name": "unterentwickelt",
+                  "short-description": "Sitz- und Hüftbeinhöcker, Rippen, Dornfortsätze hervorstehend",
+                  "long-description": "Sitz- und Hüftbeinhöcker, Rippen, Dornfortsätze hervorstehend",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "G"
+                },
+                {
+                  "name": "normal",
+                  "short-description": "normal",
+                  "long-description": "normal",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "H"
+                }
+              ]
+            }
+          ],
+          "ComposedVar": [
+            {
+              "OK": {
+                "expression": [
+                  "(B + D + F + H) / 4"
+                ]
+              }
+            },
+            {
+              "NichtOK": {
+                "expression": [
+                  "(A + C + E + G)"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Unterentwickelte Tiere",
+            "description": "Anteil unterentwickelter Tiere in der Stichprobe",
+            "expression": "(NichtOK / (NichtOK + OK)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier ist unterentwickelt."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    1
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere sind unterentwickelt. Mindestens 3 Körperregionen zu mager bei Bewertung der subkutane Fettauflage an 1. Schwanzansatz, 2. Lendenbereich, 3. Querfortsätzen, sowie4. Bereich Sitz- und Hüftbeinhöcker/Rippen/Dornfortsätze. Sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Verschmutzung der Tiere",
+      "description": "Verschmutzung der Tiere wirken sich auf den Gesundheitszustand aus und zeigen Schwastellen in Haltung und Management auf.",
+      "animal-category": "Mastrind",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Verschmutzungen des Haarkleids können Juckreiz hervorrufen, die darunterliegende Haut kann sich entzünden und die Thermoregulation ist beeinträchtigt. Verschmutzungen zeigen Schwachstellen in Haltung und Management auf. Sie weisen auf mangelhaftes Stallklima, auf unzureichend eingestreute Liegeflächen (bei Tiefstreusystemen) oder auf mangelnde Sauberkeit von Spaltenböden hin. Ein weiterer Risikofaktor ist zu dünner Kot durch mangelhafte Rationsgestaltung.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Stichprobe am Gesamtbestand ",
+      "how": "Beurteilung einer je Tier zufällig ausgewählten Körperseite hinsichtlich der Verschmutzung am Rumpf (ohne Kopf/Hals, Beine und Schwanz, siehe Abbildungen). Verschmutzung liegt dann vor, wenn bei mehr als 25 % der Fläche Kotauflagerung bzw. Kotanhaftung (frisch oder getrocknet) zu sehen ist. Verfärbungen des Haarkleids alleine sind nicht als Verschmutzung zu werten. ",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "nicht verschmutzt",
+                  "long-description": " Nicht verschmutzt: Keine oder nur geringe Kotauflagerung/-anhaftung (< 25 % der Fläche betroffen)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "verschmutzt",
+                  "long-description": "„Verschmutzt“: Kotauflagerung/-anhaftung (dreidimensionale Schichten) ab 25 % der Fläche",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Verschmutzung der Tiere",
+            "description": "Anteil verschmutzter Tiere in der Stichprobe",
+            "expression": "(B / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 20,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Verschmutzungen"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Verschmutzungen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    15
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Integumentschäden",
+      "description": "Integumentschäden weisen auf Schwächen im Haltungssystem und Probleme im sozialen Umfeld hin und beeinträchtigen die Gesundheit der Tiere.",
+      "animal-category": "Mastrind",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Die äußere Haut (das Integument) stellt die Schnittstelle des Tiers zu der es umgebenden Umwelt dar und bildet ab, wie erfolgreich sich Tiere mit der direkten Einwirkung der Haltungstechnik, aber auch dem sozialen Umfeld (z. B. Verletzungen durch Hornstöße) auseinandersetzen können. Schäden der Haut wie frische oder verkrustete Wunden oder Schwellungen sind schmerzhaft und können auch als Eintrittspforte für Infektionen dienen; Gelenkveränderungen können zu Lahmheiten führen. Beim Rind treten solche Schäden besonders häufig an den Sprunggelenken (Tarsalgelenken) und Vorderfußwurzelgelenken (Karpalgelenken) auf und sind in der Regel auf eine nicht tiergerechte Liegefläche zurückzuführen (nicht ausreichend weich, verformbar, sauber und trocken). Schäden am Nacken sind auf nicht an die Tiergröße angepasste Nackenrohre zurückzuführen. Bei Mastrindern, insbesondere bei Haltung auf harten Böden, sind auch Trittverletzungen der Schwanzspitze bzw. Schäden am Schwanz zu beachten und zu erfassen. Diese können zu im Wirbelkanal aufsteigenden Infektionen und damit zum Festliegen und Totalverlust führen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Stichprobe am Gesamtbestand",
+      "how": "Beurteilt werden Vorderfußwurzelgelenk, Sprunggelenk und Nacken sowie Schwanz (siehe Abbildung).\nErfasst werden mindestens 2 cm große Wunden (frische Verletzung) oder Krusten oder im Vergleich zum Normalzustand deutlich (mit bloßem Auge) erkennbare Schwellungen (Umfangsvermehrung). \nDas Sprunggelenk wird inklusive der Innenseite beurteilt, dazu kann auch die Innenseite des gegenüberliegenden Beines betrachtet werden.\nNotiert wird das Auftreten von Schäden je Körperregion. ",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Animal",
+        "type_changeable": false,
+        "presentation": "classification",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Nacken",
+              "Var": [
+                {
+                  "name": "Wunde oder Kruste",
+                  "short-description": "Wunde oder Kruste",
+                  "long-description": "Wunde (frische Verletzung) oder Kruste, jeweils > 2 cm (>10-Cent-Münze)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "Schwellung",
+                  "short-description": "Schwellung",
+                  "long-description": "eindeutige, im Vergleich zum Normalzustand mit bloßem Auge erkennbare Umfangsvermehrung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                },
+                {
+                  "name": "keine Verletzung",
+                  "short-description": "keine Verletzung",
+                  "long-description": "keine Verletzung",
+                  "images": [ ],
+                  "__key": "C"
+                }
+              ]
+            },
+            {
+              "name": "Vorderfußwurzelgelenk",
+              "Var": [
+                {
+                  "name": "Wunde oder Kruste",
+                  "short-description": "Wunde oder Kruste",
+                  "long-description": "Wunde (frische Verletzung) oder Kruste, jeweils > 2 cm (>10-Cent-Münze)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "D"
+                },
+                {
+                  "name": "Schwellung",
+                  "short-description": "Schwellung",
+                  "long-description": "eindeutige, im Vergleich zum Normalzustand mit bloßem Auge erkennbare Umfangsvermehrung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "E"
+                },
+                {
+                  "name": "keine Verletzung",
+                  "short-description": "keine Verletzung",
+                  "long-description": "keine Verletzung",
+                  "images": [ ],
+                  "__key": "F"
+                }
+              ]
+            },
+            {
+              "name": "Sprungelenk",
+              "Var": [
+                {
+                  "name": "Wunde oder Kruste",
+                  "short-description": "Wunde oder Kruste",
+                  "long-description": "Wunde (frische Verletzung) oder Kruste, jeweils > 2 cm (>10-Cent-Münze)",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "G"
+                },
+                {
+                  "name": "Schwellung",
+                  "short-description": "Schwellung",
+                  "long-description": "eindeutige, im Vergleich zum Normalzustand mit bloßem Auge erkennbare Umfangsvermehrung",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "H"
+                },
+                {
+                  "name": "keine Verletzung",
+                  "short-description": "keine Verletzung",
+                  "long-description": "keine Verletzung",
+                  "images": [ ],
+                  "__key": "I"
+                }
+              ]
+            }
+          ],
+          "ComposedVar": [
+            {
+              "OK": {
+                "expression": [
+                  "(I + F + C) / 3"
+                ]
+              }
+            },
+            {
+              "NichtOK": {
+                "expression": [
+                  "(G + H + E + D + A + B)"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Integumentschäden",
+            "description": "Tiere gesamt mit mindestens einer Wunde/Kruste oder Schwellung an Nacken, Vorderfußwurzelgelenk oder Sprunggelenk",
+            "expression": "(NichtOK / (NichtOK + OK)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 15,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Wunden oder Schwellungen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    4
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Wunden oder Schwellungen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Klauenzustand",
+      "description": "Eine Allgemeine Beschreibung zusätzlich zu der detaillierten unten",
+      "animal-category": "Mengelnder Klauenzustand, hervorgerufen durch fehlerhafte Haltung oder falsche Fütterung, beeinträchtig die Gesundheit der Tiere und kann wirschaftliche Folgen haben. ",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Ein mangelhafter Klauenzustand liegt z. B. bei übermäßiger Klauenlänge und häufig damit verbundener Biegung der Klauenspitze oder Verletzungen und Überwachsungen des Wandhorns vor. Er kann Fehlstellungen und damit eine unphysiologische Gewichtsverteilung, ein verändertes Gangbild und Beeinträchtigungen des Verhaltens (z. B. Futteraufnahme) und Wohlbefindens hervorrufen sowie Klauenerkrankungen begünstigen. In der Folge davon kann die Wachstumsleistung vermindert sein. Risikofaktoren für mangelhaften Klauenzustand sind bei Mastrindern Bewegungsmangel (hohe Besatzdichte, kein Auslauf), ungünstige Bodenbeschaffenheit (mangelnder Abrieb, nicht trittsicher, feucht, verschmutzt) und eine nicht wiederkäuergerechte Fütterung (z. B. Pansenazidose).",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Stichprobe am Gesamtbestand ",
+      "how": "Es wird je Tier eine Körperseite zufällig ausgewählt. Beurteilt werden die zwei Klauenpaare (vorderes und hinteres Klauenpaar) der zugewandten Körperseite. Erfasst werden zu lange Klauen, gebogene Klauen, Klauen mit unvollständigem Bodenkontakt, Wandläsionen und unregelmäßige Wandoberflächen. Der Klauenzustand ist mangelhaft, wenn mindestens einer der genannten Mängel an mindestens einem Klauenpaar auftritt.",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "Boniturnote 0",
+                  "short-description": "kein Mangel",
+                  "long-description": "Keine Mängel an beiden Klauenpaaren",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                },
+                {
+                  "name": "Boniturnote 1",
+                  "short-description": "Mangel",
+                  "long-description": "Vorliegen von mindestens einem der folgenden Mängel an mindestens einem Klauenpaar:\nKriterien: Zu lang/Klauenspitze evtl. gebogen, kein voller Bodenkontakt, Wandläsion, unregelmäßige Wandoberfläche",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Klauenzustand",
+            "description": "Anteil Tiere mit mangelhaftem Klauenzustand",
+            "expression": "(B / (A + B)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 20,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat Mängel an den Klauen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    5
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben Mängel an den Klauen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    10
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Lahmheitsanzeichen",
+      "description": "Lahmheiten wirken sich negativ auf das Wohlbefinden der Tiere aus und kann wirtschafltiche Einbussen zur Folge haben. Lahmheiten können durch fehlerhafte Haltung und Fütterungsfehler entstehen.",
+      "animal-category": "Mastrind",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Der Begriff Lahmheit beschreibt Störungen des Gangbildes, die bei Rindern überwiegend schmerzbedingt sind. Lahme Rinder sind aber nicht nur Schmerzen ausgesetzt, sondern haben auch eingeschränkten Zugang zu Futter und Wasser oder anderen Ressourcen. In der Folge ist die Wachstumsleistung bei lahmen Tieren geringer. Lahmheit geht bei Mastrindern überwiegend von Klauenerkrankungen aus; zusätzlich können Gelenksveränderungen eine Rolle spielen. Die wichtigsten Risikofaktoren sind, schlechte Qualität der Lauf- und Liegeflächen, rutschige, unebene oder verschmutzte Böden sowie Fütterungsmängel (z.B. Pansenübersäuerung, Eiweißüberschuss), sowie Überbelegung und Mangel an Bewegungsmöglichkeit.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Stichprobe am Gesamtbestand ",
+      "how": "Beurteilung der Lahmheit durch Gangbeobachtung oder Beobachtung des stehenden Tiers.",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Bonituren Gruppe 1",
+              "Var": [
+                {
+                  "name": "0",
+                  "short-description": "keine Lahmheitsanzeichen erkennbar",
+                  "long-description": "Keine Lahmheitsanzeichen erkennbar ",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "lahm, bewegendes Tier",
+                  "short-description": "Lahm am sich bewegenden Tier",
+                  "long-description": "Lahm:\nAm sich bewegenden Tier: Unregelmäßige Schrittfolge durch Entlasten eines oder mehrerer Beine und/oder deutliches Widerstreben, ein oder mehrere Beine zu belasten.\nEinstufung als lahm, wenn eines dieser beiden Kriterien erfüllt ist. ",
+                  "images": [ ],
+                  "__key": "B"
+                },
+                {
+                  "name": "lahm, stehendes Tier",
+                  "short-description": "Lahm am stehenden Tier",
+                  "long-description": "Lahm:\nAm stehenden Tier: Wiederholtes Anheben oder Entlasten eines Beins und/oder Aufsetzen des vorderen Klauenteils auf Kante einer Stufe.\nEinstufung als lahm, wenn eines dieser beiden Kriterien erfüllt ist. ",
+                  "images": [ ],
+                  "__key": "C"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Lahmheitskontrolle",
+            "description": "Anteil der lahmen Tiere in der Stichprobe",
+            "expression": "((B + C) / (A + B + C)) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier geht Lahm."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere gehen Lahm, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Zungenrollen",
+      "description": "Zungerollen und -schlagen ist eine Verhaltensstörung und deutet auf eine unzureichende Raufutterversorgung oder reizarme Umgebung hin.",
+      "animal-category": "Mastrind",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Zungenrollen und -schlagen gehören zu Verhaltensabweichungen oder Verhaltensstörungen; diese deuten darauf hin, dass hoch motivierte Verhaltensweisen nicht oder nur unzureichend ausgeführt werden können. Als wichtigste Risikofaktoren für Zungenrollen bzw. Zungenschlagen bei Mastrindern wird unzureichende Raufutterversorgung mit nachfolgender verminderter Wiederkauaktivität und eine genetische Veranlagung (z.B. Fleckvieh) angesehen. Reizarme Umgebung kann aufgrund mangelnder „Ablenkung“ zusätzlich das Auftreten fördern.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und auswerten.",
+      "which-and-how-many": "Gesamtbestand",
+      "how": "Kontinuierliche Beobachtung über einen Zeitraum von 30 Minuten (nicht in Hauptfressphase), gleichmäßig auf alle Mastrinder und -buchten verteilt. Zählen der Tiere, die Zungenrollen oder -schlagen zeigen (siehe Beispielfotos und -video).",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Zungenrollen",
+              "Var": [
+                {
+                  "name": "Zungenrollen",
+                  "short-description": "„rollende“ bzw. „schlagende“ Bewegungen der Zunge",
+                  "long-description": "Gleichförmige „rollende“ bzw. „schlagende“ Bewegungen der Zunge innerhalb oder außerhalb des Mauls, die wiederholt ausgeführt werden und nicht der Futteraufnahme dienen oder direkt damit verbunden sind",
+                  "images": [ ],
+                  "thumbnail": "",
+                  "__key": "A"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Zungenrollen",
+            "description": "Anteil von Tieren in der Gesamtherde, die Zungenrollen/-schlagen zeigen",
+            "expression": "(A / herd_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 10,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier zeigt Zungenrollen."
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere zeigen Zungenrollen, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    6
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Flächenangebot je Tier",
+      "description": "Eine Allgemeine Beschreibung zusätzlich zu der detaillierten unten",
+      "animal-category": "Ein unzureichendes Flächenangebot beeinträchtigt das Woghlbefinden und Gesundheit der Tiere.",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Ein unzureichendes Flächenangebot je Tier beeinträchtigt das Wohlbefinden aufgrund eingeschränkter Ruhemöglichkeit und mangelnder Bewegungsfreiheit. Es begünstigt das Auftreten typischer Produktionskrankheiten (z. B. Gelenkschäden, Lahmheiten, Schwanzspitzennekrosen) und verursacht Stress aufgrund vermehrter sozialer Auseinandersetzungen. Da zur Beurteilung von eingeschränkter Ruhemöglichkeit und Bewegungsfreiheit kein geeigneter tierbezogener Indikator zur Verfügung steht, wird hierfür ein ressourcenbezogener Indikator (Flächenangebot) herangezogen.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und bewerten.",
+      "which-and-how-many": "Gesamtbestand, buchtenweise.",
+      "how": "Ermittlung der Anzahl Tiere je Maststufe mit zu geringem Flächenangebot. Gibt Auskunft darüber wie viele Tiere (je Maststufe) zu wenig Fläche zur Verfügung haben. Das Flächenangebot ist unzureichend, wenn die in der Tabelle aufgeführten Mindestanforderungen nicht erfüllt werden.",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Maststufe",
+              "Var": [
+                {
+                  "name": "Anfangsmast",
+                  "short-description": "150 bis 400 kg LM",
+                  "long-description": "150 bis 400 kg LM",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "Mittelmast",
+                  "short-description": "> 400 bis 600 kg LM",
+                  "long-description": "> 400 bis 600 kg LM",
+                  "images": [ ],
+                  "__key": "B"
+                },
+                {
+                  "name": "Endmast",
+                  "short-description": "> 600 kg LM",
+                  "long-description": "> 600 kg LM",
+                  "images": [ ],
+                  "__key": "C"
+                }
+              ]
+            },
+            {
+              "name": "Anzahl Tiere",
+              "Var": [
+                {
+                  "name": "Anzahl Tiere",
+                  "short-description": "Anzahl Tiere je Bucht",
+                  "long-description": "nzahl Tiere je Bucht",
+                  "images": [ ],
+                  "__key": "D"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Mittlere Fläche Mastrind Anfangsmast",
+            "description": "mittlere Fläche je Mastrind",
+            "expression": "",
+            "Ranges": [
+              {
+                "unit": "m²",
+                "visual-lowerbound": 1,
+                "visual-upperbound": 5,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Es steht den Tieren ausreichend Fläche zur Verfügung."
+                  ],
+                  "lowerbound": [
+                    4
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Das Platzangebot ist zu gering, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    2.5
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Mittlere Fläche Mastrind Mittelmast",
+            "description": "Beschreibung der Formel",
+            "expression": "",
+            "Ranges": [
+              {
+                "unit": "m²",
+                "visual-lowerbound": 2,
+                "visual-upperbound": 6,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Es steht den Tieren ausreichend Fläche zur Verfügung."
+                  ],
+                  "lowerbound": [
+                    5
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Das Platzangebot ist zu gering, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    3.5
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Mittlere Fläche Mastrind Endmast",
+            "description": "Beschreibung der Formel",
+            "expression": "",
+            "Ranges": [
+              {
+                "unit": "m²",
+                "visual-lowerbound": 3.5,
+                "visual-upperbound": 7,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Es steht den Tieren ausreichend Fläche zur Verfügung."
+                  ],
+                  "lowerbound": [
+                    6
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Das Platzangebot ist zu gering, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    4.5
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Tiere mit zu geringem Platzangebot Gesamtbetrieb",
+            "description": "Anteil Tiere mit zu geringem Flächenangebot im Gesamtbetrieb",
+            "expression": "((labelClass1 + labelClass3 + labelclass5) / herd_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 15.5,
+                "visual-upperbound": 75.0,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat xy."
+                  ],
+                  "lowerbound": [
+                    60
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    30
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Tiere mit zu geringem Platzangebot Anfangsmast",
+            "description": "Anteil Tiere mit zu geringem Flächenangebot in der Anfangsmast",
+            "expression": "(labelClass1 / sample_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 15.5,
+                "visual-upperbound": 75.0,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat xy."
+                  ],
+                  "lowerbound": [
+                    60
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    30
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Tiere mit zu geringem Platzangebot Mittelmast",
+            "description": "Anteil Tiere mit zu geringem Flächenangebot in der Mittelmast",
+            "expression": "(labelClass3 / sample_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 15.5,
+                "visual-upperbound": 75.0,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat xy."
+                  ],
+                  "lowerbound": [
+                    60
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    30
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Tiere mit zu geringem Platzangebot Endmast",
+            "description": "Anteil Tiere mit zu geringem Flächenangebot in der Endmast",
+            "expression": "(labelclass5 / sample_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 15.5,
+                "visual-upperbound": 75.0,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Kaum ein Tier hat xy."
+                  ],
+                  "lowerbound": [
+                    60
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tiere haben XY, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    30
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    },
+    {
+      "last-modified": "timestamp der letzten Änderung",
+      "name": "Wasserversorgung",
+      "description": "Eine unzureichende Wasserversorgung als auch mangelhafte Wasserqualität beeinflussen das Wohlbefinden, führt zu Leistungseinbußen und fördert Stoffwechselstörungen sowie Erkrankungen der Mastrinder.",
+      "animal-category": "Mastrind",
+      "video-ref": {
+        "title1": "link to video"
+      },
+      "what-and-why": "Sowohl eine unzureichende Wasserversorgung als auch mangelhafte Wasserqualität beeinflussen das Wohlbefinden, führt zu Leistungseinbußen und fördert Stoffwechselstörungen sowie Erkrankungen der Mastrinder. Für eine sichere und stressfreie Wasserversorgung muss eine bezogen auf die Tierzahl ausreichende Anzahl an fachgerecht installierten, frostsicheren Tränkeplätzen mit ausreichender Dimensionierung der Anschlüsse gewährleistet sein. Korrosion und Ablagerungen können die Leitungsquerschnitte und somit auch die Wasserdurchflussrate allmählich reduzieren. Der Zugang zu Tränkestellen in ausreichender Zahl und ihre Funktionssicherheit mit ausreichender Wasserdurchflussrate sind daher wichtige Indikatoren der Wasserversorgung. Da einzelne ranghohe Tiere oft den Zugang zur Tränke blockieren, sollten auch in Kleingruppen-Buchten mindestens zwei Tränkestellen erreichbar sein. Defekte Tränken müssen umgehend instandgesetzt, falsch dimensionierte Leitungen zeitnah ausgetauscht sowie fehlende Tränken ergänzt werden. Die Prüfung der Wasserversorgung im Rahmen der täglichen Routinekontrolle ist durch eine halbjährliche Kontrolle nicht ersetzbar. Routinemäßig sollte hierbei auch die Sauberkeit von Tränken und Tränkewasser überprüft werden. Bei regelmäßig beobachteter Verschmutzung des Wassers sollte die Positionierung der Tränke überprüft werden.",
+      "when-and-how-often": "Halbjährlich, zur Mitte Sommer- und Winterhalbjahr, erheben und bewerten.",
+      "which-and-how-many": "Alle Tränken",
+      "how": "Schritt 1: Prüfung der Tränkeeinrichtungen auf Funktionsfähigkeit und ausreichenden, stark strömenden Wassernachfluss\nDurch das Öffnen des Tränkeventils für 30 oder 60 Sekunden wird die Menge des ausströmenden Wassers ermittelt. Die Durchflussrate ist unzureichend, wenn die folgenden Mindestanforderungen nicht erfüllt werden:\nSchritt 2: Prüfung, ob die Anzahl der Tränkestellen mit ausreichender Durchflussrate innerhalb einer Bucht angemessen ist\n•\tFür jede Tiergruppe werden die Tierzahl und die Anzahl der Tränkestellen mit ausreichender Durchflussgeschwindigkeit erfasst. \n•\tDie Anzahl Tränkestellen ist unzureichend, wenn die in der Tabelle aufgeführten Mindestanforderungen nicht erfüllt werden. In Gruppen mit ≤ 20 Mastrindern sollten 2 Tränkestellen vorhanden sein, die sowohl technisch als auch räumlich voneinander getrennt sind. Für je 20 weitere Mastrinder sollte eine zusätzliche Tränkestelle vorgehalten werden, die ebenfalls technisch und räumlich von den anderen getrennt sein muss. Eine Tränke, die – baulich voneinander abgetrennt – von zwei gegenüberliegenden Seiten zugänglich ist, kann als zwei Tränkestellen angesehen werden.",
+      "branches": [
+        "Mastrind"
+      ],
+      "sorting": 10,
+      "Assessment": {
+        "Sample": {
+          "type": [
+            "complete|partial"
+          ],
+          "partial-factor": [
+            0.3
+          ]
+        },
+        "default_type": "By_Indicator",
+        "type_changeable": false,
+        "presentation": "counter",
+        "presentation_changeable": false,
+        "Options": {
+          "Group": [
+            {
+              "name": "Tränkestellen",
+              "Var": [
+                {
+                  "name": "funktionsfähig",
+                  "short-description": "Mindestens 10 Liter pro Minute",
+                  "long-description": "Mindestens 10 Liter pro Minute",
+                  "images": [ ],
+                  "__key": "A"
+                },
+                {
+                  "name": "nicht funktionsfähig",
+                  "short-description": "Weniger als 10 Liter pro Minute",
+                  "long-description": "Weniger als 10 Liter pro Minute",
+                  "images": [ ],
+                  "__key": "B"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Evaluation": {
+        "Formula": [
+          {
+            "name": "Wasserversorgung",
+            "description": "Beschreibung der Formel",
+            "expression": "((labelClass1 + labelClass3 + labelclass5 + labelclass7 + labelclass9) / herd_size) * 100",
+            "Ranges": [
+              {
+                "unit": "%",
+                "visual-lowerbound": 0,
+                "visual-upperbound": 5,
+                "Targetrange": {
+                  "tag": [
+                    "Zielbereich"
+                  ],
+                  "description": [
+                    "Alle Tränken sind funktionsfähig"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    0
+                  ]
+                },
+                "Alertrange": {
+                  "tag": [
+                    "Alarmbereich"
+                  ],
+                  "description": [
+                    "Zu viele Tränken sind nicht funktionsfähig, sofortiger Handlungsbedarf ist nötig!"
+                  ],
+                  "lowerbound": [
+                    0
+                  ],
+                  "upperbound": [
+                    100
+                  ]
+                },
+                "Warningrange": {
+                  "tag": [
+                    "Frühwarnbereich"
+                  ],
+                  "description": [
+                    "Es läuft nicht optimal. Handlungsbedarf ist vorhanden"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "__key": "indicatorLabel"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="de.ktbl.eikotiger.view.viewmodel.home.SplashscreenVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/ktbl_blue_3"
+        android:orientation="vertical"
+        tools:context="de.ktbl.eikotiger.view.fragment.home.SplashScreenFragment">
+
+        <TextView
+            android:id="@+id/eikotiger_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/eikotiger"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/eikotiger_subheader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/eikotiger_long"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eikotiger_header" />
+
+        <ImageView
+            android:id="@+id/ktbl_logo"
+            android:layout_width="263dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="32dp"
+            android:background="#00000000"
+            android:contentDescription="@string/ktbl_logo"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eikotiger_subheader"
+            app:srcCompat="@drawable/ktbl_logo_neg"
+            tools:srcCompat="@drawable/ktbl_logo_neg" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:srcCompat="@drawable/logo_thuenen_rgb_transparent" />
+
+        <Button
+            android:id="@+id/btn_download"
+            style="@style/Button.Red"
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
+            android:onClick="@{ () -> vm.onStartCancelUpdateClicked()}"
+            android:text="@{vm.isDownloadRunning ? @string/cancel : @string/start_download}"
+            app:layout_constraintBottom_toTopOf="@+id/download_progress_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/download_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="381dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="36dp"
+            android:indeterminate="true"
+            android:visibility="@{vm.isDownloadRunning ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/download_description"
+            android:layout_width="336dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/download_simple_description"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/btn_download"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:srcCompat="@drawable/fli_logo_rgb_transparent" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ktbl_logo"
+            app:srcCompat="@drawable/witzenhausen_farbig_transparent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
